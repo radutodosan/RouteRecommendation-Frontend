@@ -60,7 +60,29 @@ export class MapComponent implements AfterViewInit{
 
       // Add the DistanceMeasurement control to the UI
       ui.addControl("distancemeasurement",  this.addDistanceMeasurement());
+
+      // Get an instance of the geocoding service:
+      var service = platform.getSearchService();
+
+      // Call the geocode method with the geocoding parameters,
+      // the callback and an error callback function (called if a
+      // communication error occurs):
+      service.geocode({
+        q: 'FC Ripensia 14'
+      }, (result : any) => {
+        // Add a marker for each location found
+        result.items.forEach((item : any) => {
+          map.addObject(new H.map.Marker(item.position));
+        });
+      }, alert);
+
+
     }
+  }
+
+
+  getLocationBySearch(){
+
   }
 
   addDistanceMeasurement(){

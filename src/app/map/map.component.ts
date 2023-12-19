@@ -13,6 +13,8 @@ export class MapComponent implements AfterViewInit{
 
   private map?: H.Map;
 
+
+
   @ViewChild('map') mapDiv?: ElementRef;
 
   ngAfterViewInit(): void {
@@ -33,7 +35,7 @@ export class MapComponent implements AfterViewInit{
         (layers as any).vector.normal.litenight,
         {
           engineType: engineType,
-          pixelRatio: window.devicePixelRatio,
+          pixelRatio: window.devicePixelRatio || 1,
           center: {lat: 45.755, lng: 21.23},
           zoom: 13,
         },
@@ -84,6 +86,7 @@ export class MapComponent implements AfterViewInit{
   getLocationBySearch(){
 
   }
+
 
   addDistanceMeasurement(){
     // Define the colors for the icons

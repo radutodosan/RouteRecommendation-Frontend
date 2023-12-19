@@ -1,0 +1,66 @@
+.side-panel {
+  height: calc(100% - 50px);
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border:1px solid var(--background-color);
+
+}
+.sidenav-header {
+  background-color: var(--header-background-color);
+  color: white;
+  height: 60px;
+  width: 250px;
+  text-align: center;
+  font-size: 30px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.sidenav {
+  flex: 1;
+  top: 0;
+  left: 0;
+  width: 250px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  text-align: center;
+  background-color: var(--frame-background-color);
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.collapse-div{
+  height: 100%;
+  line-height: 100%;
+  width: 30px;
+  cursor: pointer;
+  left: 0;
+  top: 0;
+  transition: margin-left .6s;
+  margin-left: 265px;
+  position: fixed;
+  font-weight:bold;
+  font-size:20px;
+  color: var(--frame-background-color);
+  /*background-color:black;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3px;
+}
+.collapse-div :hover{
+  transform: scale(1.25);
+}
+.collapse-div fa-icon{
+  color:var(--background-color);
+}

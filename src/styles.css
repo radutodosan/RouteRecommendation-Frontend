@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --background-color: #1c1c1c;
+  --frame-background-color: white;
+  --header-background-color: #1c1c1c;
+  /* past color for backgrounds: #222*/
+  --button: #eeecec;
+  --button-hover: #444;
+  --button-text: black;
+  --modals-button: #188504;
+  --modals-button-hover: #0da914;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

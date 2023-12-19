@@ -12,6 +12,22 @@
   <app-root></app-root>
 
 
+  <script>
+    function openCloseNav() {
+      if (document.getElementById("sidepanel").style.width === "250px") {
+        document.getElementById("sidepanel").style.width = "0";
+        document.getElementById("main").style.marginLeft = "35px";
+        // document.getElementById("map").style.width = "100%";
+        document.getElementById("collapse").style.marginLeft = "0px";
+      }
+      else {
+        document.getElementById("sidepanel").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "300px";
+        // document.getElementById("map").style.width = "75%";
+        document.getElementById("collapse").style.marginLeft = "265px";
+      }
 
+    }
+  </script>
 </body>
 </html>

@@ -1,14 +1,4 @@
-.map-container{
-  /*background-color: var(--frame-background-color);*/
-  background-color: black;
-  border-radius: 10px;
-  margin: 10px 10px 10px 300px;
-  padding: 20px;
-  flex-grow: 1;
-  transition: margin-left .5s;
-}
-
 #map {
-  height: 90vh;
-  transition: all .5s;
+  height: 100vh;
+  width: 100%;
 }

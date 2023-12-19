@@ -1,11 +1,18 @@
-<div id="sidepanel" class="side-panel" style="width: 250px;">
-  <header class="sidenav-header">Search</header>
+<div id="sidepanel" class="side-panel" style="width: 300px;">
 
-  <main class="sidenav" >
-
-
-
-  </main>
+    <div class="addresses-form">
+      <div class="input-container ic1">
+        <input [(ngModel)]="startValue" id="start" class="input" type="text" placeholder="" />
+        <div class="cut"></div>
+        <label for="start" class="placeholder">Start</label>
+      </div>
+      <div class="input-container ic2">
+        <input [(ngModel)]="endValue" id="end" class="input" type="text" placeholder="" />
+        <div class="cut"></div>
+        <label for="end" class="placeholder">End</label>
+      </div>
+      <button (click)="search()" class="submit">Search</button>
+    </div>
 
 </div>
 

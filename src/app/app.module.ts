@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -12,11 +13,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MapComponent,
     SidePanelComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FontAwesomeModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FontAwesomeModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

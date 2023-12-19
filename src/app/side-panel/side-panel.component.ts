@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {MapService} from "../services/map.service";
 
 @Component({
   selector: 'app-side-panel',
@@ -9,4 +10,13 @@ import {faBars} from "@fortawesome/free-solid-svg-icons";
 export class SidePanelComponent {
 
   protected readonly faBars = faBars;
+  endValue: string = '';
+  startValue: string = '';
+
+  constructor(private mapService:MapService) {
+  }
+
+  search(){
+    this.mapService.getLocationBySearch(this.startValue);
+  }
 }

@@ -35,12 +35,13 @@
   padding-left: 3px;
   z-index: 1;
 }
-.collapse-div :hover{
-  transform: scale(1.25);
-}
 .collapse-div fa-icon{
   color:var(--light-text-color);
+  transition: scale .3s;
 
+}
+.collapse-div fa-icon:hover{
+  scale:1.25;
 }
 
 .addresses-form {
@@ -99,7 +100,7 @@
 }
 
 .placeholder {
-  color: #65657b;
+  color: var(--button-color);
   font-family: sans-serif;
   left: 20px;
   line-height: 14px;
@@ -112,19 +113,19 @@
 
 .input:focus ~ .placeholder,
 .input:not(:placeholder-shown) ~ .placeholder {
-  transform: translateY(-30px) translateX(10px) scale(0.75);
+  transform: translateY(-30px) translateX(10px) scale(0.9);
 }
 
 .input:not(:placeholder-shown) ~ .placeholder {
-  color: #808097;
+  color: var(--button-color);
 }
 
 .input:focus ~ .placeholder {
-  color: var(--light-text-color);
+  color: var(--button-color);
 }
 
 .submit {
-  background-color: #08d;
+  background-color: var(--button-color);
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
@@ -142,5 +143,5 @@
 }
 
 .submit:active {
-  background-color: #06b;
+  background-color: var(--hover-button-color);
 }

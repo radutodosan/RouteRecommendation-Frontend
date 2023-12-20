@@ -6,7 +6,9 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
@@ -23,6 +25,19 @@
         document.getElementById("collapse").style.marginLeft = "310px";
       }
 
+    }
+    function openCloseSideNav(){
+      if(document.getElementById("side-nav").style.display === "none" || document.getElementById("side-nav").style.display === ''){
+        document.getElementById("side-nav").style.display = "block";
+        document.getElementById("side-nav-button").style.marginRight = "75px";
+        document.getElementById("map").style.marginRight = "65px";
+      }
+      else{
+        document.getElementById("side-nav").style.display = "none";
+        document.getElementById("side-nav-button").style.marginRight = "15px";
+        document.getElementById("map").style.marginRight = "0";
+        document.getElementById("map").style.width = "100%";
+      }
     }
   </script>
 </body>

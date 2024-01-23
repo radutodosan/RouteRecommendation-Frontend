@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
+import {slideInUpOnEnterAnimation} from "angular-animations";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations:[
+    slideInUpOnEnterAnimation({duration:650})
+  ],
 })
 export class HomeComponent {
 

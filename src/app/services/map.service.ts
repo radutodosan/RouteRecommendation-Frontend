@@ -2,6 +2,7 @@ import {ElementRef, Injectable} from '@angular/core';
 // @ts-ignore
 import H from "@here/maps-api-for-javascript";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class MapService {
   constructor() { }
 
   getEngineType(){
-    return H.Map.EngineType['HARP']
+    return H.Map.EngineType['HARP'];
   }
 
   getAPIkey(){

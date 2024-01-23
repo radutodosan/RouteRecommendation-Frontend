@@ -14,12 +14,12 @@
 }
 
 body{
-  background-color: var(--darker-background-color);
+  background-color: var(--background-color);
 }
 :root{
   --darker-background-color: #1c1c1c;
-  --dark-background-color: #2d2d2d;
-  --light-text-color: #dedede;
+  --background-color: #232323;
+  --text-color: #dedede;
   --button-color: #5579C6;
-  --hover-button-color: #3A9BDC;
+  --hover-button-color: #648de5;
 }

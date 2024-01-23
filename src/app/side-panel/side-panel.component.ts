@@ -10,8 +10,9 @@ import {MapService} from "../services/map.service";
 export class SidePanelComponent {
 
   protected readonly faBars = faBars;
-  endValue: string = '';
   startValue: string = '';
+  endValue: string = '';
+
 
   constructor(private mapService:MapService) {
   }

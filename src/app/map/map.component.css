@@ -1,18 +1,4 @@
 #map {
-  height: 100vh;
+  height: 92.5vh;
 
-  margin-right: 65px;
-}
-
-@media(max-width: 872px){
-  #map{
-    margin-right: 0;
-    width: 100%;
-  }
-}
-@media(min-width: 873px){
-  #map{
-    margin-right: 65px;
-
-  }
 }

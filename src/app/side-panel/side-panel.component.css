@@ -10,7 +10,7 @@
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  margin: 8.5vh 1vh 1vh 1vh;
   background-color: var(--darker-background-color);
 
 }
@@ -27,7 +27,7 @@
   position: fixed;
   font-weight:bold;
   font-size:20px;
-  color: var(--light-text-color);
+  color: var(--text-color);
   /*background-color:black;*/
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@
   z-index: 1;
 }
 .collapse-div fa-icon{
-  color:var(--light-text-color);
+  color:var(--text-color);
   transition: scale .3s;
 
 }
@@ -67,11 +67,11 @@
 }
 
 .input {
-  background-color: var(--dark-background-color);
+  background-color: var(--background-color);
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
-  color: var(--light-text-color);
+  color: var(--text-color);
   font-size: 18px;
   height: 100%;
   outline: 0;
@@ -100,8 +100,9 @@
 }
 
 .placeholder {
-  color: var(--button-color);
-  font-family: sans-serif;
+  color: var(--hover-button-color);
+  background:none;
+  font-weight: 700;
   left: 20px;
   line-height: 14px;
   pointer-events: none;
@@ -129,7 +130,7 @@
   border-radius: 12px;
   border: 0;
   box-sizing: border-box;
-  color: var(--light-text-color);
+  color: var(--text-color);
   cursor: pointer;
   font-size: 18px;
   height: 50px;

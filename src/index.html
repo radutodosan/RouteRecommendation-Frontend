@@ -9,20 +9,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="mat-typography">
   <app-root></app-root>
 
 
   <script>
     function openCloseNav() {
-      if (document.getElementById("sidepanel").style.width === "300px") {
-        document.getElementById("sidepanel").style.width = "0";
-        document.getElementById("collapse").style.marginLeft = "0px";
+      if (document.getElementById("side-panel").style.width === "300px") {
+        document.getElementById("side-panel").style.width = "0";
+        document.getElementById("collapse-bar").style.marginLeft = "0px";
       }
       else {
-        document.getElementById("sidepanel").style.width = "300px";
-        document.getElementById("collapse").style.marginLeft = "310px";
+        document.getElementById("side-panel").style.width = "300px";
+        document.getElementById("collapse-bar").style.marginLeft = "310px";
       }
 
     }

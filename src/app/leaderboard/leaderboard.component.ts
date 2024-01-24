@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {slideInUpOnEnterAnimation} from "angular-animations";
-import {User} from "../entities/user";
-import {Observable} from "rxjs";
 
 export interface TableHeaders {
   name: string;
@@ -26,19 +24,14 @@ const TABLE_DATA: TableHeaders[] = [
     slideInUpOnEnterAnimation({duration:650})
   ],
   templateUrl: './leaderboard.component.html',
-  styleUrls: ['./leaderboard.component.css']
+  styleUrls: ['./leaderboard.component.css'],
 })
 export class LeaderboardComponent implements OnInit{
-  displayedColumns: string[] = ['position', 'photo', 'name', 'Km'];
-  dataSource = TABLE_DATA
-
-  allUsers$: Observable<User[]> | undefined;
-
-  users:User[] = [];
+  displayedColumns: string[] = ['position', 'photo', 'name', 'km'];
+  dataSource = TABLE_DATA;
 
   constructor(
   ) {}
-
 
   ngOnInit(): void {
     // this.allUsers$ = this.authService.getAllUsers()

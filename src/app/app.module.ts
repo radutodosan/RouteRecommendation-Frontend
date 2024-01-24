@@ -4,8 +4,7 @@ import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {FormsModule} from "@angular/forms";
-import { SideNavComponent } from './side-nav/side-nav.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms"
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DescriptionComponent } from './home/description/description.component';
@@ -25,7 +24,10 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-// import {MatTableModule} from "@angular/material/table";
+import {MatTableModule} from "@angular/material/table";
+import { AuthenticatorComponent } from './authenticator/authenticator.component';
+import { LoginFormComponent } from './authenticator/login-form/login-form.component';
+import { SignupFormComponent } from './authenticator/signup-form/signup-form.component';
 
 
 @NgModule({
@@ -33,9 +35,11 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     routingComponents,
     AppComponent,
     SidePanelComponent,
-    SideNavComponent,
     NavBarComponent,
     DescriptionComponent,
+    AuthenticatorComponent,
+    LoginFormComponent,
+    SignupFormComponent,
   ],
     imports: [
         BrowserModule,
@@ -59,7 +63,8 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
         MdbTabsModule,
         MdbTooltipModule,
         MdbValidationModule,
-        // MatTableModule
+        MatTableModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

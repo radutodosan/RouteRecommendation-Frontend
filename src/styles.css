@@ -23,3 +23,42 @@ body{
   --button-color: #5579C6;
   --hover-button-color: #648de5;
 }
+
+[data-theme="dark"] {
+  --background-color : #24252A;
+  --darker-background-color : #18191CFF;
+  --white-text-color : #dcdcdc;
+  --blue-color : #0088a9;
+  --dark-blue-color : #001438;
+}
+
+[data-theme="light"] {
+  --background-color : #f1f1f1;
+  --darker-background-color : #ffffff;
+  --white-text-color : #24252A;
+  --blue-color : #0088a9;
+  --dark-blue-color : #001438;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--darker-background-color);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--darker-background-color);
+}

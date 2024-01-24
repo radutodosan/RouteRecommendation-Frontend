@@ -1,0 +1,15 @@
+
+<div class="login-form-container">
+  <form [formGroup]="loginForm" novalidate>
+
+    <input type="text" id="username-login" class="form-control" formControlName="username" placeholder="Username" required>
+    <br>
+    <input type="password" id="password-login" class="form-control validate" formControlName="password" placeholder="Password" required>
+    <br>
+  </form>
+
+  <button type="button" class="btn login" (click)="loginUser()">Login</button>
+
+</div>
+
+

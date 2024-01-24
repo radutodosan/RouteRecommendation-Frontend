@@ -60,8 +60,10 @@
   border: 1px solid var(--hover-button-color);
 }
 
+
 @media(max-width: 991px){
   .navbar-brand{
     margin: 0 auto;
   }
 }
+

@@ -7,6 +7,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {FormsModule} from "@angular/forms";
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DescriptionComponent } from './home/description/description.component';
+import {NgxTypedJsModule} from 'ngx-typed-js';
 import { MdbAccordionModule } from 'mdb-angular-ui-kit/accordion';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
@@ -22,9 +25,6 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DescriptionComponent } from './home/description/description.component';
-import {NgxTypedJsModule} from 'ngx-typed-js';
 // import {MatTableModule} from "@angular/material/table";
 
 
@@ -42,6 +42,8 @@ import {NgxTypedJsModule} from 'ngx-typed-js';
         AppRoutingModule,
         FontAwesomeModule,
         FormsModule,
+        BrowserAnimationsModule,
+        NgxTypedJsModule,
         MdbAccordionModule,
         MdbCarouselModule,
         MdbCheckboxModule,
@@ -57,8 +59,6 @@ import {NgxTypedJsModule} from 'ngx-typed-js';
         MdbTabsModule,
         MdbTooltipModule,
         MdbValidationModule,
-        BrowserAnimationsModule,
-        NgxTypedJsModule,
         // MatTableModule
     ],
   providers: [],

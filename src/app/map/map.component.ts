@@ -42,14 +42,10 @@ export class MapComponent implements AfterViewInit{
       // Add the DistanceMeasurement control to the UI
       ui.addControl("distancemeasurement",  this.mapService.addDistanceMeasurement());
 
+
     }
+
   }
-
-
-
-
-
-
 
 
 }

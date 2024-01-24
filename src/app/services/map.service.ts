@@ -30,6 +30,7 @@ export class MapService {
 
   getMap(mapDiv: ElementRef){
 
+
     this.map = new H.Map(
       mapDiv.nativeElement,
       (this.getLayers() as any).vector.normal.litenight,
@@ -38,8 +39,11 @@ export class MapService {
         pixelRatio: window.devicePixelRatio || 1,
         center: {lat: 45.755, lng: 21.23},
         zoom: 13,
+
       },
+
     );
+    console.log("Map centered on TIMISOARA");
     return this.map;
   }
 

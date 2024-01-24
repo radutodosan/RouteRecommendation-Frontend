@@ -14,9 +14,24 @@ export class NavBarComponent {
 
   modalRef: MdbModalRef<AuthenticatorComponent> | null = null;
 
+  currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  checkedTheme!: boolean;
+
   constructor(private modalService: MdbModalService) {}
 
   openAuthenticatorModal() {
     this.modalRef = this.modalService.open(AuthenticatorComponent)
+  }
+
+  // @ts-ignore
+  switchTheme(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light'); //add this
+    } else {
+
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark'); //add this
+    }
   }
 }

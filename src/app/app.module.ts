@@ -28,6 +28,7 @@ import {MatTableModule} from "@angular/material/table";
 import { AuthenticatorComponent } from './authenticator/authenticator.component';
 import { LoginFormComponent } from './authenticator/login-form/login-form.component';
 import { SignupFormComponent } from './authenticator/signup-form/signup-form.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { SignupFormComponent } from './authenticator/signup-form/signup-form.com
     AuthenticatorComponent,
     LoginFormComponent,
     SignupFormComponent,
+    FooterComponent,
   ],
     imports: [
         BrowserModule,

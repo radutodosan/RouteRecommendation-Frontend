@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 *{
-
+  -webkit-transition: background-color 300ms linear, color 200ms linear;
+  -moz-transition: background-color 300ms linear, color 200ms linear;
+  -o-transition: background-color 300ms linear, color 200ms linear;
+  -ms-transition: background-color 300ms linear, color 200ms linear;
+  transition: background-color 300ms linear, color 200ms linear;
   margin:0;
   padding:0;
   outline: none;
@@ -22,22 +26,23 @@ body{
   --text-color: #dedede;
   --button-color: #5579C6;
   --hover-button-color: #648de5;
+  --blue-color: #6087dc;
 }
 
 [data-theme="dark"] {
   --background-color : #24252A;
   --darker-background-color : #18191CFF;
-  --white-text-color : #dcdcdc;
-  --blue-color : #0088a9;
-  --dark-blue-color : #001438;
+  --text-color : #dcdcdc;
+  --button-color : #5579C6;
+  --hover-button-color : #648de5;
 }
 
 [data-theme="light"] {
   --background-color : #f1f1f1;
   --darker-background-color : #ffffff;
-  --white-text-color : #24252A;
-  --blue-color : #0088a9;
-  --dark-blue-color : #001438;
+  --text-color : #24252A;
+  --button-color : #5579C6;
+  --hover-button-color : #648de5;
 }
 
 

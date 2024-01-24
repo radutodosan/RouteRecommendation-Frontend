@@ -3,12 +3,19 @@
   margin: 1vh auto;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 
-
 }
 table {
   background-color: var(--darker-background-color);
+  transition: none;
 }
 
-table th, td{
+table td{
   color:var(--text-color);
+  transition: none;
+}
+
+table th{
+  color:var(--blue-color);
+  font-weight: 700;
+  transition: none;
 }

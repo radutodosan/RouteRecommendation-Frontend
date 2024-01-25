@@ -28,7 +28,7 @@
 
 .nav-link{
   color: var(--text-color);
-  margin: 0 5px;
+  margin: 0 10px;
 }
 .nav-link:hover{
   color: var(--hover-button-color)

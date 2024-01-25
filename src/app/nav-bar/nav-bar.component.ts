@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import {AuthenticatorComponent} from "../authenticator/authenticator.component";
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
+import {UsersService} from "../services/users.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -17,8 +19,15 @@ export class NavBarComponent implements OnInit{
   currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
   checkedTheme!: boolean;
 
-  constructor(private modalService: MdbModalService) {}
+  constructor(
+    private modalService: MdbModalService,
+    private usersService: UsersService,
+    private router: Router,
+  ) {}
 
+  isLoggedIn(): boolean {
+    return this.usersService.isLoggedIn();
+  }
   openAuthenticatorModal() {
     this.modalRef = this.modalService.open(AuthenticatorComponent)
   }
@@ -35,11 +44,19 @@ export class NavBarComponent implements OnInit{
     }
 
     if(window.location.pathname === '/map'){
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+
     }
   }
 
   ngOnInit(): void {
     this.checkedTheme = localStorage.getItem('theme') === 'light';
+  }
+
+  openProfilePage(){
+
+    this.router.navigate(['/profile',this.usersService.loggedUser.username]);
   }
 }

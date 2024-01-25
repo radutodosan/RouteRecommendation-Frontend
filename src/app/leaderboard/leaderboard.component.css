@@ -6,16 +6,15 @@
 }
 table {
   background-color: var(--darker-background-color);
-  transition: none;
 }
 
 table td{
   color:var(--text-color);
-  transition: none;
+  background-color: var(--darker-background-color);
 }
 
 table th{
+  background-color: var(--darker-background-color);
   color:var(--blue-color);
   font-weight: 700;
-  transition: none;
 }

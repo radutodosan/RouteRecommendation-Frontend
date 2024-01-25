@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UsersService} from "../../services/users.service";
+import {Router} from "@angular/router";
+import {MdbModalRef} from "mdb-angular-ui-kit/modal";
+import {AuthenticatorComponent} from "../authenticator.component";
 
 @Component({
   selector: 'app-login-form',
@@ -11,19 +15,29 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private usersService: UsersService,
+    private router: Router,
+    public modalRef: MdbModalRef<AuthenticatorComponent>
+
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      name: ['', Validators.required],
-      password: ['', Validators.required],
-      email: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      password: ['', Validators.required]
     });
   }
 
   loginUser(){
+    var loginData = this.loginForm.value;
+    console.log(loginData);
+    this.usersService.loggedUser = loginData;
+    localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
+
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
 
   }
 }

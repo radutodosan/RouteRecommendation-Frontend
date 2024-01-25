@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {MdbModalRef} from "mdb-angular-ui-kit/modal";
+import {AuthenticatorComponent} from "../authenticator.component";
 
 @Component({
   selector: 'app-signup-form',
@@ -10,13 +12,17 @@ export class SignupFormComponent implements OnInit{
   signupForm!: FormGroup;
 
   constructor(
+    public modalRef: MdbModalRef<AuthenticatorComponent>,
     private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      full_name: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
   }
 

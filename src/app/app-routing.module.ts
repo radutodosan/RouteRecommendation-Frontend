@@ -4,12 +4,14 @@ import {MapComponent} from "./map/map.component";
 import {HomeComponent} from "./home/home.component";
 import {LeaderboardComponent} from "./leaderboard/leaderboard.component";
 import {StatisticsComponent} from "./statistics/statistics.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'map', component: MapComponent},
   {path: 'leaderboard', component: LeaderboardComponent},
   {path: 'statistics', component: StatisticsComponent},
+  {path: 'profile/:username', component: ProfileComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 
 ];
@@ -20,4 +22,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [HomeComponent, MapComponent, LeaderboardComponent, StatisticsComponent]
+export const routingComponents = [HomeComponent, MapComponent, LeaderboardComponent, StatisticsComponent, ProfileComponent]

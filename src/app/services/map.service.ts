@@ -30,19 +30,34 @@ export class MapService {
 
   getMap(mapDiv: ElementRef){
 
+      if(localStorage.getItem('theme') === 'light'){
+      this.map = new H.Map(
+        mapDiv.nativeElement,
+        (this.getLayers() as any).vector.normal.map,
+        {
+          engineType: this.getEngineType(),
+          pixelRatio: window.devicePixelRatio || 1,
+          center: {lat: 45.755, lng: 21.23},
+          zoom: 13,
 
-    this.map = new H.Map(
-      mapDiv.nativeElement,
-      (this.getLayers() as any).vector.normal.litenight,
-      {
-        engineType: this.getEngineType(),
-        pixelRatio: window.devicePixelRatio || 1,
-        center: {lat: 45.755, lng: 21.23},
-        zoom: 13,
+        },
 
-      },
+      );
+    }
+    else{
+      this.map = new H.Map(
+        mapDiv.nativeElement,
+        (this.getLayers() as any).vector.normal.litenight,
+        {
+          engineType: this.getEngineType(),
+          pixelRatio: window.devicePixelRatio || 1,
+          center: {lat: 45.755, lng: 21.23},
+          zoom: 13,
 
-    );
+        },
+
+      );
+    }
     console.log("Map centered on TIMISOARA");
     return this.map;
   }

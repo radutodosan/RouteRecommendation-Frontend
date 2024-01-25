@@ -27,7 +27,7 @@ body{
   --button-color: #5579C6;
   --hover-button-color: #648de5;
   --blue-color: #6087dc;
-  --scrollbar-color: #1b293d;
+  --scrollbar-color: #424242;
 }
 
 [data-theme="dark"] {
@@ -36,7 +36,7 @@ body{
   --text-color : #dcdcdc;
   --button-color : #5579C6;
   --hover-button-color : #648de5;
-  --scrollbar-color: #1b293d;
+  --scrollbar-color: #424242;
 }
 
 [data-theme="light"] {
@@ -45,7 +45,7 @@ body{
   --text-color : #24252A;
   --button-color : #5579C6;
   --hover-button-color : #648de5;
-  --scrollbar-color: #1b293d;
+  --scrollbar-color: #424242;
 }
 
 
@@ -63,10 +63,10 @@ body{
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar-color);
-  border-radius: 10px;
+  /*border-radius: 10px;*/
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--blue-color);
+  background: var(--button-color);
 }

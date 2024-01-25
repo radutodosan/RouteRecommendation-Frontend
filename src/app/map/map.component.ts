@@ -28,8 +28,15 @@ export class MapComponent implements AfterViewInit{
       // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
       const behavior = this.mapService.addBehavior(map);
 
+
       // Adding real-time traffic flow data
-      map.addLayer((layers as any).vector.traffic.litenight);
+      if(localStorage.getItem('theme') === 'light'){
+        map.addLayer((layers as any).vector.traffic.map);
+      }
+      else{
+        map.addLayer((layers as any).vector.traffic.litenight);
+      }
+
 
       // Create the default UI components
       const ui = this.mapService.addMapUI(map);

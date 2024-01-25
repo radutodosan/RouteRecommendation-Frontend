@@ -2,6 +2,7 @@
   background-color: var(--darker-background-color);
   color: var(--text-color);
   height: 7.5vh;
+  min-height: 55px;
   z-index: 2;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 0;
 }
@@ -40,8 +41,8 @@
 .navbar-toggler{
   color: var(--text-color);
   position: absolute;
-  right: 1vh;
-  top: 2vh;
+  right: 1rem;
+  top: 25%;
   border: none;
 }
 
@@ -65,8 +66,8 @@
   width: 75px;
   height: 30px;
   position: absolute;
-  top: 20px;
-  right: 100px;
+  top: 27.5%;
+  right: 90px;
   margin: 0;
   display: block;
   background-color: var(--background-color);

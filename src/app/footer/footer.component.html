@@ -19,7 +19,7 @@
           <h6 class="text-uppercase fw-bold mb-4">Account Links</h6>
           <p><a class="text-reset" (click)="openProfilePage()" style="cursor:pointer"><i class="fa-solid fa-user"></i> Profile</a></p>
           <p><a [routerLink]="['/statistics']" class="text-reset" *ngIf="isLoggedIn()"><i class="fa-solid fa-chart-column"></i> Statistics</a></p>
-          <p><a [routerLink]="['/leaderboard']" class="text-reset" *ngIf="isLoggedIn()"><i class="fa-solid fa-users"></i> Social</a></p>
+          <p><a [routerLink]="['/social']" class="text-reset" *ngIf="isLoggedIn()"><i class="fa-solid fa-users"></i> Social</a></p>
 
         </div>
 

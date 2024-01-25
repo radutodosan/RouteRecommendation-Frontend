@@ -18,7 +18,7 @@ import { LoginFormComponent } from './authenticator/login-form/login-form.compon
 import { SignupFormComponent } from './authenticator/signup-form/signup-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
-
+import { FriendsComponent } from './social/friends/friends.component';
 @NgModule({
   declarations: [
     routingComponents,
@@ -30,6 +30,7 @@ import { AlertComponent } from './alert/alert.component';
     LoginFormComponent,
     SignupFormComponent,
     FooterComponent,
+    FriendsComponent,
   ],
     imports: [
         BrowserModule,

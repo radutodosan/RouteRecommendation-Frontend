@@ -62,11 +62,30 @@ body{
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-color);
+  background: var(--background-color);
   /*border-radius: 10px;*/
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--button-color);
+}
+
+
+mdb-tabs .nav-link{
+  background-color: var(--background-color);
+  color:var(--text-color);
+}
+mdb-tabs .nav-tabs .nav-link{
+  border-bottom-color:var(--blue-color);
+}
+mdb-tabs .nav-tabs .nav-link:hover,  mdb-tabs .nav-tabs .nav-link:focus{
+  background-color: var(--background-color);
+  color:var(--text-color);
+  border-color:var(--blue-color);
+}
+mdb-tabs .nav-tabs .nav-link.active{
+  background-color: var(--blue-color);
+  color:var(--text-color);
+  border-color:var(--blue-color);
 }

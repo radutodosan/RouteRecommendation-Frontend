@@ -1,21 +1,6 @@
-<div class="social-container">
-  <mdb-tabs [pills]="true" [fill]="true" [justified]="true">
+<div  class="social-container" [@slideInUpOnEnter]="1">
+  <mdb-tabs  [fill]="true" [justified]="true">
     <mdb-tab title="Friends"><app-friends></app-friends></mdb-tab>
     <mdb-tab title="Leaderboard"><app-leaderboard></app-leaderboard></mdb-tab>
   </mdb-tabs>
 </div>
-
-<mdb-tabs [pills]="true">
-  <mdb-tab class="tab">
-    <ng-template mdbTabTitle ><span><i class="fab fa-lg fa-mdb me-2"></i> Tab 1</span></ng-template>
-    Tab content 1
-  </mdb-tab>
-  <mdb-tab>
-    <ng-template mdbTabTitle><span><i class="fab fa-lg fa-mdb me-2"></i> Tab 2</span></ng-template>
-    Tab content 2
-  </mdb-tab>
-  <mdb-tab>
-    <ng-template mdbTabTitle><span><i class="fab fa-lg fa-mdb me-2"></i> Tab 3</span></ng-template>
-    Tab content 3
-  </mdb-tab>
-</mdb-tabs>

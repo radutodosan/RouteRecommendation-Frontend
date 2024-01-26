@@ -1,0 +1,23 @@
+.card{
+  width: 39vw;
+  margin: 0 auto;
+  background-color: var(--darker-background-color);
+
+}
+.card .full_name{
+  font-weight: 700;
+}
+.card .email{
+  font-size: 11px;
+}
+
+.card span{
+  color: var(--text-color);
+}
+
+@media(max-width: 881px){
+  .card{
+      min-width: 300px;
+  }
+}
+

@@ -6,7 +6,7 @@ import {slideInUpOnEnterAnimation} from "angular-animations";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   animations:[
-    slideInUpOnEnterAnimation({duration:650})
+    slideInUpOnEnterAnimation({duration:500})
   ],
 })
 export class HomeComponent {

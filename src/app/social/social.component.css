@@ -1,21 +1,5 @@
 .social-container{
-  width: 80%;
+  width: 85%;
   margin: 10px auto;
 }
-#mdbTabTitle, ng-template{
-  background-color: var(--darker-background-color);
-  color:black;
-}
-
-span{
-  display: flex;
-  align-items: stretch;
-  color:black;
-  background-color: black;
-}
-.tab{
-  background-color: var(--darker-background-color);
-  color:black;
-}
-
 

@@ -1,7 +1,5 @@
 .card{
-  width:  60%;
-  min-width: 320px;
-  margin: 1vh auto;
+  margin: 0 auto;
   background-color: var(--darker-background-color);
 
 }
@@ -47,8 +45,16 @@
 
 .logout{
   border: none;
+  float: right;
+  color:white;
 }
 .logout:hover{
-  background-color: indianred;
+  background-color: crimson;
   border: none;
+}
+
+@media(min-width: 1200px){
+  .card{
+    width: 60%;
+  }
 }

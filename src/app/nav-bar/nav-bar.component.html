@@ -45,7 +45,7 @@
         <input class="dark-mode" type="checkbox" id="dark-mode-toggle" [checked]="checkedTheme" (change)="switchTheme($event)">
         <label class="label-mode" for="dark-mode-toggle"></label>
         <button class="btn btn-outline-primary" type="button" *ngIf="!isLoggedIn()" (click)="openAuthenticatorModal()">Login</button>
-        <button class="btn btn-outline-primary" type="button" *ngIf="isLoggedIn()" (click)="openProfilePage()" ><i class="fa-solid fa-user"></i></button>
+        <button class="btn btn-outline-primary" type="button" *ngIf="isLoggedIn()" (click)="openProfilePage()" >Profile <i class="fa-solid fa-user"></i></button>
       </div>
 
     </div>

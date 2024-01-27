@@ -6,6 +6,7 @@ import {LeaderboardComponent} from "./leaderboard/leaderboard.component";
 import {StatisticsComponent} from "./statistics/statistics.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {SocialComponent} from "./social/social.component";
+import {NotificationsComponent} from "./notifications/notifications.component";
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path: 'ranking', component: LeaderboardComponent},
   {path: 'statistics', component: StatisticsComponent},
   {path: 'social', component: SocialComponent},
-  {path: 'notifications/:username', component: ProfileComponent},
+  {path: 'notifications/:username', component: NotificationsComponent},
   {path: 'profile/:username', component: ProfileComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' }
 
@@ -31,4 +32,6 @@ export const routingComponents = [
   LeaderboardComponent,
   StatisticsComponent,
   ProfileComponent,
-  SocialComponent]
+  SocialComponent,
+  NotificationsComponent,
+]

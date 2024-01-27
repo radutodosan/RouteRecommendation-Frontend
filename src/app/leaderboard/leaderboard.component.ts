@@ -5,19 +5,19 @@ import {style} from "@angular/animations";
 export interface TableHeaders {
   name: string;
   photo: string;
-  km: number;
+  points: number;
 }
 const TABLE_DATA: TableHeaders[] = [
-  {name: 'vasile', photo: "https://robohash.org/hehehe?bgset=bg1", km: 33},
-  {name: 'ion', photo: "https://robohash.org/hehehe?bgset=bg1", km: 31},
-  {name: 'john_doe', photo: "https://robohash.org/hehehe?bgset=bg1", km: 29},
-  {name: 'gigi', photo: "https://robohash.org/hehehe?bgset=bg1", km: 24},
-  {name: 'ionela', photo: "https://robohash.org/hehehe?bgset=bg1", km: 21},
-  {name: 'marcel', photo: "https://robohash.org/hehehe?bgset=bg1", km: 13},
-  {name: 'viorel', photo:"https://robohash.org/hehehe?bgset=bg1", km: 9},
-  {name: 'petru', photo: "https://robohash.org/hehehe?bgset=bg1", km: 6},
-  {name: 'maria', photo: "https://robohash.org/hehehe?bgset=bg1", km: 4},
-  {name: 'florin', photo: "https://robohash.org/hehehe?bgset=bg1", km: 3},
+  {name: 'vasile', photo: "https://robohash.org/hehehe?bgset=bg1", points: 33},
+  {name: 'ion', photo: "https://robohash.org/hehehe?bgset=bg1", points: 31},
+  {name: 'john_doe', photo: "https://robohash.org/hehehe?bgset=bg1", points: 29},
+  {name: 'gigi', photo: "https://robohash.org/hehehe?bgset=bg1", points: 24},
+  {name: 'ionela', photo: "https://robohash.org/hehehe?bgset=bg1", points: 21},
+  {name: 'marcel', photo: "https://robohash.org/hehehe?bgset=bg1", points: 13},
+  {name: 'viorel', photo:"https://robohash.org/hehehe?bgset=bg1", points: 9},
+  {name: 'petru', photo: "https://robohash.org/hehehe?bgset=bg1", points: 6},
+  {name: 'maria', photo: "https://robohash.org/hehehe?bgset=bg1", points: 4},
+  {name: 'florin', photo: "https://robohash.org/hehehe?bgset=bg1", points: 3},
 ];
 @Component({
   selector: 'app-leaderboard',
@@ -28,7 +28,7 @@ const TABLE_DATA: TableHeaders[] = [
   styleUrls: ['./leaderboard.component.css'],
 })
 export class LeaderboardComponent implements OnInit{
-  displayedColumns: string[] = ['position', 'photo', 'name', 'km'];
+  displayedColumns: string[] = ['position', 'photo', 'name', 'points'];
   dataSource = TABLE_DATA;
 
   constructor(

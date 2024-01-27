@@ -18,6 +18,10 @@ footer h3{
   text-decoration: none;
 }
 
+.link:hover{
+  color: var(--button-color);
+}
+
 .link.active{
   color: var(--button-color);
   border-bottom: 1px solid var(--button-color);

@@ -1,0 +1,27 @@
+.notifications-container{
+  width: 85%;
+  margin: 1vh auto;
+  display: flex;
+}
+
+.friend-requests-container{
+  width: 50%;
+  margin: .5%;
+}
+
+.separator{
+  height: 93vh;
+  width: 1px;
+  background-color: var(--blue-color);
+}
+
+.routes-pending-container{
+  width: 50%;
+  margin: .5%;
+}
+
+.container-header{
+  color:var(--text-color);
+  font-size: 28px;
+  text-align: center;
+}

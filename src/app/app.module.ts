@@ -22,8 +22,8 @@ import { FriendsComponent } from './social/friends/friends.component';
 import { UserCardComponent } from './social/user-card/user-card.component';
 @NgModule({
   declarations: [
-    routingComponents,
     AppComponent,
+    routingComponents,
     SidePanelComponent,
     NavBarComponent,
     DescriptionComponent,

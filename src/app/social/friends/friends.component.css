@@ -1,12 +1,12 @@
 
 .friends-container{
-  height: 85vh;
+  /*height: 85vh;*/
   width: 100%;
-  margin: 0 auto;
+  margin: 0 auto 40px auto;
   display: flex;
   justify-content: center;
   /*justify-content: space-between;*/
   flex-wrap: wrap;
   gap: 15px;
-  overflow-y: scroll
+  /*overflow-y: scroll*/
 }

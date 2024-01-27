@@ -15,6 +15,16 @@
   color: var(--text-color);
 }
 
+.logout{
+  border: 1px solid crimson;
+  float: right;
+  color:var(--text-color);
+}
+.logout:hover{
+  background-color: crimson;
+  border: 1px solid crimson;
+}
+
 @media(max-width: 881px){
   .card{
       min-width: 300px;

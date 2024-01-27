@@ -44,13 +44,12 @@
 }
 
 .logout{
-  border: none;
-  float: right;
-  color:white;
+  border: 1px solid crimson;
+  color:var(--text-color);
 }
 .logout:hover{
   background-color: crimson;
-  border: none;
+  border: 1px solid crimson;
 }
 
 @media(min-width: 1200px){

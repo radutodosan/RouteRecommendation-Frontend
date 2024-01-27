@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {slideInUpOnEnterAnimation} from "angular-animations";
+import {style} from "@angular/animations";
 
 export interface TableHeaders {
   name: string;
@@ -43,4 +44,6 @@ export class LeaderboardComponent implements OnInit{
     // })
 
   }
+
+    protected readonly style = style;
 }

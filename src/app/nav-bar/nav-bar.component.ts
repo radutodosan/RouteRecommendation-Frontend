@@ -4,6 +4,8 @@ import {AuthenticatorComponent} from "../authenticator/authenticator.component";
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {UsersService} from "../services/users.service";
 import {Router} from "@angular/router";
+import {AlertTypes} from "../enums/alert-types";
+import {AlertService} from "../services/alert.service";
 
 
 @Component({
@@ -23,7 +25,12 @@ export class NavBarComponent implements OnInit{
     private modalService: MdbModalService,
     private usersService: UsersService,
     private router: Router,
+    private alertService: AlertService,
   ) {}
+
+  ngOnInit(): void {
+    this.checkedTheme = localStorage.getItem('theme') === 'light';
+  }
 
   isLoggedIn(): boolean {
     return this.usersService.isLoggedIn();
@@ -51,12 +58,22 @@ export class NavBarComponent implements OnInit{
     }
   }
 
-  ngOnInit(): void {
-    this.checkedTheme = localStorage.getItem('theme') === 'light';
+
+  showAlert(type:AlertTypes, text:String){
+    this.alertService.setAlert({
+      type: type,
+      text : text,
+    });
+  }
+
+  mustLoginAlert(){
+    this.showAlert(AlertTypes.WARNING,'You must login to access!');
   }
 
   openProfilePage(){
-
     this.router.navigate(['/profile',this.usersService.loggedUser.username]);
+  }
+  openNotificationsPage(){
+    this.router.navigate(['/notifications',this.usersService.loggedUser.username]);
   }
 }

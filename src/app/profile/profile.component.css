@@ -46,6 +46,8 @@
 .logout{
   border: 1px solid crimson;
   color:var(--text-color);
+  float:right;
+  margin-bottom: 25px;
 }
 .logout:hover{
   background-color: crimson;

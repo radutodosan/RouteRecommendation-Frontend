@@ -34,8 +34,20 @@
         <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" [routerLink]="['/statistics']" routerLinkActive="active" (click)="basicNavbar.hide()"><i class="fa-solid fa-chart-column"></i> Statistics</a>
         </li>
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link" (click)="basicNavbar.hide();openAuthenticatorModal();mustLoginAlert()"><i class="fa-solid fa-chart-column"></i> Statistics</a>
+        </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" [routerLink]="['/social']" routerLinkActive="active" (click)="basicNavbar.hide()"><i class="fa-solid fa-users"></i> Social</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link" (click)="basicNavbar.hide();openAuthenticatorModal();mustLoginAlert()"><i class="fa-solid fa-users"></i> Social</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" [routerLink]="['/ranking']" routerLinkActive="active" (click)="basicNavbar.hide()"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
+        </li>
+        <li class="nav-item" *ngIf="!isLoggedIn()">
+          <a class="nav-link" (click)="basicNavbar.hide();openAuthenticatorModal();mustLoginAlert()"><i class="fa-solid fa-ranking-star"></i> Ranking</a>
         </li>
 
 
@@ -44,8 +56,10 @@
       <div class="button-container">
         <input class="dark-mode" type="checkbox" id="dark-mode-toggle" [checked]="checkedTheme" (change)="switchTheme($event)">
         <label class="label-mode" for="dark-mode-toggle"></label>
-        <button class="btn btn-outline-primary" type="button" *ngIf="!isLoggedIn()" (click)="openAuthenticatorModal()">Login</button>
-        <button class="btn btn-outline-primary" type="button" *ngIf="isLoggedIn()" (click)="openProfilePage()" >Profile <i class="fa-solid fa-user"></i></button>
+        <button class="btn btn-outline-primary" type="button" *ngIf="isLoggedIn()" (click)="openNotificationsPage();basicNavbar.hide()"><i class="fa-regular fa-bell"></i></button>
+        <button class="btn btn-outline-primary" type="button" *ngIf="!isLoggedIn()" (click)="basicNavbar.hide();openAuthenticatorModal();mustLoginAlert()"><i class="fa-regular fa-bell"></i></button>
+        <button class="btn btn-outline-primary" type="button" *ngIf="!isLoggedIn()" (click)="basicNavbar.hide();openAuthenticatorModal()">Login</button>
+        <button class="btn btn-outline-primary" type="button" *ngIf="isLoggedIn()" (click)="openProfilePage();basicNavbar.hide()">Profile <i class="fa-solid fa-user"></i></button>
       </div>
 
     </div>

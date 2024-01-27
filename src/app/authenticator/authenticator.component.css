@@ -9,8 +9,10 @@
   /*border-top-right-radius: 3px;*/
   /*border-top-left-radius: 3px;*/
 }
-.btn-close{
+.btn{
   background-color: var(--background-color);
+  color:var(--text-color);
+
 }
 
 .modal-body{

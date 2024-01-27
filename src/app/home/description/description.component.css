@@ -1,5 +1,5 @@
 .description-container{
-  width: 80%;
+  width: 85%;
   margin: 1vh auto;
   padding: 0 20px 20px 20px;
   /*border: 1px solid var(--blue-color);*/
@@ -34,9 +34,9 @@
 
 .title{
   color: var(--button-color);
-  font-size: 36px;
+  font-size: 28px;
   text-align: center;
-  height: 40px;
+  height: 80px;
 }
 
 @media (max-width: 1275px) {

@@ -10,11 +10,12 @@ import {SocialComponent} from "./social/social.component";
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'map', component: MapComponent},
-  {path: 'leaderboard', component: LeaderboardComponent},
+  {path: 'ranking', component: LeaderboardComponent},
   {path: 'statistics', component: StatisticsComponent},
   {path: 'social', component: SocialComponent},
+  {path: 'notifications/:username', component: ProfileComponent},
   {path: 'profile/:username', component: ProfileComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  {path: '', redirectTo: '/home', pathMatch: 'full' }
 
 ];
 

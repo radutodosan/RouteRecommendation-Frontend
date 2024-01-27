@@ -1,15 +1,14 @@
 .navbar{
   background-color: var(--darker-background-color);
   color: var(--text-color);
-  height: 7.5vh;
-  min-height: 55px;
+  height: 60px;
   z-index: 2;
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 0;
+  user-select: none;
 }
 
 .navbar-collapse{
   background-color: var(--darker-background-color);
-
 }
 
 
@@ -66,8 +65,8 @@
   width: 75px;
   height: 30px;
   position: absolute;
-  top: 27.5%;
-  right: 110px;
+  top: 25%;
+  right: 175px;
   margin: 0;
   display: block;
   background-color: var(--background-color);
@@ -110,6 +109,9 @@ input:checked + .label-mode:after{
 @media(max-width: 991px){
   .navbar-brand{
     margin: 0 auto;
+  }
+  .label-mode{
+    left:20px;
   }
 }
 

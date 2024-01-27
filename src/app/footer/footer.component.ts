@@ -15,7 +15,7 @@ export class FooterComponent {
 
   modalRef: MdbModalRef<AuthenticatorComponent> | null = null;
   constructor(
-    private usersService: UsersService,
+    public usersService: UsersService,
     private router: Router,
     private modalService: MdbModalService,
   ) {}

@@ -1,27 +1,57 @@
 .notifications-container{
-  width: 85%;
+  width: 90%;
   margin: 1vh auto;
-  display: flex;
+
 }
 
+.notifications-container:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container-header{
+  border-bottom: 1px solid var(--background-color);
+}
+
+
 .friend-requests-container{
-  width: 50%;
+  float: left;
+  width: 49%;
+  padding: 10px;
   margin: .5%;
+  background-color: var(--darker-background-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .separator{
-  height: 93vh;
+  height: 92vh;
   width: 1px;
   background-color: var(--blue-color);
 }
 
 .routes-pending-container{
-  width: 50%;
+  float: left;
+  width: 49%;
+  padding: 10px;
   margin: .5%;
+  background-color: var(--darker-background-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.container-header{
+.container-header h5{
   color:var(--text-color);
   font-size: 28px;
   text-align: center;
+}
+
+@media screen and (max-width: 1080px) {
+  .friend-requests-container {
+    width: 100%;
+  }
+  .routes-pending-container {
+    width: 100%;
+  }
 }

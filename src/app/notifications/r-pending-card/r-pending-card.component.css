@@ -1,0 +1,45 @@
+.card{
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--darker-background-color);
+  border: 1px solid var(--blue-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+.card .destination{
+  font-size: 16px;
+}
+
+.card span{
+  color: var(--text-color);
+}
+
+.confirm{
+  border: 1px solid mediumseagreen;
+  float: right;
+  color:var(--text-color);
+  margin: 5px;
+}
+
+.confirm:hover{
+  background-color: mediumseagreen;
+  border: 1px solid mediumseagreen;
+}
+
+.cancel{
+  border: 1px solid crimson;
+  float: right;
+  color:var(--text-color);
+  margin: 5px;
+}
+.cancel:hover{
+  background-color: crimson;
+  border: 1px solid crimson;
+}
+
+@media(max-width: 881px){
+  .card{
+    min-width: 300px;
+  }
+}
+

@@ -1,6 +1,8 @@
 .card{
-  width: 39vw;
-  margin: 0 auto;
+  float: left;
+  width: 49%;
+  padding: 10px;
+  margin: .5%;
   background-color: var(--darker-background-color);
 
 }
@@ -25,9 +27,9 @@
   border: 1px solid crimson;
 }
 
-@media(max-width: 881px){
+@media(max-width: 1080px){
   .card{
-      min-width: 300px;
+      width: 100%;
   }
 }
 

@@ -1,0 +1,5 @@
+.statistics-container{
+  width: 85%;
+  margin: 1vh auto;
+  color:var(--text-color);
+}

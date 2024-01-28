@@ -1,17 +1,31 @@
-<div class="notifications-container">
+<div [@slideInUpOnEnter]="1" class="notifications-container">
 
   <div class="friend-requests-container">
+
     <div class="container-header">
-      Friend Requests
+      <h5>Friend Requests</h5>
     </div>
+    <app-notification-card
+      full_name="alexandra"
+      email="alexandra@email.com"
+      picture_url="https://robohash.org/hehehe?bgset=bg1"
+    ></app-notification-card>
+
   </div>
 
-  <div class="separator"></div>
+<!--  <div class="separator"></div>-->
+
   <div class="routes-pending-container">
-    <div class="container-header">
-      Routes In Progress
-    </div>
 
+    <div class="container-header">
+      <h5>Routes In Progress</h5>
+    </div>
+    <app-r-pending-card
+      city="Timisoara"
+      start="Complex Studentesc, Timisoara"
+      end="Universitatea de Vest, Timisoara"
+    ></app-r-pending-card>
   </div>
+
 
 </div>

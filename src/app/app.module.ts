@@ -18,8 +18,9 @@ import { LoginFormComponent } from './authenticator/login-form/login-form.compon
 import { SignupFormComponent } from './authenticator/signup-form/signup-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { AlertComponent } from './alert/alert.component';
-import { FriendsComponent } from './social/friends/friends.component';
 import { UserCardComponent } from './social/user-card/user-card.component';
+import { NotificationCardComponent } from './notifications/notification-card/notification-card.component';
+import { RPendingCardComponent } from './notifications/r-pending-card/r-pending-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,8 +32,9 @@ import { UserCardComponent } from './social/user-card/user-card.component';
     LoginFormComponent,
     SignupFormComponent,
     FooterComponent,
-    FriendsComponent,
     UserCardComponent,
+    NotificationCardComponent,
+    RPendingCardComponent,
   ],
     imports: [
         BrowserModule,

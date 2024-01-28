@@ -21,6 +21,7 @@ import { AlertComponent } from './alert/alert.component';
 import { UserCardComponent } from './social/user-card/user-card.component';
 import { NotificationCardComponent } from './notifications/notification-card/notification-card.component';
 import { RPendingCardComponent } from './notifications/r-pending-card/r-pending-card.component';
+import { RemoveConfirmationComponent } from './social/remove-confirmation/remove-confirmation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { RPendingCardComponent } from './notifications/r-pending-card/r-pending-
     UserCardComponent,
     NotificationCardComponent,
     RPendingCardComponent,
+    RemoveConfirmationComponent,
   ],
     imports: [
         BrowserModule,

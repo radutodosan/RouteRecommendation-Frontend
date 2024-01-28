@@ -1,0 +1,11 @@
+
+<div class="modal-header">
+  <h5 class="modal-title" id="authenticationModal">Do you want to remove {{username}}?</h5>
+</div>
+
+<div class="modal-body">
+  <button type="button" class="btn remove" (click)="confirm_remove_friend();modalRef.close()">Remove</button>
+  <button type="button" class="btn cancel" (click)="modalRef.close()">Cancel</button>
+</div>
+
+

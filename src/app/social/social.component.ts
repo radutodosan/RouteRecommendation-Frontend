@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {slideInUpOnEnterAnimation} from "angular-animations";
+
 @Component({
   selector: 'app-social',
   templateUrl: './social.component.html',

@@ -22,6 +22,8 @@ import { UserCardComponent } from './social/user-card/user-card.component';
 import { NotificationCardComponent } from './notifications/notification-card/notification-card.component';
 import { RPendingCardComponent } from './notifications/r-pending-card/r-pending-card.component';
 import { RemoveConfirmationComponent } from './social/remove-confirmation/remove-confirmation.component';
+import {HttpClientModule} from "@angular/common/http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,18 +41,19 @@ import { RemoveConfirmationComponent } from './social/remove-confirmation/remove
     RemoveConfirmationComponent,
   ],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FontAwesomeModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        NgxTypedJsModule,
-        MdbCollapseModule,
-        MdbModalModule,
-        MdbTabsModule,
-        MatTableModule,
-        ReactiveFormsModule,
-        AlertComponent
+      BrowserModule,
+      AppRoutingModule,
+      FontAwesomeModule,
+      FormsModule,
+      BrowserAnimationsModule,
+      NgxTypedJsModule,
+      MdbCollapseModule,
+      MdbModalModule,
+      MdbTabsModule,
+      MatTableModule,
+      ReactiveFormsModule,
+      AlertComponent,
+      HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]

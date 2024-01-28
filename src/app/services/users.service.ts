@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
+
+const URL = ["http://localhost:8080"];
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +12,8 @@ export class UsersService {
   // @ts-ignore
   private _loggedUser: any = JSON.parse(localStorage.getItem("loggedUser"));
   constructor(
-  ) { }
+    private http:HttpClient
+  ) {}
 
   isLoggedIn() {
     this.loggedIn = localStorage.getItem("loggedUser") != null;
@@ -29,5 +34,9 @@ export class UsersService {
     this.loggedIn = false;
     localStorage.removeItem("loggedUser");
     // this.notificationService.showDefaultNotification("Logged out successfully")
+  }
+
+  signupUser(user: any):Observable<any>{
+    return this.http.post(URL + "/signup", user);
   }
 }

@@ -10,7 +10,7 @@
   font-weight: 700;
 }
 .card .email{
-  font-size: 11px;
+  font-size: 16px;
 }
 
 .card span{
@@ -30,6 +30,14 @@
 @media(max-width: 1080px){
   .card{
       width: 100%;
+  }
+  .card .email{
+    font-size: 14px;
+  }
+}
+@media(max-width: 600px){
+  .card .email{
+    font-size: 11px;
   }
 }
 

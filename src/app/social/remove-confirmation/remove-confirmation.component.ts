@@ -23,6 +23,6 @@ export class RemoveConfirmationComponent {
   }
 
   confirm_remove_friend(){
-    this.showAlert(AlertTypes.INFO, "Friend Removed!");
+    this.showAlert(AlertTypes.INFO, this.username + " has been removed from your friend list!");
   }
 }

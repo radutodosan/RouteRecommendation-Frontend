@@ -6,6 +6,7 @@ import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 import {AuthenticatorComponent} from "../authenticator.component";
 import {AlertTypes} from "../../enums/alert-types";
 import {AlertService} from "../../services/alert.service";
+import {catchError} from "rxjs";
 
 @Component({
   selector: 'app-login-form',
@@ -38,17 +39,31 @@ export class LoginFormComponent implements OnInit {
   }
 
   loginUser(){
-    var loginData = this.loginForm.value;
-    console.log(loginData);
-    this.usersService.loggedUser = loginData;
-    localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
 
-    this.showAlert(AlertTypes.SUCCESS,'Login Successful!');
+    console.log(this.loginForm.value);
+
+    this.usersService.loginUser(this.loginForm.value).subscribe((response)=>{
+      if(response != null){
+        this.usersService.loggedUser = response;
+        localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
+        this.showAlert(AlertTypes.SUCCESS, "You logged in successfully!");
+      }
+      else{
+        this.showAlert(AlertTypes.ERROR, "Username or password are incorrect!");
+      }
+    })
+    catchError((error)=> {
+      this.showAlert(AlertTypes.ERROR, "Username: " + this.loginForm.value["username"] + " does not exist.");
+      throw error;
+    })
+
+
 
     const currentUrl = this.router.url;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentUrl]);
     });
+
 
   }
 }

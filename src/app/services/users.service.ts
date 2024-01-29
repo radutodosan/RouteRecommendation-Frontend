@@ -28,8 +28,7 @@ export class UsersService {
     this._loggedUser = value;
   }
 
-  loginUser(){
-  }
+
   logoutUser(): void {
     this.loggedIn = false;
     localStorage.removeItem("loggedUser");
@@ -38,5 +37,12 @@ export class UsersService {
 
   signupUser(user: any):Observable<any>{
     return this.http.post(URL + "/signup", user);
+  }
+  loginUser(user:any):Observable<any>{
+    return this.http.post(URL + "/login", user);
+  }
+
+  deleteUser(id:number):Observable<any>{
+    return this.http.delete(URL + "/profile/" + id);
   }
 }

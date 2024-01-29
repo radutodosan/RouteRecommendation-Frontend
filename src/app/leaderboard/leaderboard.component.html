@@ -10,13 +10,13 @@
     <!-- Photo Column -->
     <ng-container matColumnDef="photo">
       <th mat-header-cell *matHeaderCellDef> Photo </th>
-      <td mat-cell *matCellDef="let element"> <img src="https://robohash.org/hehehe?bgset=bg1" alt="https://robohash.org/hehehe?bgset=bg1" style="height: 40px;width: 40px;border-radius: 40px"> </td>
+      <td mat-cell *matCellDef="let element"> <img src="{{element.picture_url}}" alt="{{element.picture_url}}" style="height: 40px;width: 40px;border-radius: 40px"> </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.full_name}} </td>
     </ng-container>
 
     <!-- Level Column -->

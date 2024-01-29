@@ -1,24 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {slideInUpOnEnterAnimation} from "angular-animations";
 import {style} from "@angular/animations";
+import {RankingService} from "../services/ranking.service";
 
-export interface TableHeaders {
-  name: string;
-  photo: string;
-  points: number;
-}
-const TABLE_DATA: TableHeaders[] = [
-  {name: 'vasile', photo: "https://robohash.org/hehehe?bgset=bg1", points: 33},
-  {name: 'ion', photo: "https://robohash.org/hehehe?bgset=bg1", points: 31},
-  {name: 'john_doe', photo: "https://robohash.org/hehehe?bgset=bg1", points: 29},
-  {name: 'gigi', photo: "https://robohash.org/hehehe?bgset=bg1", points: 24},
-  {name: 'ionela', photo: "https://robohash.org/hehehe?bgset=bg1", points: 21},
-  {name: 'marcel', photo: "https://robohash.org/hehehe?bgset=bg1", points: 13},
-  {name: 'viorel', photo:"https://robohash.org/hehehe?bgset=bg1", points: 9},
-  {name: 'petru', photo: "https://robohash.org/hehehe?bgset=bg1", points: 6},
-  {name: 'maria', photo: "https://robohash.org/hehehe?bgset=bg1", points: 4},
-  {name: 'florin', photo: "https://robohash.org/hehehe?bgset=bg1", points: 3},
-];
 @Component({
   selector: 'app-leaderboard',
   animations:[
@@ -29,9 +13,10 @@ const TABLE_DATA: TableHeaders[] = [
 })
 export class LeaderboardComponent implements OnInit{
   displayedColumns: string[] = ['position', 'photo', 'name', 'points'];
-  dataSource = TABLE_DATA;
+  dataSource = this.rankingService.getAllUsers();
 
   constructor(
+    private rankingService: RankingService,
   ) {}
 
   ngOnInit(): void {

@@ -17,7 +17,6 @@
 
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <h6 class="text-uppercase fw-bold mb-4">Account Links</h6>
-          <p><a class="link"  *ngIf="isLoggedIn()" [routerLink]="['/profile', usersService.loggedUser.username]" routerLinkActive="active"><i class="fa-solid fa-user"></i> Profile</a></p>
           <p class="link"><a [routerLink]="['/statistics']" routerLinkActive="active" class="link" *ngIf="isLoggedIn()"><i class="fa-solid fa-chart-column"></i> Statistics</a></p>
           <p><a [routerLink]="['/social']" routerLinkActive="active" class="link" *ngIf="isLoggedIn()"><i class="fa-solid fa-users"></i> Social</a></p>
           <p><a [routerLink]="['/ranking']" routerLinkActive="active" class="link" *ngIf="isLoggedIn()"><i class="fa-solid fa-ranking-star"></i> Ranking</a></p>

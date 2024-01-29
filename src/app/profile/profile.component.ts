@@ -5,6 +5,7 @@ import {slideInUpOnEnterAnimation} from "angular-animations";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AlertTypes} from "../enums/alert-types";
 import {AlertService} from "../services/alert.service";
+import {User} from "../entities/user";
 
 
 @Component({
@@ -18,6 +19,9 @@ import {AlertService} from "../services/alert.service";
 export class ProfileComponent implements OnInit{
   editForm!: FormGroup;
 
+  //@ts-ignore
+  loggedUser: User;
+
   constructor(
     private usersService: UsersService,
     private router: Router,
@@ -26,12 +30,15 @@ export class ProfileComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.loggedUser = this.usersService.loggedUser;
+    console.log(this.loggedUser);
+
     this.editForm = this.formBuilder.group({
-      full_name: ['', Validators.required],
+      full_name: [this.loggedUser.full_name, Validators.required],
       password: ['', Validators.required],
-      email: ['', Validators.required],
+      email: [this.loggedUser.email, Validators.required],
       confirmPassword: ['', Validators.required],
-      address: [''],
+      address: [this.loggedUser.saved_address],
     });
   }
 
@@ -46,6 +53,15 @@ export class ProfileComponent implements OnInit{
     this.usersService.logoutUser();
     this.router.navigate(['/']);
     this.showAlert(AlertTypes.INFO,'Logout Successful!')
+  }
+  deleteAccount(){
+    this.usersService.deleteUser(this.loggedUser.id).subscribe((response) =>{
+      console.log(response);
+    })
+
+    this.usersService.logoutUser();
+    this.router.navigate(['/']);
+    this.showAlert(AlertTypes.ERROR,'Account deleted!')
   }
 
 }

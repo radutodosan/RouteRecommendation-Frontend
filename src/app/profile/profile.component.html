@@ -16,10 +16,10 @@
               <div>
                 <div class="d-flex align-items-center">
                   <a href="#" class="avatar bg-warning rounded-circle text-white">
-                    <img src="https://robohash.org/hehehe?bgset=bg1" alt="https://robohash.org/hehehe?bgset=bg1" style="border-radius: 50%;height: 100px;width: 100px">                </a>
+                    <img src="{{loggedUser.picture_url}}" alt="{{loggedUser.picture_url}}" style="border-radius: 50%;height: 100px;width: 100px">                </a>
                   <div class="ms-4">
-                    <span class="full_name h5 d-block mb-0">John Doe</span>
-                    <span class="email">john_doe@gmail.com</span>
+                    <span class="full_name h5 d-block mb-0">{{loggedUser.full_name}}</span>
+                    <span class="email">{{loggedUser.email}}</span>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
             <!-- Form -->
             <hr class="my-10" />
             <div class="mb-5">
-              <h5 class="mb-0">john_doe's Info</h5>
+              <h5 class="mb-0">{{loggedUser.username}}'s Info</h5>
             </div>
             <form [formGroup]="editForm" class="mb-6">
               <div class="row mb-5">
@@ -88,6 +88,7 @@
             <hr class="my-10" />
             <div  class="profile-container">
               <button class="btn logout" (click)="logoutUser()" >LOGOUT</button>
+              <button class="btn delete" (click)="deleteAccount()" >Delete Account</button>
             </div>
           </div>
         </div>

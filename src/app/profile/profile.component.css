@@ -54,6 +54,17 @@
   border: 1px solid crimson;
 }
 
+.delete{
+  border: 1px solid crimson;
+  color:var(--text-color);
+  float:left;
+  margin-bottom: 25px;
+}
+.delete:hover{
+  background-color: crimson;
+  border: 1px solid crimson;
+}
+
 @media(min-width: 1200px){
   .card{
     width: 60%;

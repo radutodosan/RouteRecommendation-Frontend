@@ -8,7 +8,7 @@
     <br>
   </form>
 
-  <button type="button" class="btn login" (click)="loginUser();modalRef.close()">Login</button>
+  <button [disabled]="!loginForm.valid" type="button" class="btn login" (click)="loginUser();modalRef.close()">Login</button>
 
 </div>
 

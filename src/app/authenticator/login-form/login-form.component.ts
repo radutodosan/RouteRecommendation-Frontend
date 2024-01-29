@@ -48,7 +48,7 @@ export class LoginFormComponent implements OnInit {
         this.showAlert(AlertTypes.SUCCESS, "You logged in successfully!");
       }
       else{
-        this.showAlert(AlertTypes.ERROR, "Username or password are incorrect!");
+        this.showAlert(AlertTypes.ERROR, "Username or password are wrong!");
       }
     }, err => {
       this.showAlert(AlertTypes.ERROR, "Username: " + this.loginForm.value["username"] + " does not exist.");

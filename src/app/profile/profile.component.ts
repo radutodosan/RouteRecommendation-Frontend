@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit{
       password: ['', Validators.required],
       email: [this.loggedUser.email, Validators.required],
       confirmPassword: ['', Validators.required],
-      address: [this.loggedUser.saved_address],
+      saved_address: [this.loggedUser.saved_address],
     });
   }
 
@@ -53,19 +53,22 @@ export class ProfileComponent implements OnInit{
     });
   }
 
-  logoutUser(){
-    this.usersService.logoutUser();
-    this.router.navigate(['/']);
-    this.showAlert(AlertTypes.INFO,'Logout Successful!')
-  }
-  deleteAccount(){
-    this.usersService.deleteUser(this.loggedUser.id).subscribe((response) =>{
-      console.log(response);
-    })
-
-    this.usersService.logoutUser();
-    this.router.navigate(['/']);
-    this.showAlert(AlertTypes.ERROR,'Account deleted!')
+  updateUser(){
+    if(this.editForm.value["password"] === this.editForm.value["confirmPassword"]) {
+      this.usersService.updateUser(this.loggedUser.id, this.editForm.value).subscribe(response => {
+        console.log(response);
+        this.usersService.loggedUser = response;
+        localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
+        this.showAlert(AlertTypes.SUCCESS, "Updated successfully!");
+      }, err => {
+        this.showAlert(AlertTypes.ERROR, "Update failed!");
+        throw err;
+      })
+    }
+    else{
+      this.showAlert(AlertTypes.ERROR, "Passwords don't match!");
+      console.log("Passwords don't match!");
+    }
   }
 
   openDeleteConfirmation() {

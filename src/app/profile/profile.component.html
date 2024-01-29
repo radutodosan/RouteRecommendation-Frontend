@@ -52,7 +52,14 @@
                   </div>
                 </div>
               </div>
+
               <div class="row g-5">
+                <div class="col-12">
+                  <div class="">
+                    <label class="form-label" for="address">Address</label>
+                    <input type="text" class="form-control" formControlName="saved_address" id="address">
+                  </div>
+                </div>
                 <div class="col-md-6">
                   <div class="">
                     <label class="form-label" for="password_profile">Password</label>
@@ -65,24 +72,18 @@
                     <input type="password" class="form-control" formControlName="confirmPassword" id="confirm_password_profile" required>
                   </div>
                 </div>
-                <div class="col-12">
-                  <div class="">
-                    <label class="form-label" for="address">Address</label>
-                    <input type="text" class="form-control" formControlName="address" id="address">
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="">
-                    <label class="form-label" for="city">City</label>
-                    <select class="form-select" id="city" aria-label="city_select">
-                      <option selected disabled>City</option>
-                      <option value="1">Timisoara</option>
-                    </select>
-                  </div>
-                </div>
+<!--                <div class="col-md-4">-->
+<!--                  <div class="">-->
+<!--                    <label class="form-label" for="city">City</label>-->
+<!--                    <select class="form-select" id="city" aria-label="city_select">-->
+<!--                      <option selected disabled>City</option>-->
+<!--                      <option value="1">Timisoara</option>-->
+<!--                    </select>-->
+<!--                  </div>-->
+<!--                </div>-->
               </div>
-              <div class="text-end">
-                <button type="submit" class="btn btn-lg">Save Changes</button>
+              <div class="text-end mt-4">
+                <button  [disabled]="!editForm.valid" type="submit" class="btn btn-lg" (click)="updateUser()">Save Changes</button>
               </div>
             </form>
             <hr class="my-10" />

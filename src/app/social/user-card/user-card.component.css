@@ -17,6 +17,10 @@
   color: var(--text-color);
 }
 
+.avatar{
+  background-color: var(--blue-color);
+}
+
 .logout{
   border: 1px solid crimson;
   float: right;

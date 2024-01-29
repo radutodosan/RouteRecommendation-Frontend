@@ -6,6 +6,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AlertTypes} from "../enums/alert-types";
 import {AlertService} from "../services/alert.service";
 import {User} from "../entities/user";
+import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
+import {DelLogoutConfirmationComponent} from "./del-logout-confirmation/del-logout-confirmation.component";
 
 
 @Component({
@@ -22,11 +24,13 @@ export class ProfileComponent implements OnInit{
   //@ts-ignore
   loggedUser: User;
 
+  modalRef: MdbModalRef<DelLogoutConfirmationComponent> | null = null;
   constructor(
     private usersService: UsersService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private modalService: MdbModalService,
   ) {}
 
   ngOnInit(): void {
@@ -64,4 +68,13 @@ export class ProfileComponent implements OnInit{
     this.showAlert(AlertTypes.ERROR,'Account deleted!')
   }
 
+  openDeleteConfirmation() {
+    this.modalRef = this.modalService.open(DelLogoutConfirmationComponent);
+    this.modalRef.component.action = "DELETE";
+  }
+
+  openLogoutConfirmation() {
+    this.modalRef = this.modalService.open(DelLogoutConfirmationComponent);
+    this.modalRef.component.action = "LOGOUT";
+  }
 }

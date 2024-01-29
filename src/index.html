@@ -20,7 +20,7 @@
 
   <script>
     function openCloseNav() {
-      if (document.getElementById("side-panel").style.width === "325px") {
+      if (document.getElementById("side-panel").style.width === "325px" || document.getElementById("side-panel").style.width === "") {
         document.getElementById("side-panel").style.width = "0";
         document.getElementById("collapse-bar").style.marginLeft = "0px";
       }

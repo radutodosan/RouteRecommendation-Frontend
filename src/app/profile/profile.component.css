@@ -14,6 +14,10 @@
   color: var(--text-color);
 }
 
+.avatar{
+  background-color: var(--blue-color);
+}
+
 .container-fluid hr{
   color:var(--button-color);
 }

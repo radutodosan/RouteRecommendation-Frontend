@@ -1,0 +1,39 @@
+
+.modal-header{
+  background-color: var(--darker-background-color);
+  color:var(--text-color);
+  border: var(--background-color);
+  border: 1px solid var(--background-color);
+  border-bottom:none;
+}
+
+.modal-body{
+  background-color: var(--darker-background-color);
+  color:var(--text-color);
+  border: 1px solid var(--background-color);
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  display: flex;
+  margin: 0 auto;
+}
+
+.btn{
+  margin: 0 auto;
+  color: var(--text-color);
+  /*background-color:var(--button-color);*/
+  border: 1px solid var(--button-color);
+}
+.btn:hover{
+  background-color: var(--hover-button-color);
+  border: 1px solid var(--hover-button-color);
+}
+
+.remove{
+  border: 1px solid crimson;
+  float: right;
+  color:var(--text-color);
+}
+.remove:hover{
+  background-color: crimson;
+  border: 1px solid crimson;
+}

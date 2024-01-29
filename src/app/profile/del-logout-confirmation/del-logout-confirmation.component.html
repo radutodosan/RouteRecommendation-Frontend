@@ -1,0 +1,15 @@
+
+<div class="modal-header">
+  <h5  class="modal-title" id="authenticationModal">
+    <h5 *ngIf="action == 'DELETE'">Delete the account?</h5>
+    <h5 *ngIf="action == 'LOGOUT'">Logout?</h5>
+  </h5>
+</div>
+
+<div class="modal-body">
+  <button *ngIf="action == 'DELETE'" type="button" class="btn remove" (click)="confirmDeleteUser();modalRef.close()">Confirm</button>
+  <button *ngIf="action == 'LOGOUT'" type="button" class="btn remove" (click)="confirmLogout();modalRef.close()">Confirm</button>
+  <button type="button" class="btn cancel" (click)="modalRef.close()">Cancel</button>
+</div>
+
+

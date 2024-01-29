@@ -10,7 +10,7 @@ import {RemoveConfirmationComponent} from "../remove-confirmation/remove-confirm
 export class UserCardComponent {
 
  @Input() username:string = '';
- @Input() full_name?:string;
+ @Input() full_name:string = '';
  @Input() email?:string;
  @Input() picture_url?:string;
 

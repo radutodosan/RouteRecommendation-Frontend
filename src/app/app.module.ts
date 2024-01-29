@@ -23,6 +23,7 @@ import { NotificationCardComponent } from './notifications/notification-card/not
 import { RPendingCardComponent } from './notifications/r-pending-card/r-pending-card.component';
 import { RemoveConfirmationComponent } from './social/remove-confirmation/remove-confirmation.component';
 import {HttpClientModule} from "@angular/common/http";
+import { DelLogoutConfirmationComponent } from './profile/del-logout-confirmation/del-logout-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {HttpClientModule} from "@angular/common/http";
     NotificationCardComponent,
     RPendingCardComponent,
     RemoveConfirmationComponent,
+    DelLogoutConfirmationComponent,
   ],
     imports: [
       BrowserModule,

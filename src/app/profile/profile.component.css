@@ -46,14 +46,38 @@
   background-color: var(--hover-button-color);
   border: 1px solid var(--hover-button-color);
 }
+.btn:focus{
+  background-color: var(--hover-button-color);
+  border: 1px solid var(--hover-button-color);
+}
+
+.edit-pass{
+  border: 1px solid var(--button-color);
+  color:var(--text-color);
+  float:right;
+  margin:0 10px 25px 10px;
+}
+.edit-pass:hover{
+  background-color: var(--hover-button-color);
+  border: 1px solid var(--hover-button-color);
+}
+.edit-pass:focus{
+  background-color: var(--hover-button-color);
+  border: 1px solid var(--hover-button-color);
+}
+
 
 .logout{
   border: 1px solid crimson;
   color:var(--text-color);
   float:right;
-  margin-bottom: 25px;
+  margin:0 10px 25px 10px;
 }
 .logout:hover{
+  background-color: crimson;
+  border: 1px solid crimson;
+}
+.logout:focus{
   background-color: crimson;
   border: 1px solid crimson;
 }
@@ -62,9 +86,13 @@
   border: 1px solid crimson;
   color:var(--text-color);
   float:left;
-  margin-bottom: 25px;
+  margin:0 10px 25px 10px;
 }
 .delete:hover{
+  background-color: crimson;
+  border: 1px solid crimson;
+}
+.delete:focus{
   background-color: crimson;
   border: 1px solid crimson;
 }

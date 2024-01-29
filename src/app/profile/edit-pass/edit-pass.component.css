@@ -13,12 +13,20 @@
   border: 1px solid var(--background-color);
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
-  display: flex;
-  margin: 0 auto;
+
+}
+
+.edit-pass-form-container input{
+  background-color: var(--background-color);
+  border-color: var(--darker-background-color);
+  color:var(--text-color);
+}
+.edit-pass-form-container input::placeholder{
+  color:var(--text-color);
 }
 
 .btn{
-  margin: 0 auto;
+  /*float:right;*/
   color: var(--text-color);
   /*background-color:var(--button-color);*/
   border: 1px solid var(--button-color);
@@ -30,18 +38,4 @@
 .btn:focus{
   background-color: var(--hover-button-color);
   border: 1px solid var(--hover-button-color);
-}
-
-.remove{
-  border: 1px solid crimson;
-  float: right;
-  color:var(--text-color);
-}
-.remove:hover{
-  background-color: crimson;
-  border: 1px solid crimson;
-}
-.remove:focus{
-  background-color: crimson;
-  border: 1px solid crimson;
 }

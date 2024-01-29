@@ -24,6 +24,7 @@ import { RPendingCardComponent } from './notifications/r-pending-card/r-pending-
 import { RemoveConfirmationComponent } from './social/remove-confirmation/remove-confirmation.component';
 import {HttpClientModule} from "@angular/common/http";
 import { DelLogoutConfirmationComponent } from './profile/del-logout-confirmation/del-logout-confirmation.component';
+import { EditPassComponent } from './profile/edit-pass/edit-pass.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DelLogoutConfirmationComponent } from './profile/del-logout-confirmatio
     RPendingCardComponent,
     RemoveConfirmationComponent,
     DelLogoutConfirmationComponent,
+    EditPassComponent,
   ],
     imports: [
       BrowserModule,

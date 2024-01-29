@@ -8,6 +8,7 @@ import {AlertService} from "../services/alert.service";
 import {User} from "../entities/user";
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {DelLogoutConfirmationComponent} from "./del-logout-confirmation/del-logout-confirmation.component";
+import {EditPassComponent} from "./edit-pass/edit-pass.component";
 
 
 @Component({
@@ -25,6 +26,7 @@ export class ProfileComponent implements OnInit{
   loggedUser: User;
 
   modalRef: MdbModalRef<DelLogoutConfirmationComponent> | null = null;
+  modalRefEditPass: MdbModalRef<EditPassComponent> | null = null;
   constructor(
     private usersService: UsersService,
     private router: Router,
@@ -70,7 +72,9 @@ export class ProfileComponent implements OnInit{
       console.log("Passwords don't match!");
     }
   }
-
+  openEditPasswordModal(){
+    this.modalRefEditPass = this.modalService.open(EditPassComponent)
+  }
   openDeleteConfirmation() {
     this.modalRef = this.modalService.open(DelLogoutConfirmationComponent);
     this.modalRef.component.action = "DELETE";

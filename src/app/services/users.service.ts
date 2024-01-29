@@ -49,4 +49,13 @@ export class UsersService {
   updateUser(id:number, user: any):Observable<any>{
     return this.http.put(URL + "/profile/" + id, user);
   }
+
+  changePassWord(id:number, old_password:string, new_password:string):Observable<any>{
+    interface passwordDTO{
+      old_password:string;
+      new_password:string
+    }
+    const body:passwordDTO={old_password:old_password, new_password:new_password}
+    return this.http.put(URL + "/profile/change-pass/" + id, body);
+  }
 }

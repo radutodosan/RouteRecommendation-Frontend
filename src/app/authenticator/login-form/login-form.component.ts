@@ -6,7 +6,6 @@ import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 import {AuthenticatorComponent} from "../authenticator.component";
 import {AlertTypes} from "../../enums/alert-types";
 import {AlertService} from "../../services/alert.service";
-import {catchError} from "rxjs";
 
 @Component({
   selector: 'app-login-form',
@@ -42,7 +41,7 @@ export class LoginFormComponent implements OnInit {
 
     console.log(this.loginForm.value);
 
-    this.usersService.loginUser(this.loginForm.value).subscribe((response)=>{
+    this.usersService.loginUser(this.loginForm.value).subscribe(response=>{
       if(response != null){
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
@@ -51,10 +50,9 @@ export class LoginFormComponent implements OnInit {
       else{
         this.showAlert(AlertTypes.ERROR, "Username or password are incorrect!");
       }
-    })
-    catchError((error)=> {
+    }, err => {
       this.showAlert(AlertTypes.ERROR, "Username: " + this.loginForm.value["username"] + " does not exist.");
-      throw error;
+      throw err;
     })
 
 

@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'ranking', component: LeaderboardComponent},
   {path: 'statistics', component: StatisticsComponent},
   {path: 'social', component: SocialComponent},
-  {path: 'social/add-friend', component: AddFriendComponent},
+  {path: 'social/add-friends', component: AddFriendComponent},
   {path: 'notifications/:username', component: NotificationsComponent},
   {path: 'profile/:username', component: ProfileComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' }

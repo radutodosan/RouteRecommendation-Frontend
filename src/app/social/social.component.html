@@ -13,7 +13,7 @@
       <button type="button" class="btn search" (click)="searchUsers()"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
 
-    <button [routerLink]="['/social/add-friend']" type="button" class="btn add"><i class="fa-solid fa-user-plus"></i> Friend</button>
+    <button [routerLink]="['/social/add-friends']" type="button" class="btn add"><i class="fa-solid fa-user-plus"></i> Friend</button>
   </form>
 
   <div *ngIf="friendsList$ | async as friendsList">

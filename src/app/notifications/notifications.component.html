@@ -5,12 +5,15 @@
     <div class="container-header">
       <h5>Friend Requests</h5>
     </div>
-    <app-notification-card
-      full_name="radu01"
-      email="radu01@email.com"
-      picture_url="https://robohash.org/user01?bgset=bg1"
-    ></app-notification-card>
-
+    <div *ngIf="notificationsList$ | async as notificationsList">
+      <app-notification-card *ngFor="let notification of notificationsList"
+        id="{{notification.id}}"
+        username="{{notification.username}}"
+        full_name="{{notification.full_name}}"
+        email="{{notification.email}}"
+        picture_url="{{notification.picture_url}}"
+      ></app-notification-card>
+    </div>
   </div>
 
 <!--  <div class="separator"></div>-->

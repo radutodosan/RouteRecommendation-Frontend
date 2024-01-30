@@ -3,6 +3,8 @@ import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {RemoveConfirmationComponent} from "../remove-confirmation/remove-confirmation.component";
 import {AlertService} from "../../services/alert.service";
 import {AlertTypes} from "../../enums/alert-types";
+import {UsersService} from "../../services/users.service";
+import {FriendshipService} from "../../services/friendship.service";
 
 @Component({
   selector: 'app-user-card',
@@ -23,6 +25,8 @@ export class UserCardComponent {
   constructor(
     private modalService: MdbModalService,
     private alertService: AlertService,
+    private usersService: UsersService,
+    private friendshipService:FriendshipService,
   ) {}
 
   open_remove_confirmation(username:string) {
@@ -31,6 +35,13 @@ export class UserCardComponent {
   }
 
   sendFriendRequest(){
+    this.friendshipService.sendFriendRequest(this.usersService.loggedUser.username, this.username).subscribe(response=>{
+      console.log(response);
+    }, error => {
+      throw error;
+    })
     this.alertService.showAlert(AlertTypes.SUCCESS, "Sent friend request to: " + this.full_name);
+
+    window.location.reload();
   }
 }

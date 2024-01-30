@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {slideInUpOnEnterAnimation} from "angular-animations";
 import {UsersService} from "../services/users.service";
-import {RankingService} from "../services/ranking.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AlertService} from "../services/alert.service";
 import {Observable} from "rxjs";
+import {FriendshipService} from "../services/friendship.service";
 
 @Component({
   selector: 'app-social',
@@ -25,7 +25,7 @@ export class SocialComponent implements OnInit{
 
   constructor(
     private usersService: UsersService,
-    private rankingService: RankingService,
+    private friendshipService: FriendshipService,
     private http:HttpClient,
     private formBuilder: FormBuilder,
     private alertService: AlertService,
@@ -35,13 +35,13 @@ export class SocialComponent implements OnInit{
     this.searchForm = this.formBuilder.group({
       searchField: ['', Validators.required],
     });
-    this.friendsList$ = this.rankingService.getAllUsers();
+    this.friendsList$ = this.friendshipService.getFriendsList(this.usersService.loggedUser.username);
   }
 
   searchUsers(){
     if(this.searchForm.value["searchField"] != "")
       this.friendsList$ = this.usersService.searchUsers(this.searchForm.value["searchField"]);
     else
-      this.friendsList$ = this.rankingService.getAllUsers();
+      this.friendsList$ = this.friendshipService.getFriendsList(this.usersService.loggedUser.username);
   }
 }

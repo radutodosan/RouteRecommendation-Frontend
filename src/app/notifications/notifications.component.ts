@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {slideInUpOnEnterAnimation} from "angular-animations";
+import {UsersService} from "../services/users.service";
+import {FriendshipService} from "../services/friendship.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-notifications',
@@ -11,4 +14,14 @@ import {slideInUpOnEnterAnimation} from "angular-animations";
 })
 export class NotificationsComponent {
 
+  //@ts-ignore
+  notificationsList$ : Observable<any>;
+
+  constructor(
+    private usersService: UsersService,
+    private friendshipService: FriendshipService,
+  ) {}
+  ngOnInit(){
+    this.notificationsList$ = this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username);
+  }
 }

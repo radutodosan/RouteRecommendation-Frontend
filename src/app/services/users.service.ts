@@ -62,4 +62,5 @@ export class UsersService {
   searchUsers(search: string):Observable<any>{
     return this.http.get(URL + "/search/" + search);
   }
+
 }

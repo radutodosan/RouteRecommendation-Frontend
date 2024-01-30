@@ -1,14 +1,28 @@
-<div  class="social-container" [@slideInUpOnEnter]="1" *ngIf="friendList$ | async as friendList">
-  <div class="input-container ic1">
-    <input id="start" class="input" type="text" placeholder=""/>
-    <div class="cut"></div>
-    <label for="start" class="placeholder">Search</label>
-  </div>
-  <app-user-card *ngFor="let friend of friendList"
-    username="{{friend.username}}"
-    full_name="{{friend.full_name}}"
-    email="{{friend.email}}"
-    picture_url="{{friend.picture_url}}"
-  ></app-user-card>
+<div  class="social-container" [@slideInUpOnEnter]="1" >
+  <form [formGroup]="searchForm" class="search-form">
+    <div class="input-container ic1">
+      <input
+        type="text"
+        id="start"
+        class="input"
+        placeholder=""
+        formControlName="searchField"
+      />
+      <div class="cut"></div>
+      <label for="start" class="placeholder">Search Friends</label>
+      <button type="button" class="btn search" (click)="searchUsers()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
 
+    <button [routerLink]="['/social/add-friend']" type="button" class="btn add"><i class="fa-solid fa-user-plus"></i> Friend</button>
+  </form>
+
+  <div *ngIf="friendsList$ | async as friendsList">
+    <app-user-card *ngFor="let friend of friendsList"
+                   username="{{friend.username}}"
+                   full_name="{{friend.full_name}}"
+                   email="{{friend.email}}"
+                   picture_url="{{friend.picture_url}}"
+                   type="FRIENDS"
+    ></app-user-card>
+  </div>
 </div>

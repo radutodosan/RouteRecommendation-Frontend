@@ -1,0 +1,26 @@
+<div class="add-friend-container">
+  <form [formGroup]="searchForm" class="search-form">
+    <div class="input-container ic1">
+      <input
+        type="text"
+        id="start"
+        class="input"
+        placeholder=""
+        formControlName="searchField"
+      />
+      <div class="cut"></div>
+      <label for="start" class="placeholder">Search People</label>
+      <button type="button" class="btn search" (click)="searchUsers()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+  </form>
+
+  <div *ngIf="usersList$ | async as usersList">
+    <app-user-card *ngFor="let user of usersList"
+                   username="{{user.username}}"
+                   full_name="{{user.full_name}}"
+                   email="{{user.email}}"
+                   picture_url="{{user.picture_url}}"
+                   type="ADD"
+    ></app-user-card>
+  </div>
+</div>

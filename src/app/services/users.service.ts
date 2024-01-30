@@ -58,4 +58,8 @@ export class UsersService {
     const body:passwordDTO={old_password:old_password, new_password:new_password}
     return this.http.put(URL + "/profile/change-pass/" + id, body);
   }
+
+  searchUsers(search: string):Observable<any>{
+    return this.http.get(URL + "/search/" + search);
+  }
 }

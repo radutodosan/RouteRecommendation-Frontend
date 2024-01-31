@@ -11,8 +11,8 @@
         </div>
       </div>
       <div class="ms-auto">
-        <button type="button" class="btn cancel"><i class="fa-solid fa-xmark"></i></button>
-        <button type="button" class="btn confirm"><i class="fa-solid fa-check"></i></button>
+        <button type="button" class="btn cancel" [disabled]="clicked" (click)="declineRoute()"><i class="fa-solid fa-xmark"></i></button>
+        <button type="button" class="btn confirm" [disabled]="clicked" (click)="completeRoute()"><i class="fa-solid fa-check"></i></button>
 
 
 

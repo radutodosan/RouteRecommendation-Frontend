@@ -13,8 +13,8 @@
         </div>
       </div>
       <div class="ms-auto">
-        <button *ngIf="type == 'FRIENDS'" type="button" class="btn remove" (click)="open_remove_confirmation(full_name)"><i class="fa-solid fa-xmark"></i></button>
-        <button *ngIf="type != 'FRIENDS'" type="button" class="btn add" (click)="sendFriendRequest()"><i class="fa-solid fa-user-plus"></i></button>
+        <button *ngIf="type == 'FRIENDS'" type="button" class="btn remove" [disabled]="clicked" (click)="open_remove_confirmation()"><i class="fa-solid fa-xmark"></i></button>
+        <button *ngIf="type != 'FRIENDS'" type="button" class="btn add" [disabled]="clicked" (click)="sendFriendRequest()"><i class="fa-solid fa-user-plus"></i></button>
 
       </div>
     </div>

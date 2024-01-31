@@ -62,9 +62,9 @@ export class ProfileComponent implements OnInit{
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
         this.showAlert(AlertTypes.SUCCESS, "Updated successfully!");
-      }, err => {
+      }, error => {
         this.showAlert(AlertTypes.ERROR, "Update failed!");
-        throw err;
+        throw error;
       })
     }
     else{

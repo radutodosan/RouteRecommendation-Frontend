@@ -40,7 +40,7 @@ export class SocialComponent implements OnInit{
 
   searchUsers(){
     if(this.searchForm.value["searchField"] != "")
-      this.friendsList$ = this.usersService.searchUsers(this.searchForm.value["searchField"]);
+      this.friendsList$ = this.friendshipService.searchFriends(this.usersService.loggedUser.username, this.searchForm.value["searchField"]);
     else
       this.friendsList$ = this.friendshipService.getFriendsList(this.usersService.loggedUser.username);
   }

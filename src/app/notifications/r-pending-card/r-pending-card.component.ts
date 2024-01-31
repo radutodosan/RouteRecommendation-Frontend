@@ -9,4 +9,14 @@ export class RPendingCardComponent {
   @Input() city?:string;
   @Input() start?:string;
   @Input() end?:string;
+
+  clicked = false;
+
+  completeRoute(){
+    this.clicked = true;
+  }
+
+  declineRoute(){
+    this.clicked = true;
+  }
 }

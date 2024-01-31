@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {slideInUpOnEnterAnimation} from "angular-animations";
 import {style} from "@angular/animations";
 import {RankingService} from "../services/ranking.service";
+import {FriendshipService} from "../services/friendship.service";
+import {UsersService} from "../services/users.service";
 
 @Component({
   selector: 'app-leaderboard',
@@ -13,10 +15,12 @@ import {RankingService} from "../services/ranking.service";
 })
 export class LeaderboardComponent implements OnInit{
   displayedColumns: string[] = ['position', 'photo', 'name', 'points'];
-  dataSource = this.rankingService.getAllUsers();
+  dataSource = this.friendshipService.getFriendsRanking(this.usersService.loggedUser.username);
 
   constructor(
     private rankingService: RankingService,
+    private friendshipService: FriendshipService,
+    private usersService: UsersService
   ) {}
 
   ngOnInit(): void {

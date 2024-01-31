@@ -29,6 +29,6 @@ export class AlertComponent implements OnInit{
     }
     this.timeout = window.setTimeout(() => {
       this.alert = undefined;
-    }, 3000);
+    }, 5000);
   }
 }

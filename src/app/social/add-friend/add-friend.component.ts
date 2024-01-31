@@ -35,12 +35,18 @@ export class AddFriendComponent {
     this.searchForm = this.formBuilder.group({
       searchField: ['', Validators.required],
     });
+    this.usersList$ = this.getUsersList();
+  }
+
+  public getUsersList(){
     this.usersList$ = this.friendshipService.getNonFriendsList(this.usersService.loggedUser.username);
+
+    return this.usersList$;
   }
 
   searchUsers(){
     if(this.searchForm.value["searchField"] != "")
-     this.usersList$ = this.usersService.searchUsers(this.searchForm.value["searchField"]);
+     this.usersList$ = this.friendshipService.searchNonFriends(this.usersService.loggedUser.username, this.searchForm.value["searchField"]);
     else
       this.usersList$ = this.friendshipService.getNonFriendsList(this.usersService.loggedUser.username);
   }

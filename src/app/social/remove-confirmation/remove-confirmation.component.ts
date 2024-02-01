@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
-import {AlertTypes} from "../../enums/alert-types";
 import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 import {AuthenticatorComponent} from "../../authenticator/authenticator.component";
-import {AlertService} from "../../services/alert.service";
 import {FriendshipService} from "../../services/friendship.service";
 import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-remove-confirmation',
@@ -18,7 +17,7 @@ export class RemoveConfirmationComponent {
   constructor(
     public modalRef: MdbModalRef<AuthenticatorComponent>,
     private usersService: UsersService,
-    private alertService: AlertService,
+    private notificationsService: NotificationsService,
     private friendshipService: FriendshipService,
     private router:Router
     ) {}
@@ -26,11 +25,11 @@ export class RemoveConfirmationComponent {
   confirm_remove_friend(){
     this.friendshipService.deleteFriendship(this.usersService.loggedUser.username, this.username).subscribe(response=>{
       console.log(response);
-      this.alertService.showAlert(AlertTypes.INFO, this.full_name + " has been removed from your friend list!");
+      this.notificationsService.showDefaultNotification(this.full_name + " has been removed from your friend list!");
       this.reloadPage();
 
     }, error => {
-      this.alertService.showAlert(AlertTypes.ERROR, "ERROR removing friend!");
+      this.notificationsService.showErrorNotification("ERROR removing friend!");
       throw error;
     })
   }

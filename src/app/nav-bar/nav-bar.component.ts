@@ -4,14 +4,14 @@ import {AuthenticatorComponent} from "../authenticator/authenticator.component";
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {UsersService} from "../services/users.service";
 import {Router} from "@angular/router";
-import {AlertTypes} from "../enums/alert-types";
-import {AlertService} from "../services/alert.service";
+import {NotificationsService} from "../services/notifications.service";
 
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.css'],
+
 })
 export class NavBarComponent implements OnInit{
   protected readonly faBars = faBars;
@@ -25,8 +25,9 @@ export class NavBarComponent implements OnInit{
     private modalService: MdbModalService,
     private usersService: UsersService,
     private router: Router,
-    private alertService: AlertService,
-  ) {}
+    public notificationsService:NotificationsService
+  ) {
+  }
 
   ngOnInit(): void {
     this.checkedTheme = localStorage.getItem('theme') === 'light';
@@ -58,16 +59,8 @@ export class NavBarComponent implements OnInit{
     }
   }
 
-
-  showAlert(type:AlertTypes, text:String){
-    this.alertService.setAlert({
-      type: type,
-      text : text,
-    });
-  }
-
   mustLoginAlert(){
-    this.showAlert(AlertTypes.WARNING,'You must login to access!');
+    this.notificationsService.showDefaultNotification('You must login to access!');
   }
 
   openProfilePage(){
@@ -75,5 +68,12 @@ export class NavBarComponent implements OnInit{
   }
   openNotificationsPage(){
     this.router.navigate(['/notifications',this.usersService.loggedUser.username]);
+  }
+
+  reloadPage(){
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

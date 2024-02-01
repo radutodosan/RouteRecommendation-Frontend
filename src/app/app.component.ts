@@ -11,14 +11,6 @@ export class AppComponent implements OnInit{
 
   currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
-  startValue: string = '';
-  endValue: string = '';
-
-  onSearch(data: { start: string, end: string }) {
-    this.startValue = data.start;
-    this.endValue = data.end;
-  }
-
   constructor() {}
 
   ngOnInit(): void {

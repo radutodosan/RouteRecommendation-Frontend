@@ -29,6 +29,7 @@
     "@here/maps-api-for-javascript": "^1.50.0",
     "angular-animations": "^0.11.0",
     "angular-material-data-table": "^0.10.10",
+    "angular-notifier": "^14.0.0",
     "bootstrap": "^5.3.2",
     "chart.js": "^3.1.1",
     "mdb-angular-ui-kit": "^5.2.0",

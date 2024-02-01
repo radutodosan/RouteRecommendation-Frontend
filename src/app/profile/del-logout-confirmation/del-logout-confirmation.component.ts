@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 import {AuthenticatorComponent} from "../../authenticator/authenticator.component";
-import {AlertService} from "../../services/alert.service";
-import {AlertTypes} from "../../enums/alert-types";
 import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-del-logout-confirmation',
@@ -21,14 +20,8 @@ export class DelLogoutConfirmationComponent implements OnInit{
     private usersService: UsersService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private alertService: AlertService
+    private notificationsService: NotificationsService,
   ) {}
-  showAlert(type:AlertTypes, text:String){
-    this.alertService.setAlert({
-      type: type,
-      text : text,
-    });
-  }
 
   ngOnInit(): void {
     this.loggedUser = this.usersService.loggedUser;
@@ -42,14 +35,14 @@ export class DelLogoutConfirmationComponent implements OnInit{
 
     this.usersService.logoutUser();
     this.router.navigate(['/']);
-    this.showAlert(AlertTypes.ERROR,'Account deleted!')
+    this.notificationsService.showErrorNotification("Account deleted!");
   }
 
   confirmLogout(){
     console.log("User logged out: " + this.loggedUser.username);
     this.usersService.logoutUser();
     this.router.navigate(['/']);
-    this.showAlert(AlertTypes.INFO,'Logout Successful!')
+    this.notificationsService.showDefaultNotification("Logout Successful!");
   }
 
 

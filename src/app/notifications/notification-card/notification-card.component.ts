@@ -1,9 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {UsersService} from "../../services/users.service";
 import {FriendshipService} from "../../services/friendship.service";
-import {AlertTypes} from "../../enums/alert-types";
-import {AlertService} from "../../services/alert.service";
 import {Router} from "@angular/router";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-notification-card',
@@ -21,16 +20,17 @@ export class NotificationCardComponent {
   constructor(
     private usersService:UsersService,
     private friendshipService:FriendshipService,
-    private alertService: AlertService,
-    private router:Router
+    private router:Router,
+    private notificationsService:NotificationsService
   ) {}
 
   acceptFriendRequest(){
     this.friendshipService.acceptFriendRequest(this.usersService.loggedUser.username, this.username).subscribe(response=>{
       console.log(response);
-      this.alertService.showAlert(AlertTypes.INFO, "You and " + this.full_name + " became friends!");
+      this.notificationsService.showSuccessNotification("You and " + this.full_name + " became friends!");
       this.reloadPage();
       this.clicked = true;
+      this.notificationsService.notificationsNumber --;
 
     }, error => {
       throw error;
@@ -40,12 +40,13 @@ export class NotificationCardComponent {
   declineFriendRequest(){
     this.friendshipService.deleteFriendship(this.usersService.loggedUser.username, this.username).subscribe(response=>{
       console.log(response);
-      this.alertService.showAlert(AlertTypes.INFO, "Friend request from " + this.full_name + " declined!");
+      this.notificationsService.showDefaultNotification("Friend request from " + this.full_name + " declined!");
       this.reloadPage();
       this.clicked = true;
+      this.notificationsService.notificationsNumber --;
 
     }, error => {
-      this.alertService.showAlert(AlertTypes.ERROR, "ERROR declining friend request!");
+      this.notificationsService.showErrorNotification("ERROR declining friend request!");
       throw error;
     })
 

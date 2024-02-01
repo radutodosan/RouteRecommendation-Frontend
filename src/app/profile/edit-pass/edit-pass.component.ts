@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../../services/users.service";
-import {AlertService} from "../../services/alert.service";
-import {AlertTypes} from "../../enums/alert-types";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-edit-pass',
@@ -19,7 +18,7 @@ export class EditPassComponent implements OnInit{
     public modalRef: MdbModalRef<EditPassComponent>,
     private formBuilder: FormBuilder,
     private usersService: UsersService,
-    private alertService: AlertService
+    private notificationsService: NotificationsService,
   ) {}
 
   ngOnInit(): void {
@@ -43,23 +42,17 @@ export class EditPassComponent implements OnInit{
         console.log(response);
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
-        this.showAlert(AlertTypes.SUCCESS, "Password Changed!");
+        this.notificationsService.showSuccessNotification("Password Changed!");
 
       },error => {
-        this.showAlert(AlertTypes.ERROR, "Changing password failed");
+        this.notificationsService.showErrorNotification("Changing password failed!");
         throw error;
       })
     }
     else{
-      this.showAlert(AlertTypes.ERROR, "Passwords don't match!");
+      this.notificationsService.showErrorNotification("Passwords don't match!");
     }
 
   }
 
-  showAlert(type:AlertTypes, text:String){
-    this.alertService.setAlert({
-      type: type,
-      text : text,
-    });
-  }
 }

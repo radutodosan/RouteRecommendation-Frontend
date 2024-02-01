@@ -1,11 +1,10 @@
 import {Component, Input} from '@angular/core';
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {RemoveConfirmationComponent} from "../remove-confirmation/remove-confirmation.component";
-import {AlertService} from "../../services/alert.service";
-import {AlertTypes} from "../../enums/alert-types";
 import {UsersService} from "../../services/users.service";
 import {FriendshipService} from "../../services/friendship.service";
 import {Router} from "@angular/router";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-user-card',
@@ -26,7 +25,7 @@ export class UserCardComponent {
 
   constructor(
     private modalService: MdbModalService,
-    private alertService: AlertService,
+    private notificationsService: NotificationsService,
     private usersService: UsersService,
     private friendshipService:FriendshipService,
     private router:Router,
@@ -41,13 +40,13 @@ export class UserCardComponent {
   sendFriendRequest(){
     this.friendshipService.sendFriendRequest(this.usersService.loggedUser.username, this.username).subscribe(response=>{
       console.log(response);
-      this.alertService.showAlert(AlertTypes.SUCCESS, "Sent friend request to: " + this.full_name);
+      this.notificationsService.showSuccessNotification("Sent friend request to: " + this.full_name);
       this.reloadPage();
 
       this.clicked = true;
 
     }, error => {
-      this.alertService.showAlert(AlertTypes.ERROR, "Failed sending friend request to: " + this.full_name);
+      this.notificationsService.showErrorNotification("Failed sending friend request to: " + this.full_name);
       throw error;
     })
   }

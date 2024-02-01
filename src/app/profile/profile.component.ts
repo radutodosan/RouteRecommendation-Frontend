@@ -3,12 +3,11 @@ import {UsersService} from "../services/users.service";
 import {Router} from "@angular/router";
 import {slideInUpOnEnterAnimation} from "angular-animations";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AlertTypes} from "../enums/alert-types";
-import {AlertService} from "../services/alert.service";
 import {User} from "../entities/user";
 import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {DelLogoutConfirmationComponent} from "./del-logout-confirmation/del-logout-confirmation.component";
 import {EditPassComponent} from "./edit-pass/edit-pass.component";
+import {NotificationsService} from "../services/notifications.service";
 
 
 @Component({
@@ -31,7 +30,7 @@ export class ProfileComponent implements OnInit{
     private usersService: UsersService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private alertService: AlertService,
+    private notificationsService: NotificationsService,
     private modalService: MdbModalService,
   ) {}
 
@@ -48,27 +47,20 @@ export class ProfileComponent implements OnInit{
     });
   }
 
-  showAlert(type:AlertTypes, text:String){
-    this.alertService.setAlert({
-      type: type,
-      text : text,
-    });
-  }
-
   updateUser(){
     if(this.editForm.value["password"] === this.editForm.value["confirmPassword"]) {
       this.usersService.updateUser(this.loggedUser.id, this.editForm.value).subscribe(response => {
         console.log(response);
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
-        this.showAlert(AlertTypes.SUCCESS, "Updated successfully!");
+        this.notificationsService.showSuccessNotification("Updated successfully!");
       }, error => {
-        this.showAlert(AlertTypes.ERROR, "Update failed!");
+        this.notificationsService.showErrorNotification("Update failed!");
         throw error;
       })
     }
     else{
-      this.showAlert(AlertTypes.ERROR, "Passwords don't match!");
+      this.notificationsService.showErrorNotification("Passwords don't match!");
       console.log("Passwords don't match!");
     }
   }

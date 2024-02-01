@@ -11,6 +11,7 @@ export class UsersService {
   private loggedIn = false;
   // @ts-ignore
   private _loggedUser: any = JSON.parse(localStorage.getItem("loggedUser"));
+
   constructor(
     private http:HttpClient
   ) {}

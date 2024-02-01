@@ -47,6 +47,7 @@
 
 .button-container{
   text-align: center;
+  margin-right: 100px;
 }
 
 .btn{
@@ -61,12 +62,17 @@
 }
 
 /* THEME SWITCHER */
+/*.theme-switcher{*/
+/*  display: inline-block;*/
+/*  margin: 5px 10px;*/
+/*}*/
+
 .label-mode{
   width: 75px;
   height: 30px;
   position: absolute;
   top: 25%;
-  right: 175px;
+  right: 20px;
   margin: 0;
   display: block;
   background-color: var(--background-color);
@@ -112,6 +118,9 @@ input:checked + .label-mode:after{
   }
   .label-mode{
     left:20px;
+  }
+  .button-container{
+    margin-right: 0;
   }
 }
 

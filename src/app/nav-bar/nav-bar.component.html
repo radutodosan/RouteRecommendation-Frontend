@@ -54,9 +54,9 @@
       </ul>
       <!-- Left links -->
       <div class="button-container">
-        <input class="dark-mode" type="checkbox" id="dark-mode-toggle" [checked]="checkedTheme" (change)="switchTheme($event)">
-        <label class="label-mode" for="dark-mode-toggle"></label>
-        <button class="btn btn-outline-primary" type="button" *ngIf="isLoggedIn()" (click)="openNotificationsPage();basicNavbar.hide()"><i class="fa-regular fa-bell"></i></button>
+          <input class="dark-mode" type="checkbox" id="dark-mode-toggle" [checked]="checkedTheme" (change)="switchTheme($event)">
+          <label class="label-mode" for="dark-mode-toggle"></label>
+        <button class="btn btn-outline-primary position-relative" type="button"  *ngIf="isLoggedIn()" (click)="openNotificationsPage();basicNavbar.hide()"><i class="fa-regular fa-bell" mdbTooltip="Hi! I'm tooltip" placement="bottom" trigger="click"></i><span *ngIf="notificationsService.notificationsNumber != 0" class="position-absolute top-0 start-100 translate-middle p-1 badge rounded-pill badge-notification bg-danger">{{notificationsService.notificationsNumber}}</span></button>
         <button class="btn btn-outline-primary" type="button" *ngIf="!isLoggedIn()" (click)="basicNavbar.hide();openAuthenticatorModal();mustLoginAlert()"><i class="fa-regular fa-bell"></i></button>
         <button class="btn btn-outline-primary" type="button" *ngIf="!isLoggedIn()" (click)="basicNavbar.hide();openAuthenticatorModal()">Login</button>
         <button class="btn btn-outline-primary" type="button" *ngIf="isLoggedIn()" (click)="openProfilePage();basicNavbar.hide()">Profile <i class="fa-solid fa-user"></i></button>

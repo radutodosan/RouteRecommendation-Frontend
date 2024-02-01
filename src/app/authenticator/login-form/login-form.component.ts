@@ -4,8 +4,8 @@ import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
 import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 import {AuthenticatorComponent} from "../authenticator.component";
-import {AlertTypes} from "../../enums/alert-types";
-import {AlertService} from "../../services/alert.service";
+import {FriendshipService} from "../../services/friendship.service";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-login-form',
@@ -20,7 +20,8 @@ export class LoginFormComponent implements OnInit {
     private usersService: UsersService,
     private router: Router,
     public modalRef: MdbModalRef<AuthenticatorComponent>,
-    private alertService: AlertService,
+    private friendshipService: FriendshipService,
+    private notificationsService: NotificationsService,
 
   ) {}
 
@@ -28,12 +29,6 @@ export class LoginFormComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
-    });
-  }
-  showAlert(type:AlertTypes, text:String){
-    this.alertService.setAlert({
-      type: type,
-      text : text,
     });
   }
 
@@ -45,23 +40,31 @@ export class LoginFormComponent implements OnInit {
       if(response != null){
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
-        this.showAlert(AlertTypes.SUCCESS, "You logged in successfully!");
+
+        this.notificationsService.showSuccessNotification("You logged in successfully!");
+
+        this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
+          this.reloadPage();
+          this.notificationsService.notificationsNumber = response.length;
+        }, error => {
+          throw error;
+        })
+
       }
       else{
-        this.showAlert(AlertTypes.ERROR, "Username or password are wrong!");
+        this.notificationsService.showErrorNotification("Username or password are wrong!");
       }
     }, err => {
-      this.showAlert(AlertTypes.ERROR, "Username: " + this.loginForm.value["username"] + " does not exist.");
+      this.notificationsService.showErrorNotification("Username: " + this.loginForm.value["username"] + " does not exist.");
       throw err;
     })
 
+  }
 
-
+  reloadPage(){
     const currentUrl = this.router.url;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentUrl]);
     });
-
-
   }
 }

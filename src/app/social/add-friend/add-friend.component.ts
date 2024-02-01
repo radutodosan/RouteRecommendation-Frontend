@@ -3,9 +3,9 @@ import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../../services/users.service";
 import {HttpClient} from "@angular/common/http";
-import {AlertService} from "../../services/alert.service";
 import {slideInUpOnEnterAnimation} from "angular-animations";
 import {FriendshipService} from "../../services/friendship.service";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-add-friend',
@@ -28,7 +28,7 @@ export class AddFriendComponent {
     private friendshipService: FriendshipService,
     private http:HttpClient,
     private formBuilder: FormBuilder,
-    private alertService: AlertService,
+    private notificationsService: NotificationsService,
   ) {}
 
   ngOnInit(){

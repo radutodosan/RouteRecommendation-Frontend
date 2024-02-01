@@ -17,7 +17,6 @@ import { AuthenticatorComponent } from './authenticator/authenticator.component'
 import { LoginFormComponent } from './authenticator/login-form/login-form.component';
 import { SignupFormComponent } from './authenticator/signup-form/signup-form.component';
 import { FooterComponent } from './footer/footer.component';
-import { AlertComponent } from './alert/alert.component';
 import { UserCardComponent } from './social/user-card/user-card.component';
 import { NotificationCardComponent } from './notifications/notification-card/notification-card.component';
 import { RPendingCardComponent } from './notifications/r-pending-card/r-pending-card.component';
@@ -25,6 +24,11 @@ import { RemoveConfirmationComponent } from './social/remove-confirmation/remove
 import {HttpClientModule} from "@angular/common/http";
 import { DelLogoutConfirmationComponent } from './profile/del-logout-confirmation/del-logout-confirmation.component';
 import { EditPassComponent } from './profile/edit-pass/edit-pass.component';
+import {MatBadgeModule} from "@angular/material/badge";
+import {MdbTooltipModule} from "mdb-angular-ui-kit/tooltip";
+import { NotifierModule } from 'angular-notifier';
+import {NotificationModule} from "./notification.module";
+import {FriendsComponent} from "./social/friends/friends.component";
 
 @NgModule({
   declarations: [
@@ -43,23 +47,26 @@ import { EditPassComponent } from './profile/edit-pass/edit-pass.component';
     RemoveConfirmationComponent,
     DelLogoutConfirmationComponent,
     EditPassComponent,
+    FriendsComponent
   ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      FontAwesomeModule,
-      FormsModule,
-      BrowserAnimationsModule,
-      NgxTypedJsModule,
-      MdbCollapseModule,
-      MdbModalModule,
-      MdbTabsModule,
-      MatTableModule,
-      ReactiveFormsModule,
-      AlertComponent,
-      HttpClientModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    NgxTypedJsModule,
+    MdbCollapseModule,
+    MdbModalModule,
+    MdbTabsModule,
+    MatTableModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatBadgeModule,
+    MdbTooltipModule,
+    NotifierModule
+  ],
+  providers: [NotificationModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+/* Import specific theme styles */
+@import '../node_modules/angular-notifier/styles';
+
 *{
   -webkit-transition: background-color 300ms linear, color 200ms linear;
   -moz-transition: background-color 300ms linear, color 200ms linear;
@@ -98,3 +101,6 @@ mdb-modal-container {
   background-color: var(--background-color);
 }
 
+.badge{
+  background-color: crimson;
+}

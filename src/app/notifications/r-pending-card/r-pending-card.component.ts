@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-r-pending-card',
@@ -12,11 +13,17 @@ export class RPendingCardComponent {
 
   clicked = false;
 
+  constructor(
+    private notificationsService: NotificationsService,
+  ) {}
+
   completeRoute(){
     this.clicked = true;
+    this.notificationsService.showWarningNotification("Route Completed!");
   }
 
   declineRoute(){
     this.clicked = true;
+    this.notificationsService.showWarningNotification("Route Canceled!");
   }
 }

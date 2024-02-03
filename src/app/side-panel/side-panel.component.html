@@ -1,18 +1,44 @@
 <div id="side-panel" class="side-panel" >
 
-    <div class="addresses-form">
-      <div class="input-container ic1">
-        <input [(ngModel)]="startValue" id="start" class="input" type="text" placeholder="" />
-        <div class="cut"></div>
-        <label for="start" class="placeholder">Start</label>
-      </div>
-      <div class="input-container ic2">
-        <input [(ngModel)]="endValue" id="end" class="input" type="text" placeholder="" />
-        <div class="cut"></div>
-        <label for="end" class="placeholder">End</label>
-      </div>
-      <button (click)="search()" class="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </div>
+
+
+  <form class="addresses-form" [formGroup]="routeForm">
+    <mat-form-field>
+      <input formControlName="startValue" type="text" placeholder="Start" aria-label="Number" matInput [matAutocomplete]="start">
+      <mat-autocomplete #start="matAutocomplete" >
+        <mat-option *ngIf="savedAddresses?.home" (click)="searchStartLocation()" [value]="savedAddresses.home">
+          <i class="fa-solid fa-house"></i> &nbsp; Home
+        </mat-option>
+        <mat-option *ngIf="savedAddresses?.work" (click)="searchStartLocation()" [value]="savedAddresses.work">
+          <i class="fa-solid fa-briefcase"></i> &nbsp; Work
+        </mat-option>
+        <mat-option *ngIf="savedAddresses?.school" (click)="searchStartLocation()" [value]="savedAddresses.school">
+          <i class="fa-solid fa-book"></i> &nbsp; School
+        </mat-option>
+        <mat-option *ngIf="savedAddresses?.other" (click)="searchStartLocation()" [value]="savedAddresses.other">
+          <i class="fa-solid fa-location-dot"></i> &nbsp; Other
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="endValue" type="text" placeholder="End" aria-label="Number" matInput [matAutocomplete]="end" >
+      <mat-autocomplete #end="matAutocomplete" >
+        <mat-option *ngIf="savedAddresses?.home" (click)="searchEndLocation()" [value]="savedAddresses.home">
+          <i class="fa-solid fa-house"></i> &nbsp; Home
+        </mat-option>
+        <mat-option *ngIf="savedAddresses?.work" (click)="searchEndLocation()" [value]="savedAddresses.work">
+          <i class="fa-solid fa-briefcase"></i> &nbsp; Work
+        </mat-option>
+        <mat-option *ngIf="savedAddresses?.school" (click)="searchEndLocation()" [value]="savedAddresses.school">
+          <i class="fa-solid fa-book"></i> &nbsp; School
+        </mat-option>
+        <mat-option *ngIf="savedAddresses?.other" (click)="searchEndLocation()" [value]="savedAddresses.other">
+          <i class="fa-solid fa-location-dot"></i> &nbsp; Other
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button (click)="searchRoute()" class="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+  </form>
 
 </div>
 

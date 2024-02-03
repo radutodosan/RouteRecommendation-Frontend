@@ -54,12 +54,6 @@
               </div>
 
               <div class="row g-5">
-                <div class="col-12">
-                  <div class="">
-                    <label class="form-label" for="address">Address</label>
-                    <input type="text" class="form-control" formControlName="saved_address" id="address">
-                  </div>
-                </div>
                 <div class="col-md-6">
                   <div class="">
                     <label class="form-label" for="password_profile">Password</label>
@@ -89,7 +83,8 @@
             <hr class="my-10" />
             <div  class="profile-container">
               <button class="btn logout" (click)="openLogoutConfirmation()" >LOGOUT</button>
-              <button class="btn edit-pass" (click)="openEditPasswordModal()" >Change password</button>
+              <button class="btn edit-pass" (click)="openChangePasswordModal()" >Change password</button>
+              <button class="btn edit-pass" (click)="openEditAddressesModal()" >Edit Addresses</button>
               <button class="btn delete" (click)="openDeleteConfirmation()" >Delete Account</button>
             </div>
           </div>

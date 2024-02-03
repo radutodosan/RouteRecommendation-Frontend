@@ -13,7 +13,7 @@ export class UsersService {
   private _loggedUser: any = JSON.parse(localStorage.getItem("loggedUser"));
 
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
   ) {}
 
   isLoggedIn() {
@@ -33,6 +33,9 @@ export class UsersService {
   logoutUser(): void {
     this.loggedIn = false;
     localStorage.removeItem("loggedUser");
+    localStorage.removeItem("savedAddresses");
+    this.loggedUser = null;
+
     // this.notificationService.showDefaultNotification("Logged out successfully")
   }
 

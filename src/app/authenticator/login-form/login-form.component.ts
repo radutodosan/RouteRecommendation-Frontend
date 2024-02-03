@@ -6,6 +6,7 @@ import {MdbModalRef} from "mdb-angular-ui-kit/modal";
 import {AuthenticatorComponent} from "../authenticator.component";
 import {FriendshipService} from "../../services/friendship.service";
 import {NotificationsService} from "../../services/notifications.service";
+import {SavedAddressesService} from "../../services/saved-addresses.service";
 
 @Component({
   selector: 'app-login-form',
@@ -22,7 +23,7 @@ export class LoginFormComponent implements OnInit {
     public modalRef: MdbModalRef<AuthenticatorComponent>,
     private friendshipService: FriendshipService,
     private notificationsService: NotificationsService,
-
+    private savedAddressesService: SavedAddressesService,
   ) {}
 
   ngOnInit(): void {
@@ -34,19 +35,26 @@ export class LoginFormComponent implements OnInit {
 
   loginUser(){
 
-    console.log(this.loginForm.value);
-
     this.usersService.loginUser(this.loginForm.value).subscribe(response=>{
       if(response != null){
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
-
+        console.log(response);
         this.notificationsService.showSuccessNotification("You logged in successfully!");
 
         this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
           this.reloadPage();
           this.notificationsService.notificationsNumber = response.length;
         }, error => {
+          throw error;
+        })
+
+        this.savedAddressesService.getAddresses(this.usersService.loggedUser.id).subscribe(response =>{
+          this.savedAddressesService.savedAddresses = response;
+          localStorage.setItem("savedAddresses", JSON.stringify(this.savedAddressesService.savedAddresses));
+          console.log(this.savedAddressesService.savedAddresses);
+        }, error => {
+          this.notificationsService.showErrorNotification("Error Fetching Addresses!");
           throw error;
         })
 

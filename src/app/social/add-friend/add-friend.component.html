@@ -2,6 +2,8 @@
   <form [formGroup]="searchForm" class="search-form">
     <div class="input-container ic1">
       <input
+        matInput
+        (keyup)="searchUsers()"
         type="text"
         id="start"
         class="input"
@@ -10,7 +12,7 @@
       />
       <div class="cut"></div>
       <label for="start" class="placeholder">Search People</label>
-      <button type="button" class="btn search" (click)="searchUsers()"><i class="fa-solid fa-magnifying-glass"></i></button>
+<!--      <button type="button" class="btn search" (click)="searchUsers()"><i class="fa-solid fa-magnifying-glass"></i></button>-->
     </div>
   </form>
 

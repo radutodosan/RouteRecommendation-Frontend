@@ -1,0 +1,30 @@
+
+<div class="modal-header">
+  <h5 class="modal-title" id="changePassModal">Addresses</h5>
+  <button
+    type="button"
+    class="btn"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ><i class="fa-solid fa-xmark"></i></button>
+</div>
+
+<div class="modal-body">
+  <div class="edit-addresses-form-container">
+    <form [formGroup]="editAddressesForm" novalidate>
+      <label class="form-label" for="homeAddress"><i class="fa-solid fa-house"></i> Home</label>
+      <input type="text" id="homeAddress" class="form-control validate" formControlName="homeAddress" placeholder="">
+      <br>
+      <label class="form-label" for="workAddress"><i class="fa-solid fa-briefcase"></i> Work</label>
+      <input type="text" id="workAddress" class="form-control validate" formControlName="workAddress" placeholder="">
+      <br>
+      <label class="form-label" for="schoolAddress"><i class="fa-solid fa-book"></i> School</label>
+      <input type="text" id="schoolAddress" class="form-control validate" formControlName="schoolAddress" placeholder="">
+      <br>
+      <label class="form-label" for="otherAddress"><i class="fa-solid fa-location-dot"></i> Other</label>
+      <input type="text" id="otherAddress" class="form-control validate" formControlName="otherAddress" placeholder="">
+      <br>
+    </form>
+    <button type="button" class="btn login" (click)="editAddresses();modalRef.close()">Confirm</button>
+  </div>
+</div>

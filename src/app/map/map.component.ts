@@ -11,8 +11,9 @@ import {MapService} from "../services/map.service";
 export class MapComponent implements AfterViewInit{
 
   @ViewChild('map') mapDiv?: ElementRef;
-  constructor(private mapService:MapService) {
-  }
+  constructor(
+    private mapService:MapService,
+  ) {}
 
   ngAfterViewInit(): void {
     if (this.mapDiv) {

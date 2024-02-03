@@ -8,6 +8,7 @@ import {MdbModalRef, MdbModalService} from "mdb-angular-ui-kit/modal";
 import {DelLogoutConfirmationComponent} from "./del-logout-confirmation/del-logout-confirmation.component";
 import {EditPassComponent} from "./edit-pass/edit-pass.component";
 import {NotificationsService} from "../services/notifications.service";
+import {EditAddressesComponent} from "./edit-addresses/edit-addresses.component";
 
 
 @Component({
@@ -25,7 +26,8 @@ export class ProfileComponent implements OnInit{
   loggedUser: User;
 
   modalRef: MdbModalRef<DelLogoutConfirmationComponent> | null = null;
-  modalRefEditPass: MdbModalRef<EditPassComponent> | null = null;
+  modalRefChangePassword: MdbModalRef<EditPassComponent> | null = null;
+  modalRefEditAddresses: MdbModalRef<EditAddressesComponent> | null = null;
   constructor(
     private usersService: UsersService,
     private router: Router,
@@ -43,7 +45,6 @@ export class ProfileComponent implements OnInit{
       password: ['', Validators.required],
       email: [this.loggedUser.email, Validators.required],
       confirmPassword: ['', Validators.required],
-      saved_address: [this.loggedUser.saved_address],
     });
   }
 
@@ -54,6 +55,7 @@ export class ProfileComponent implements OnInit{
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
         this.notificationsService.showSuccessNotification("Updated successfully!");
+        this.reloadPage();
       }, error => {
         this.notificationsService.showErrorNotification("Update failed!");
         throw error;
@@ -64,9 +66,15 @@ export class ProfileComponent implements OnInit{
       console.log("Passwords don't match!");
     }
   }
-  openEditPasswordModal(){
-    this.modalRefEditPass = this.modalService.open(EditPassComponent)
+
+  openEditAddressesModal(){
+    this.modalRefEditAddresses = this.modalService.open(EditAddressesComponent)
   }
+
+  openChangePasswordModal(){
+    this.modalRefChangePassword = this.modalService.open(EditPassComponent)
+  }
+
   openDeleteConfirmation() {
     this.modalRef = this.modalService.open(DelLogoutConfirmationComponent);
     this.modalRef.component.action = "DELETE";
@@ -75,5 +83,12 @@ export class ProfileComponent implements OnInit{
   openLogoutConfirmation() {
     this.modalRef = this.modalService.open(DelLogoutConfirmationComponent);
     this.modalRef.component.action = "LOGOUT";
+  }
+
+  reloadPage(){
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

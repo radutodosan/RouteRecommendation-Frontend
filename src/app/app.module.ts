@@ -29,6 +29,12 @@ import {MdbTooltipModule} from "mdb-angular-ui-kit/tooltip";
 import { NotifierModule } from 'angular-notifier';
 import {NotificationModule} from "./notification.module";
 import {FriendsComponent} from "./social/friends/friends.component";
+import {MatInputModule} from "@angular/material/input";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {EditAddressesComponent} from "./profile/edit-addresses/edit-addresses.component";
+import {MatSelectModule} from "@angular/material/select";
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -47,7 +53,8 @@ import {FriendsComponent} from "./social/friends/friends.component";
     RemoveConfirmationComponent,
     DelLogoutConfirmationComponent,
     EditPassComponent,
-    FriendsComponent
+    FriendsComponent,
+    EditAddressesComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +71,12 @@ import {FriendsComponent} from "./social/friends/friends.component";
     HttpClientModule,
     MatBadgeModule,
     MdbTooltipModule,
-    NotifierModule
+    NotifierModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatTooltipModule,
+    MatSelectModule,
+    MatTabsModule
   ],
   providers: [NotificationModule],
   bootstrap: [AppComponent]

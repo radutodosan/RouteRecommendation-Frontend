@@ -1,11 +1,17 @@
+.ranking-filer{
+  width: 125px;
+  margin-top: 2vh;
+  float: right;
+}
+
 .table-container{
   width: 85%;
   margin: 1vh auto;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-
 }
+
 table {
   background-color: var(--darker-background-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 table td{

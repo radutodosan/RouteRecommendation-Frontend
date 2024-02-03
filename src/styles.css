@@ -104,3 +104,8 @@ mdb-modal-container {
 .badge{
   background-color: crimson;
 }
+
+.mat-mdc-form-field{
+  width: 100%;
+
+}

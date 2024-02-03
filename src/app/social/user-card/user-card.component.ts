@@ -43,8 +43,6 @@ export class UserCardComponent {
       this.notificationsService.showSuccessNotification("Sent friend request to: " + this.full_name);
       this.reloadPage();
 
-      this.clicked = true;
-
     }, error => {
       this.notificationsService.showErrorNotification("Failed sending friend request to: " + this.full_name);
       throw error;

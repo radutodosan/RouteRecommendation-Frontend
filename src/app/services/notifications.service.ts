@@ -17,11 +17,14 @@ export class NotificationsService {
     private friendshipService: FriendshipService,
     private usersService: UsersService
   ) {
-    this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
-      this.notificationsNumber = response.length;
-    }, error => {
-      throw error;
-    });
+    if(this.usersService.isLoggedIn()){
+      this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
+        this.notificationsNumber = response.length;
+      }, error => {
+        throw error;
+      });
+    }
+
   }
 
   public showSuccessNotification(message: string): void {

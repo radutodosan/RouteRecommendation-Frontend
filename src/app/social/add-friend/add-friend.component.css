@@ -42,7 +42,7 @@
 .input-container {
   height: 50px;
   position: relative;
-  width: 250px;
+  width: 25%;
 }
 
 .ic1 {
@@ -60,7 +60,7 @@
   height: 100%;
   outline: 0;
   padding: 4px 20px 0;
-  width: 190px;
+  width: 100%;
 
 }
 

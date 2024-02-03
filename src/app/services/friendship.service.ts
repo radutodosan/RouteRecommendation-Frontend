@@ -33,33 +33,33 @@ export class FriendshipService {
   }
 
   acceptFriendRequest(username01:string, username02:string):Observable<any>{
-    const SEND_FRIEND_REQUEST_URL = `${URL}/notifications/friends?username01=${username01}&username02=${username02}`
+    const ACCEPT_FRIEND_REQUEST_URL = `${URL}/notifications/friends?username01=${username01}&username02=${username02}`
     const body = {username01: username01, username02:username02};
 
-    return this.http.put(SEND_FRIEND_REQUEST_URL, body);
+    return this.http.put(ACCEPT_FRIEND_REQUEST_URL, body);
   }
 
   deleteFriendship(username01:string, username02:string):Observable<any>{
-    const SEND_FRIEND_REQUEST_URL = `${URL}/delete-friendship?username01=${username01}&username02=${username02}`
+    const DELETE_FRIENDSHIP_URL = `${URL}/delete-friendship?username01=${username01}&username02=${username02}`
 
-    return this.http.delete(SEND_FRIEND_REQUEST_URL);
+    return this.http.delete(DELETE_FRIENDSHIP_URL);
   }
 
   searchFriends(username:string, search:string):Observable<any>{
-    const SEND_FRIEND_REQUEST_URL = `${URL}/social?username=${username}&search=${search}`
+    const SEARCH_FRIENDS_URL = `${URL}/social?username=${username}&search=${search}`
 
-    return this.http.get(SEND_FRIEND_REQUEST_URL);
+    return this.http.get(SEARCH_FRIENDS_URL);
   }
 
   searchNonFriends(username:string, search:string):Observable<any>{
-    const SEND_FRIEND_REQUEST_URL = `${URL}/social/add-friends?username=${username}&search=${search}`
+    const SEARCH_NON_FRIENDS_URL = `${URL}/social/add-friends?username=${username}&search=${search}`
 
-    return this.http.get(SEND_FRIEND_REQUEST_URL);
+    return this.http.get(SEARCH_NON_FRIENDS_URL);
   }
 
   getFriendsRanking(username:string):Observable<any>{
-    const SEND_FRIEND_REQUEST_URL = `${URL}/ranking/${username}`
+    const GET_FRIENDS_RANKING_URL = `${URL}/ranking/${username}`
 
-    return this.http.get(SEND_FRIEND_REQUEST_URL);
+    return this.http.get(GET_FRIENDS_RANKING_URL);
   }
 }

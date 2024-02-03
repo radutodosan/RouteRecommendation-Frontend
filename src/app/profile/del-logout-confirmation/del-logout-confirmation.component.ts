@@ -5,6 +5,7 @@ import {UsersService} from "../../services/users.service";
 import {Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
 import {NotificationsService} from "../../services/notifications.service";
+import {SavedAddressesService} from "../../services/saved-addresses.service";
 
 @Component({
   selector: 'app-del-logout-confirmation',
@@ -21,6 +22,7 @@ export class DelLogoutConfirmationComponent implements OnInit{
     private router: Router,
     private formBuilder: FormBuilder,
     private notificationsService: NotificationsService,
+    private savedAddressesService: SavedAddressesService,
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class DelLogoutConfirmationComponent implements OnInit{
   confirmLogout(){
     console.log("User logged out: " + this.loggedUser.username);
     this.usersService.logoutUser();
+    this.savedAddressesService.savedAddresses = null;
     this.router.navigate(['/']);
     this.notificationsService.showDefaultNotification("Logout Successful!");
   }

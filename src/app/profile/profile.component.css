@@ -6,8 +6,8 @@
 .card .full_name{
   font-weight: 700;
 }
-.card .email{
-  font-size: 11px;
+.card .user{
+  font-size: 16px;
 }
 
 .card span{
@@ -16,6 +16,22 @@
 
 .avatar{
   background-color: var(--blue-color);
+}
+
+.avatar img{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.points-container{
+  margin-left:auto;
+}
+.points-container .points{
+  color:var(--button-color);
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
 }
 
 .container-fluid hr{
@@ -51,17 +67,17 @@
   border: 1px solid var(--hover-button-color);
 }
 
-.edit-pass{
+.edit-pass, .change-addresses{
   border: 1px solid var(--button-color);
   color:var(--text-color);
   float:right;
   margin:0 10px 25px 10px;
 }
-.edit-pass:hover{
+.edit-pass:hover, .change-addresses:hover{
   background-color: var(--hover-button-color);
   border: 1px solid var(--hover-button-color);
 }
-.edit-pass:focus{
+.edit-pass:focus, .change-addresses:focus{
   background-color: var(--hover-button-color);
   border: 1px solid var(--hover-button-color);
 }
@@ -100,5 +116,29 @@
 @media(min-width: 1200px){
   .card{
     width: 60%;
+  }
+}
+
+@media(max-width: 675px){
+  .edit-pass{
+    float: left;
+  }
+}
+@media(max-width: 600px){
+  .card .user{
+    font-size: 11px;
+  }
+  .card .full_name{
+    font-size: 16px;
+  }
+  .points-container .points{
+    font-size: 12px;
+  }
+  .avatar img{
+    height: 50px;
+    width: 50px;
+  }
+  .update-photo{
+    font-size: 12px;
   }
 }

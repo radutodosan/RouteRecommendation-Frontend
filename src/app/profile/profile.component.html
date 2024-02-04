@@ -16,16 +16,24 @@
               <div>
                 <div class="d-flex align-items-center">
                   <a href="#" class="avatar rounded-circle text-white">
-                    <img src="{{loggedUser.picture_url}}" alt="{{loggedUser.picture_url}}" style="border-radius: 50%;height: 100px;width: 100px">                </a>
+                    <img src="{{loggedUser.picture_url}}" alt="{{loggedUser.picture_url}}">
+                  </a>
                   <div class="ms-4">
                     <span class="full_name h5 d-block mb-0">{{loggedUser.full_name}}</span>
-                    <span class="email">{{loggedUser.email}}</span>
+                    <span class="user">ID: {{loggedUser.username}}</span>
                   </div>
                 </div>
               </div>
+              <div class="points-container">
+                <span class="d-block mb-0 points">
+                  Points
+                  <i class="get-info fa-solid fa-circle-info" style="cursor: pointer" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="above"  #tooltip="matTooltip"></i>
+                  <br>{{loggedUser.points}}
+                </span>
+                <!--        <span class="points">37</span>-->
+              </div>
               <div class="ms-auto">
-                <button type="button" class="btn">Update Photo</button>
-
+                <button type="button" class="btn update-photo">Update Photo</button>
               </div>
             </div>
           </div>
@@ -84,7 +92,7 @@
             <div  class="profile-container">
               <button class="btn logout" (click)="openLogoutConfirmation()" >LOGOUT</button>
               <button class="btn edit-pass" (click)="openChangePasswordModal()" >Change password</button>
-              <button class="btn edit-pass" (click)="openEditAddressesModal()" >Edit Addresses</button>
+              <button class="btn change-addresses" (click)="openEditAddressesModal()" >Edit Addresses</button>
               <button class="btn delete" (click)="openDeleteConfirmation()" >Delete Account</button>
             </div>
           </div>

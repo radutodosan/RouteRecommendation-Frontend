@@ -10,6 +10,21 @@
 .avatar{
   background-color: var(--blue-color);
 }
+.avatar img{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.points-container{
+  margin-left:auto;
+}
+.points-container .points{
+  color:var(--button-color);
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+}
 
 .card .full_name{
   font-weight: 700;
@@ -50,9 +65,19 @@
   border: 1px solid crimson;
 }
 
-@media(max-width: 881px){
-  .card{
-    min-width: 300px;
+@media(max-width: 600px){
+  .card .email{
+    font-size: 11px;
+  }
+  .card .full_name{
+    font-size: 16px;
+  }
+  .points-container .points{
+    font-size: 12px;
+  }
+  .avatar img{
+    height: 50px;
+    width: 50px;
   }
 }
 

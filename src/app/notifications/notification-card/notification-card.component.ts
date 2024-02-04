@@ -15,6 +15,7 @@ export class NotificationCardComponent {
   @Input() full_name?:string;
   @Input() email?:string;
   @Input() picture_url?:string;
+  @Input() points?:string;
 
   clicked = false;
   constructor(

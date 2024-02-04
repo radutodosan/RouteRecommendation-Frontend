@@ -110,4 +110,10 @@
   color: var(--button-color);
 }
 
+@media(max-width: 600px){
+  .social-container{
+    width: 95%;
+  }
+}
+
 

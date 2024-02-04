@@ -19,6 +19,8 @@ export class LeaderboardComponent implements OnInit{
   // @ts-ignore
   dataSource: User[];
 
+  selected = 'Overall';
+
   constructor(
     private rankingService: RankingService,
     private friendshipService: FriendshipService,
@@ -27,13 +29,7 @@ export class LeaderboardComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.friendshipService.getFriendsRanking(this.usersService.loggedUser.username).subscribe(response=>{
-      this.dataSource = response;
-      this.dataSource.sort((a, b) => b.points - a.points)
-    }, error => {
-      this.notificationsService.showErrorNotification("Ranking table failed to load");
-      throw error;
-    });
+    this.getOverallRanking();
   }
 
   getFriendsRanking(){

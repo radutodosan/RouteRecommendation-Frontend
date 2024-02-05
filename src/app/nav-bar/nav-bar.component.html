@@ -38,7 +38,7 @@
           <a class="nav-link" (click)="basicNavbar.hide();openAuthenticatorModal();mustLoginAlert()"><i class="fa-solid fa-chart-column"></i> Statistics</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
-          <a class="nav-link" [routerLink]="['/social']" routerLinkActive="active" (click)="basicNavbar.hide()"><i class="fa-solid fa-users"></i> Social</a>
+          <a class="nav-link" [routerLink]="['/social/friends']" routerLinkActive="active" (click)="basicNavbar.hide()"><i class="fa-solid fa-users"></i> Social</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" (click)="basicNavbar.hide();openAuthenticatorModal();mustLoginAlert()"><i class="fa-solid fa-users"></i> Social</a>

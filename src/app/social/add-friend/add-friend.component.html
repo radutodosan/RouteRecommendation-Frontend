@@ -1,20 +1,24 @@
 <div class="add-friend-container">
-  <form [formGroup]="searchForm" class="search-form">
-    <div class="input-container ic1">
-      <input
-        matInput
-        (keyup)="searchUsers()"
-        type="text"
-        id="start"
-        class="input"
-        placeholder=""
-        formControlName="searchField"
-      />
-      <div class="cut"></div>
-      <label for="start" class="placeholder">Search People</label>
-<!--      <button type="button" class="btn search" (click)="searchUsers()"><i class="fa-solid fa-magnifying-glass"></i></button>-->
-    </div>
-  </form>
+  <div class="header-form">
+    <form [formGroup]="searchForm" class="search-form">
+      <div class="input-container ic1">
+        <input
+          matInput
+          (keyup)="searchUsers()"
+          type="text"
+          id="start"
+          class="input"
+          placeholder=""
+          formControlName="searchField"
+        />
+        <div class="cut"></div>
+        <label for="start" class="placeholder">Search People</label>
+      </div>
+    </form>
+    <button [routerLink]="['/social/friends']" class="btn back"><i class="fa-solid fa-arrow-left"></i> Back</button>
+  </div>
+
+  <hr class="my-10" />
 
   <div *ngIf="usersList$ | async as usersList">
     <app-user-card *ngFor="let user of usersList"

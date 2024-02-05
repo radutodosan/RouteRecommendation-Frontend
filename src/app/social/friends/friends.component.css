@@ -1,5 +1,5 @@
 .friends-container{
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -7,6 +7,10 @@
   content: "";
   display: table;
   clear: both;
+}
+
+.header-form{
+  display: flex;
 }
 
 .search-form{
@@ -34,10 +38,13 @@
   height: 50px;
   width: 50px;
 }
-.add{
-  float:left;
+.add-friends-button{
+  margin-left: auto;
 }
 
+hr{
+  color:var(--button-color);
+}
 
 .input-container {
   height: 50px;
@@ -110,3 +117,8 @@
   color: var(--button-color);
 }
 
+@media(max-width: 600px){
+  .friends-container{
+    width: 95%;
+  }
+}

@@ -50,6 +50,26 @@
   margin:10px;
 }
 
+.select-transport-container{
+  margin:0 auto 15px auto;
+  width: 100%;
+  justify-content: space-between;
+  border: none;
+}
+
+.select-transport-container .toggle-btn{
+  width: 60px;
+  color: var(--text-color);
+  background-color: var(--darker-background-color);
+  border: 1px solid var(--button-color);
+  padding: 0 5px;
+}
+
+.select-transport-container .toggle-btn:hover{
+  background-color: var(--hover-button-color);
+  border: 1px solid var(--hover-button-color);
+}
+
 
 .submit {
   background-color: var(--button-color);

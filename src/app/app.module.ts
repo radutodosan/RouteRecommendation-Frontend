@@ -35,6 +35,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {EditAddressesComponent} from "./profile/edit-addresses/edit-addresses.component";
 import {MatSelectModule} from "@angular/material/select";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     MatAutocompleteModule,
     MatTooltipModule,
     MatSelectModule,
-    MatTabsModule
+    MatTabsModule,
+    MatButtonToggleModule
   ],
   providers: [NotificationModule],
   bootstrap: [AppComponent]

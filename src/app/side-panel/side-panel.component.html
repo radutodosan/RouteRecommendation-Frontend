@@ -37,7 +37,13 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <button (click)="searchRoute()" class="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <mat-button-toggle-group formControlName="transportType" class="select-transport-container" name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle class="btn toggle-btn" value="0"><i class="fa-solid fa-car"></i></mat-button-toggle>
+      <mat-button-toggle class="btn toggle-btn" value="1"><i class="fa-solid fa-bus"></i></mat-button-toggle>
+      <mat-button-toggle class="btn toggle-btn" value="2"><i class="fa-solid fa-bicycle"></i></mat-button-toggle>
+      <mat-button-toggle class="btn toggle-btn" value="3"><i class="fa-solid fa-person-walking"></i></mat-button-toggle>
+    </mat-button-toggle-group>
+    <button [disabled]="!routeForm.valid" (click)="searchRoute()" class="btn submit"><i class="fa-solid fa-magnifying-glass"></i></button>
   </form>
 
 </div>

@@ -8,10 +8,10 @@
             <span class="destination"><i class="fa-solid fa-flag-checkered"></i> End: {{end}}</span>
           </div>
           <div class="transport-container ms-3 me-3">
-            <i *ngIf="transport == 'ELECTRIC_VEHICLE'" class="fa-solid fa-bicycle"></i>
-            <i *ngIf="transport == 'PUBLIC_TRANSPORT'" class="fa-solid fa-bicycle"></i>
+            <i *ngIf="transport == 'ELECTRIC_VEHICLE'" class="fa-solid fa-car"></i>
+            <i *ngIf="transport == 'PUBLIC_TRANSPORT'" class="fa-solid fa-bus"></i>
             <i *ngIf="transport == 'BIKE'" class="fa-solid fa-bicycle"></i>
-            <i *ngIf="transport == 'ON_FOOT'" class="fa-solid fa-bicycle"></i>
+            <i *ngIf="transport == 'ON_FOOT'" class="fa-solid fa-person-walking"></i>
           </div>
             <div class="info-container">
               <span class="d-block mb-0 info">{{distance}} km <br> {{emissions_saved}} CO2</span>

@@ -7,7 +7,6 @@ import {SavedAddressesService} from "../services/saved-addresses.service";
 import {RoutesService} from "../services/routes.service";
 import {UsersService} from "../services/users.service";
 import {NotificationsService} from "../services/notifications.service";
-import {Transport} from "../enums/transport";
 import {Router} from "@angular/router";
 
 @Component({
@@ -48,7 +47,8 @@ export class SidePanelComponent implements OnInit{
 
     this.routeForm = this.formBuilder.group({
       startValue: ['', Validators.required],
-      endValue: ['', Validators.required]
+      endValue: ['', Validators.required],
+      transportType: ['', Validators.required]
     });
 
   }
@@ -64,7 +64,7 @@ export class SidePanelComponent implements OnInit{
         user: this.usersService.loggedUser,
         start: this.routeForm.value["startValue"],
         end: this.routeForm.value["endValue"],
-        transport: Transport.BIKE,
+        transport: this.routeForm.value["transportType"],
       }
 
       this.routesService.addRoute(route).subscribe(response =>

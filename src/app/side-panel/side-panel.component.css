@@ -64,12 +64,14 @@
   border: 1px solid var(--button-color);
   padding: 0 5px;
 }
-
-.select-transport-container .toggle-btn:hover{
+.select-transport-container .toggle-btn:hover {
   background-color: var(--hover-button-color);
   border: 1px solid var(--hover-button-color);
 }
-
+.select-transport-container .mat-button-toggle-checked{
+  background-color: var(--hover-button-color);
+  border: 1px solid var(--hover-button-color);
+}
 
 .submit {
   background-color: var(--button-color);

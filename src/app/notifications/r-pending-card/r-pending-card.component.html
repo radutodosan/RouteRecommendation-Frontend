@@ -17,7 +17,7 @@
           </div>
 
           <div class="info-container ms-3">
-            <span class="d-block mb-0 info">{{distance}} km <br> {{emissions_saved}} CO2</span>
+            <span class="d-block mb-0 info">{{distance}} km <br> {{emissions_saved}} <i class="fa-solid fa-seedling" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="above"  #tooltip="matTooltip" style="cursor: pointer"></i></span>
           </div>
 
         </div>

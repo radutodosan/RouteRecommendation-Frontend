@@ -26,6 +26,9 @@
   justify-content: center;
   color: var(--blue-color);
 }
+.info-container .info i{
+  color: mediumseagreen;
+}
 
 .confirm{
   border: 1px solid mediumseagreen;

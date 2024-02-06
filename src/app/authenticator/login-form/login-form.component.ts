@@ -7,6 +7,7 @@ import {AuthenticatorComponent} from "../authenticator.component";
 import {FriendshipService} from "../../services/friendship.service";
 import {NotificationsService} from "../../services/notifications.service";
 import {SavedAddressesService} from "../../services/saved-addresses.service";
+import {RoutesService} from "../../services/routes.service";
 
 @Component({
   selector: 'app-login-form',
@@ -24,6 +25,7 @@ export class LoginFormComponent implements OnInit {
     private friendshipService: FriendshipService,
     private notificationsService: NotificationsService,
     private savedAddressesService: SavedAddressesService,
+    private routesService: RoutesService,
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +47,13 @@ export class LoginFormComponent implements OnInit {
         this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
           this.reloadPage();
           this.notificationsService.notificationsNumber = response.length;
+        }, error => {
+          throw error;
+        })
+
+        this.routesService.getPendingRoutes(this.usersService.loggedUser.id).subscribe(response =>{
+          this.reloadPage();
+          this.notificationsService.notificationsNumber += response.length;
         }, error => {
           throw error;
         })

@@ -4,6 +4,11 @@ import {MapService} from "../services/map.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {SavedAddress} from "../entities/saved-address";
 import {SavedAddressesService} from "../services/saved-addresses.service";
+import {RoutesService} from "../services/routes.service";
+import {UsersService} from "../services/users.service";
+import {NotificationsService} from "../services/notifications.service";
+import {Transport} from "../enums/transport";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-side-panel',
@@ -29,6 +34,11 @@ export class SidePanelComponent implements OnInit{
     private mapService:MapService,
     private formBuilder:FormBuilder,
     private savedAddressesService: SavedAddressesService,
+    private routesService: RoutesService,
+    private usersService: UsersService,
+    private notificationsService: NotificationsService,
+    private router:Router
+
   ) {
   }
 
@@ -48,6 +58,29 @@ export class SidePanelComponent implements OnInit{
     this.mapService.getLocationBySearch(this.routeForm.value["startValue"]);
     this.mapService.getLocationBySearch(this.routeForm.value["endValue"]);
     console.log(this.routeForm.value["startValue"], this.routeForm.value["endValue"])
+
+    if(this.usersService.loggedUser != null){
+      const route = {
+        user: this.usersService.loggedUser,
+        start: this.routeForm.value["startValue"],
+        end: this.routeForm.value["endValue"],
+        transport: Transport.BIKE,
+      }
+
+      this.routesService.addRoute(route).subscribe(response =>
+      {
+        console.log(response);
+        this.notificationsService.showSuccessNotification("Route Created!");
+        this.notificationsService.notificationsNumber ++;
+      }, error => {
+        this.notificationsService.showErrorNotification("Error creating route!");
+        throw error;
+      })
+    }
+    else{
+      this.notificationsService.showWarningNotification("You must login to start a route!")
+    }
+
   }
   searchStartLocation(){
     console.log("Searching start location...");
@@ -58,4 +91,10 @@ export class SidePanelComponent implements OnInit{
     this.mapService.getLocationBySearch(this.routeForm.value["endValue"]);
   }
 
+  reloadPage(){
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
 }

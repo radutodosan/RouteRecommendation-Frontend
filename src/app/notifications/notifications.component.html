@@ -24,16 +24,13 @@
     <div class="container-header">
       <h5>Routes In Progress</h5>
     </div>
-    <app-r-pending-card
-      city="Timisoara"
-      start="Complex Studentesc, Timisoara"
-      end="Universitatea de Vest, Timisoara"
-    ></app-r-pending-card>
-    <app-r-pending-card
-      city="Timisoara"
-      start="Complex Studentesc, Timisoara"
-      end="Universitatea de Vest, Timisoara"
-    ></app-r-pending-card>
+    <div *ngIf="pendingRoutesList$ | async as pendingRoutes">
+      <app-r-pending-card *ngFor="let route of pendingRoutes"
+                          city="Timisoara"
+                          start="{{route.start}}"
+                          end="{{route.end}}"
+      ></app-r-pending-card>
+    </div>
   </div>
 
 

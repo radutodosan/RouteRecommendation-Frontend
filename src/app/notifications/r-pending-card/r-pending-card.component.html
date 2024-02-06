@@ -3,19 +3,22 @@
     <div class="d-flex align-items-center">
       <div>
         <div class="d-flex align-items-center">
-          <div class="ms-4">
-            <span class="destination h5 d-block"><i class="fa-solid fa-location-dot"></i> Start: {{start}}</span>
-            <span class="destination"><i class="fa-solid fa-flag-checkered"></i> End: {{end}}</span>
-          </div>
-          <div class="transport-container ms-3 me-3">
+
+          <div class="transport-container">
             <i *ngIf="transport == 'ELECTRIC_VEHICLE'" class="fa-solid fa-car"></i>
             <i *ngIf="transport == 'PUBLIC_TRANSPORT'" class="fa-solid fa-bus"></i>
             <i *ngIf="transport == 'BIKE'" class="fa-solid fa-bicycle"></i>
             <i *ngIf="transport == 'ON_FOOT'" class="fa-solid fa-person-walking"></i>
           </div>
-            <div class="info-container">
-              <span class="d-block mb-0 info">{{distance}} km <br> {{emissions_saved}} CO2</span>
-            </div>
+
+          <div class="ms-3">
+            <span class="destination h5 d-block"><i class="fa-solid fa-location-dot"></i> Start: {{start}}</span>
+            <span class="destination"><i class="fa-solid fa-flag-checkered"></i> End: {{end}}</span>
+          </div>
+
+          <div class="info-container ms-3">
+            <span class="d-block mb-0 info">{{distance}} km <br> {{emissions_saved}} CO2</span>
+          </div>
 
         </div>
       </div>

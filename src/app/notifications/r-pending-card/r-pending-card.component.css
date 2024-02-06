@@ -24,6 +24,7 @@
 }
 .info-container .info{
   justify-content: center;
+  color: var(--blue-color);
 }
 
 .confirm{

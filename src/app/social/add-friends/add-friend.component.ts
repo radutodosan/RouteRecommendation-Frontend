@@ -5,7 +5,6 @@ import {UsersService} from "../../services/users.service";
 import {HttpClient} from "@angular/common/http";
 import {slideInUpOnEnterAnimation} from "angular-animations";
 import {FriendshipService} from "../../services/friendship.service";
-import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-add-friend',
@@ -28,7 +27,6 @@ export class AddFriendComponent {
     private friendshipService: FriendshipService,
     private http:HttpClient,
     private formBuilder: FormBuilder,
-    private notificationsService: NotificationsService,
   ) {}
 
   ngOnInit(){

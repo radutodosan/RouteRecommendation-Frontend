@@ -17,8 +17,6 @@
     </div>
   </div>
 
-<!--  <div class="separator"></div>-->
-
   <div class="routes-pending-container">
 
     <div class="container-header">
@@ -26,9 +24,13 @@
     </div>
     <div *ngIf="pendingRoutesList$ | async as pendingRoutes">
       <app-r-pending-card *ngFor="let route of pendingRoutes"
+                          id="{{route.id}}"
                           city="Timisoara"
                           start="{{route.start}}"
                           end="{{route.end}}"
+                          transport="{{route.transport}}"
+                          distance="{{route.distance}}"
+                          emissions_saved="{{route.emissions_saved}}"
       ></app-r-pending-card>
     </div>
   </div>

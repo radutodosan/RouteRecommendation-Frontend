@@ -57,9 +57,4 @@ export class FriendshipService {
     return this.http.get(SEARCH_NON_FRIENDS_URL);
   }
 
-  getFriendsRanking(username:string):Observable<any>{
-    const GET_FRIENDS_RANKING_URL = `${URL}/ranking/${username}`
-
-    return this.http.get(GET_FRIENDS_RANKING_URL);
-  }
 }

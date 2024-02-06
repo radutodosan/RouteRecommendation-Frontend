@@ -39,34 +39,20 @@ export class LoginFormComponent implements OnInit {
 
     this.usersService.loginUser(this.loginForm.value).subscribe(response=>{
       if(response != null){
+        console.log(response);
+
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
-        console.log(response);
-        this.notificationsService.showSuccessNotification("You logged in successfully!");
 
-        this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
-          this.reloadPage();
-          this.notificationsService.notificationsNumber = response.length;
-        }, error => {
-          throw error;
-        })
+        this.notificationsService.showSuccessNotification("Hello, " + this.usersService.loggedUser.full_name + "!");
 
-        this.routesService.getPendingRoutes(this.usersService.loggedUser.id).subscribe(response =>{
-          this.reloadPage();
-          this.notificationsService.notificationsNumber += response.length;
-        }, error => {
-          throw error;
-        })
+        this.getPendingFriendRequests();
 
-        this.savedAddressesService.getAddresses(this.usersService.loggedUser.id).subscribe(response =>{
-          this.savedAddressesService.savedAddresses = response;
-          localStorage.setItem("savedAddresses", JSON.stringify(this.savedAddressesService.savedAddresses));
-          console.log(this.savedAddressesService.savedAddresses);
-        }, error => {
-          this.notificationsService.showErrorNotification("Error Fetching Addresses!");
-          throw error;
-        })
+        this.getPendingRoutes();
 
+        this.getAddresses();
+
+        this.reloadPage();
       }
       else{
         this.notificationsService.showErrorNotification("Username or password are wrong!");
@@ -77,6 +63,40 @@ export class LoginFormComponent implements OnInit {
     })
 
   }
+
+  getPendingFriendRequests(){
+    this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
+      console.log("Friend requests: " + response.length);
+
+      this.notificationsService.notificationsNumber = response.length;
+    }, error => {
+      throw error;
+    })
+  }
+
+  getPendingRoutes(){
+    this.routesService.getPendingRoutes(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log("Pending routes: " + response.length);
+
+      this.notificationsService.notificationsNumber += response.length;
+    }, error => {
+      throw error;
+    })
+  }
+
+  getAddresses(){
+    this.savedAddressesService.getAddresses(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log(response);
+
+      this.savedAddressesService.savedAddresses = response;
+      localStorage.setItem("savedAddresses", JSON.stringify(this.savedAddressesService.savedAddresses));
+
+    }, error => {
+      this.notificationsService.showErrorNotification("Error Fetching Addresses!");
+      throw error;
+    })
+  }
+
 
   reloadPage(){
     const currentUrl = this.router.url;

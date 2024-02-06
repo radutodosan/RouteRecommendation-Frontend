@@ -62,10 +62,6 @@
 }
 
 /* THEME SWITCHER */
-/*.theme-switcher{*/
-/*  display: inline-block;*/
-/*  margin: 5px 10px;*/
-/*}*/
 
 .label-mode{
   width: 75px;
@@ -112,6 +108,7 @@ input:checked + .label-mode:after{
 }
 
 
+/* RESPONSIVE */
 @media(max-width: 991px){
   .navbar-brand{
     margin: 0 auto;

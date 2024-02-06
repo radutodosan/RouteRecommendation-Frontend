@@ -7,7 +7,7 @@ import {StatisticsComponent} from "./statistics/statistics.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {SocialComponent} from "./social/social.component";
 import {NotificationsComponent} from "./notifications/notifications.component";
-import {AddFriendComponent} from "./social/add-friend/add-friend.component";
+import {AddFriendComponent} from "./social/add-friends/add-friend.component";
 import {FriendsComponent} from "./social/friends/friends.component";
 
 const routes: Routes = [

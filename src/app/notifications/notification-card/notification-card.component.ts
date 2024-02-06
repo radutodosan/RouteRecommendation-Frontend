@@ -34,6 +34,7 @@ export class NotificationCardComponent {
       this.notificationsService.notificationsNumber --;
 
     }, error => {
+      this.notificationsService.showErrorNotification("ERROR accepting friend request!");
       throw error;
     })
   }

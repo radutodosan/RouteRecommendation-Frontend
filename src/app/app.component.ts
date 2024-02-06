@@ -11,11 +11,18 @@ export class AppComponent implements OnInit{
 
   currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
-  constructor() {}
+  constructor(){
+  }
 
   ngOnInit(): void {
     if (this.currentTheme) {
       document.documentElement.setAttribute('data-theme', this.currentTheme);
+      if(this.currentTheme == 'dark'){
+        const page = document.getElementById('page');
+        if(page != null)
+          page.classList.add('alternative');
+      }
+
     }
   }
 

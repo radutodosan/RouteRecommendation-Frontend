@@ -38,7 +38,7 @@ export class EditPassComponent implements OnInit{
     const c_new_password = this.changePassForm.value["c_new_password"];
     console.log(id,old_password,new_password)
     if(new_password == c_new_password){
-      this.usersService.changePassWord(id,old_password,new_password).subscribe(response=>{
+      this.usersService.changePassword(id,old_password,new_password).subscribe(response=>{
         console.log(response);
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));

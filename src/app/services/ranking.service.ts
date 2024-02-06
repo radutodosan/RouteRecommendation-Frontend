@@ -15,4 +15,10 @@ export class RankingService {
   getAllUsers():Observable<any>{
       return this.http.get(URL + "/ranking")
   }
+
+  getFriendsRanking(username:string):Observable<any>{
+    const GET_FRIENDS_RANKING_URL = `${URL}/ranking/${username}`
+
+    return this.http.get(GET_FRIENDS_RANKING_URL);
+  }
 }

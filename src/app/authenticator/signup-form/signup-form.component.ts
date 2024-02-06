@@ -34,7 +34,8 @@ export class SignupFormComponent implements OnInit{
     if(this.signupForm.value["password"] === this.signupForm.value["confirmPassword"]) {
       this.usersService.signupUser(this.signupForm.value).subscribe(response=>{
         console.log(response);
-        this.notificationsService.showSuccessNotification("You signed up successfully!");
+
+        this.notificationsService.showSuccessNotification("Account created!");
       }, err => {
           this.notificationsService.showErrorNotification("Sign up failed!");
           throw err;

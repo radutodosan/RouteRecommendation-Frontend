@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {slideInUpOnEnterAnimation} from "angular-animations";
 import {RankingService} from "../services/ranking.service";
-import {FriendshipService} from "../services/friendship.service";
 import {UsersService} from "../services/users.service";
 import {User} from "../entities/user";
 import {NotificationsService} from "../services/notifications.service";
@@ -16,16 +15,16 @@ import {NotificationsService} from "../services/notifications.service";
 })
 export class LeaderboardComponent implements OnInit{
   displayedColumns: string[] = ['position', 'photo', 'name', 'points'];
+
   // @ts-ignore
   dataSource: User[];
 
   selected = 'Overall';
 
   constructor(
-    private rankingService: RankingService,
-    private friendshipService: FriendshipService,
-    private usersService: UsersService,
     private notificationsService: NotificationsService,
+    private usersService: UsersService,
+    private rankingService: RankingService,
   ) {}
 
   ngOnInit(): void {
@@ -33,11 +32,11 @@ export class LeaderboardComponent implements OnInit{
   }
 
   getFriendsRanking(){
-    this.friendshipService.getFriendsRanking(this.usersService.loggedUser.username).subscribe(response=>{
+    this.rankingService.getFriendsRanking(this.usersService.loggedUser.username).subscribe(response=>{
       this.dataSource = response;
       this.dataSource.sort((a, b) => b.points - a.points)
     }, error => {
-      this.notificationsService.showErrorNotification("Ranking table failed to load");
+      this.notificationsService.showErrorNotification("Table failed to load!");
       throw error;
     });
   }
@@ -45,7 +44,7 @@ export class LeaderboardComponent implements OnInit{
     this.rankingService.getAllUsers().subscribe(response =>{
       this.dataSource = response;
     }, error => {
-      this.notificationsService.showErrorNotification("Ranking table failed to load");
+      this.notificationsService.showErrorNotification("Table failed to load!");
       throw error;
     })
   }

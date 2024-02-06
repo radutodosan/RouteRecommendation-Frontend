@@ -40,25 +40,6 @@ export class NavBarComponent implements OnInit{
     this.modalRef = this.modalService.open(AuthenticatorComponent)
   }
 
-  // @ts-ignore
-  switchTheme(e) {
-    if (e.target.checked) {
-      document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('theme', 'light'); //add this
-    }
-    else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark'); //add this
-    }
-
-    if(window.location.pathname === '/map'){
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
-
-    }
-  }
-
   mustLoginAlert(){
     this.notificationsService.showDefaultNotification('You must login to access!');
   }
@@ -70,10 +51,28 @@ export class NavBarComponent implements OnInit{
     this.router.navigate(['/notifications',this.usersService.loggedUser.username]);
   }
 
-  reloadPage(){
-    const currentUrl = this.router.url;
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentUrl]);
-    });
+  // @ts-ignore
+  switchTheme(e) {
+    if (e.target.checked) {
+      document.documentElement.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light'); //add this
+      const page = document.getElementById('page');
+      if(page != null)
+        page.classList.remove('alternative');
+    }
+    else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark'); //add this
+      const page = document.getElementById('page');
+      if(page != null)
+        page.classList.add('alternative');
+    }
+
+    if(window.location.pathname === '/map'){
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+
+    }
   }
 }

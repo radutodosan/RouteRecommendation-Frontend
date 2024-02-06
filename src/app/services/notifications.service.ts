@@ -3,6 +3,7 @@ import {NotifierService} from "angular-notifier";
 import {NotificationType} from "../enums/notification-type";
 import {FriendshipService} from "./friendship.service";
 import {UsersService} from "./users.service";
+import {RoutesService} from "./routes.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class NotificationsService {
   constructor(
     private notifier: NotifierService,
     private friendshipService: FriendshipService,
+    private routesService: RoutesService,
     private usersService: UsersService
   ) {
     if(this.usersService.isLoggedIn()){
@@ -23,6 +25,12 @@ export class NotificationsService {
       }, error => {
         throw error;
       });
+
+      this.routesService.getPendingRoutes(this.usersService.loggedUser.id).subscribe(response =>{
+        this.notificationsNumber += response.length;
+      }, error => {
+        throw error;
+      })
     }
 
   }

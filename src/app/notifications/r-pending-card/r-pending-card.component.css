@@ -14,6 +14,18 @@
   color: var(--text-color);
 }
 
+.transport-container{
+  color:var(--text-color);
+  transition: none;
+}
+
+.info-container{
+  margin-left: auto;
+}
+.info-container .info{
+  justify-content: center;
+}
+
 .confirm{
   border: 1px solid mediumseagreen;
   float: right;

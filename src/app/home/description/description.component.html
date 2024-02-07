@@ -1,23 +1,26 @@
 
-<div class="description-container">
+<div class="info-container">
   <div class="photo">
     <img src="assets/Photos/description-photo(2).jpg" alt="favicon.ico">
   </div>
   <div class="description">
-    <!--    <p class="title">{{title}}</p>-->
+    <div class="title-container">
 
-    <ngx-typed-js
-      [strings]="[title]"
-      [loop]="true"
-      [typeSpeed]="100"
-      [backSpeed]="75"
-      [backDelay]="250"
-      [showCursor]="false"
-    >
-      <p class="typing title"></p>
-    </ngx-typed-js>
-
-    <p>{{description}}</p>
+      <ngx-typed-js
+        [strings]="[title]"
+        [loop]="true"
+        [typeSpeed]="100"
+        [backSpeed]="75"
+        [backDelay]="250"
+        [showCursor]="false"
+      >
+        <p class="typing title"></p>
+      </ngx-typed-js>
+    </div>
+    <div class="description-container">
+      <p>{{description}}</p>
+    </div>
   </div>
+
 
 </div>

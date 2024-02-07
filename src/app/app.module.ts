@@ -36,6 +36,7 @@ import {EditAddressesComponent} from "./profile/edit-addresses/edit-addresses.co
 import {MatSelectModule} from "@angular/material/select";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MapDescriptionComponent} from "./home/map-description/map-description.component";
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     DelLogoutConfirmationComponent,
     EditPassComponent,
     FriendsComponent,
-    EditAddressesComponent
+    EditAddressesComponent,
+    MapDescriptionComponent
   ],
   imports: [
     BrowserModule,

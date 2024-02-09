@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./description.component.css']
 })
 export class DescriptionComponent {
-  title = "Route Recommendation"
+  title = "Smart City"
   description="Lucrarea mea de licență are ca scop dezvoltarea și implementarea unui sistem inteligent de recomandare" +
     " a rutelor adaptat vehiculelor ecologice, concentrându-se pe promovarea mobilității urbane durabile. " +
     "Sistemul utilizează algoritmi de machine learning pentru  analiza datelor în timp real și pentru a furniza recomandări" +

@@ -36,7 +36,8 @@ import {EditAddressesComponent} from "./profile/edit-addresses/edit-addresses.co
 import {MatSelectModule} from "@angular/material/select";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import {MapDescriptionComponent} from "./home/map-description/map-description.component";
+import {FeaturesComponent} from "./home/features/features.component";
+import {FeatureBoxComponent} from "./home/features/feature-box/feature-box.component";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {MapDescriptionComponent} from "./home/map-description/map-description.co
     EditPassComponent,
     FriendsComponent,
     EditAddressesComponent,
-    MapDescriptionComponent
+    FeaturesComponent,
+    FeatureBoxComponent
   ],
   imports: [
     BrowserModule,

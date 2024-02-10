@@ -5,19 +5,42 @@
     <img *ngIf="feature == 'MAP' && currentTheme != 'dark'" src="assets/Photos/map-light.png" alt="favicon.ico">
   </div>
 
-  <div *ngIf="feature == 'STATS'">
+  <div *ngIf="feature == 'STATS'" class="stats">
     <div class="header-div"><i class="fa-solid fa-chart-column"></i></div>
-
+    <img src="assets/Photos/stats.png" alt="favicon.ico">
   </div>
 
   <div *ngIf="feature == 'RANKING'">
     <div class="header-div"><i class="fa-solid fa-ranking-star"></i></div>
+    <div class="table-container">
+      <table  mat-table [dataSource]="dataSource">
 
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element let i = index"> {{i+1}} </td>
+        </ng-container>
+
+        <!-- Photo Column -->
+        <ng-container matColumnDef="photo">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"> <img src="{{element.picture_url}}" alt="{{element.picture_url}}" style="height: 40px;width: 40px;border-radius: 40px"> </td>
+        </ng-container>
+
+        <!-- Points Column -->
+        <ng-container matColumnDef="points">
+          <th mat-header-cell *matHeaderCellDef ><i class="get-info fa-solid fa-circle-info" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="above"  #tooltip="matTooltip" style="cursor: pointer"></i></th>
+          <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
   </div>
 
   <div *ngIf="feature == 'NOTIFICATIONS'">
     <div class="header-div"><i class="fa-regular fa-bell"></i></div>
 
   </div>
-
 </div>

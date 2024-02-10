@@ -8,6 +8,8 @@
   width: 85%;
   margin: 1vh auto;
 }
+.table-container:hover{
+}
 
 table {
   background-color: var(--darker-background-color);

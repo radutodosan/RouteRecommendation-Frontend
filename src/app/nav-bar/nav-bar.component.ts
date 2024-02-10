@@ -68,11 +68,20 @@ export class NavBarComponent implements OnInit{
         page.classList.add('alternative');
     }
 
+    this.reloadPage();
+
     if(window.location.pathname === '/map'){
       setTimeout(() => {
         window.location.reload();
       }, 250);
 
     }
+  }
+
+  reloadPage(){
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

@@ -24,7 +24,8 @@ app-feature-box{
   cursor: pointer;
 }
 app-feature-box:hover{
-  transform: scale(1.03);
+  /*transform: scale(1.03);*/
+  scale: 1.03;
 }
 
 @media (max-width: 1353px) {

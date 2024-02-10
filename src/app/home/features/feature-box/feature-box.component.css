@@ -21,9 +21,45 @@
   font-size: 24px;
 }
 
+/* MAP */
 img {
+  background-color: var(--darker-background-color);
   height: 100%;
   width: 100%;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+/* STATS */
+.stats{
+}
+.stats img{
+  transition: .3s;
+  background-color: var(--darker-background-color);
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  padding-top: 55px;
+}
+
+/* RANKING CARD */
+.table-container{
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 10px;
+
+}
+.table-container table *{
+  background-color: var(--darker-background-color);
+  transition: .3s;
+}
+.table-container table td{
+  color:var(--text-color);
+  text-align: center;
+}
+
+.table-container table th{
+  color:var(--blue-color);
+  font-weight: 700;
+  text-align: center;
 }

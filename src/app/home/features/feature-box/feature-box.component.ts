@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-feature-box',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./feature-box.component.css']
 })
 export class FeatureBoxComponent {
-
+  currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  @Input() feature = '';
 }

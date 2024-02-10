@@ -30,6 +30,7 @@ export class MapService {
 
   getMap(mapDiv: ElementRef){
 
+
       if(localStorage.getItem('theme') === 'light'){
       this.map = new H.Map(
         mapDiv.nativeElement,

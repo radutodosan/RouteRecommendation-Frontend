@@ -1,0 +1,29 @@
+.feature-box{
+  position: relative;
+}
+
+
+.header-div{
+  position: absolute;
+  left: 112px;
+  top:-37.5px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
+  background-color: var(--blue-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-div i{
+  color:var(--text-color);
+  font-size: 24px;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

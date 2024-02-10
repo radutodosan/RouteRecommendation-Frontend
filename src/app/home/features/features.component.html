@@ -1,17 +1,22 @@
 <div class="features-container">
-  <app-feature-box>
+  <app-feature-box
+    feature="MAP"
+    *ngIf="isLoggedIn()" [routerLink]="['/map']"
 
-  </app-feature-box>
+  ></app-feature-box>
 
-  <app-feature-box>
+  <app-feature-box
+    feature="STATS"
+    *ngIf="isLoggedIn()" [routerLink]="['/statistics']"
+  ></app-feature-box>
 
-  </app-feature-box>
+  <app-feature-box
+    feature="RANKING"
+    *ngIf="isLoggedIn()" [routerLink]="['/ranking']"
+  ></app-feature-box>
 
-  <app-feature-box>
-
-  </app-feature-box>
-
-  <app-feature-box>
-
-  </app-feature-box>
+  <app-feature-box
+    feature="NOTIFICATIONS"
+    *ngIf="isLoggedIn()" (click)="openNotificationsPage()"
+  ></app-feature-box>
 </div>

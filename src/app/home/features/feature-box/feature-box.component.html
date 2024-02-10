@@ -41,6 +41,11 @@
 
   <div *ngIf="feature == 'NOTIFICATIONS'">
     <div class="header-div"><i class="fa-regular fa-bell"></i></div>
-
+    <div class="notifications-container">
+      <span style="font-size: 21px;font-weight: 700;">{{friendRequests}}</span><span> Pending Friend Requests</span>
+      <hr class="my-10" />
+      <span style="font-size: 21px;font-weight: 700;">{{routesPending}}</span><span> Pending Routes</span>
+      <hr class="my-10" />
+    </div>
   </div>
 </div>

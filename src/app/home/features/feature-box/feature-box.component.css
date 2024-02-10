@@ -26,8 +26,8 @@ img {
   background-color: var(--darker-background-color);
   height: 100%;
   width: 100%;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 /* STATS */
@@ -53,6 +53,10 @@ img {
   background-color: var(--darker-background-color);
   transition: .3s;
 }
+
+.table-container table{
+  background-color: var(--darker-background-color);
+}
 .table-container table td{
   color:var(--text-color);
   text-align: center;
@@ -62,4 +66,20 @@ img {
   color:var(--blue-color);
   font-weight: 700;
   text-align: center;
+}
+
+/* NOTIFICATIONS */
+
+.notifications-container{
+  padding-top: 50px;
+  width: 90%;
+  margin: 0 auto;
+}
+.notifications-container span{
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+hr{
+  color: var(--blue-color);
 }

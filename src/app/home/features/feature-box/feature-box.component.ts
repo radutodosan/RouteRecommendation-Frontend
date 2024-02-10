@@ -2,6 +2,8 @@ import {Component, Input} from '@angular/core';
 import {NotificationsService} from "../../../services/notifications.service";
 import {UsersService} from "../../../services/users.service";
 import {RankingService} from "../../../services/ranking.service";
+import {FriendshipService} from "../../../services/friendship.service";
+import {RoutesService} from "../../../services/routes.service";
 
 @Component({
   selector: 'app-feature-box',
@@ -17,22 +19,52 @@ export class FeatureBoxComponent {
   // @ts-ignore
   dataSource: User[];
 
+  friendRequests:number = 0;
+  routesPending:number = 0;
+
   constructor(
     private notificationsService: NotificationsService,
     private usersService: UsersService,
     private rankingService: RankingService,
+    private friendshipService: FriendshipService,
+    private routesService: RoutesService
   ) {}
 
   ngOnInit(): void {
     this.getOverallRanking();
+    this.getPendingFriendRequests();
+    this.getPendingRoutes();
   }
 
   getOverallRanking(){
     this.rankingService.getAllUsers().subscribe(response =>{
       this.dataSource = response;
-      this.dataSource.length = 5;
+      if(this.dataSource.length > 5)
+        this.dataSource.length = 5;
     }, error => {
       this.notificationsService.showErrorNotification("Table failed to load!");
+      throw error;
+    })
+  }
+
+  getPendingFriendRequests(){
+    this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
+      console.log("Friend requests: " + response.length);
+
+      this.notificationsService.notificationsNumber = response.length;
+      this.friendRequests = response.length;
+    }, error => {
+      throw error;
+    })
+  }
+
+  getPendingRoutes(){
+    this.routesService.getPendingRoutes(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log("Pending routes: " + response.length);
+
+      this.notificationsService.notificationsNumber += response.length;
+      this.routesPending = response.length;
+    }, error => {
       throw error;
     })
   }

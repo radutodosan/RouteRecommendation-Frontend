@@ -49,9 +49,6 @@ export class FeatureBoxComponent {
 
   getPendingFriendRequests(){
     this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
-      console.log("Friend requests: " + response.length);
-
-      this.notificationsService.notificationsNumber = response.length;
       this.friendRequests = response.length;
     }, error => {
       throw error;
@@ -60,9 +57,6 @@ export class FeatureBoxComponent {
 
   getPendingRoutes(){
     this.routesService.getPendingRoutes(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Pending routes: " + response.length);
-
-      this.notificationsService.notificationsNumber += response.length;
       this.routesPending = response.length;
     }, error => {
       throw error;

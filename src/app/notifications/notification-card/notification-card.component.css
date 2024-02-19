@@ -7,6 +7,9 @@
 
 }
 
+/* USER */
+
+/* AVATAR */
 .avatar{
   background-color: var(--blue-color);
 }
@@ -16,16 +19,7 @@
   width: 100px;
 }
 
-.points-container{
-  margin-left:auto;
-}
-.points-container .points{
-  color:var(--button-color);
-  justify-content: center;
-  text-align: center;
-  font-weight: 700;
-}
-
+/* USER INFO */
 .card .full_name{
   font-weight: 700;
 }
@@ -33,14 +27,23 @@
   font-size: 16px;
   cursor: pointer;
 }
+.points{
+  color:var(--button-color);
+  font-weight: 700;
+}
+.points i{
+  color: mediumseagreen;
+}
 .card .view-profile:hover{
   color: var(--blue-color);
   border-bottom: 1px solid var(--blue-color);
 }
-
 .card span{
   color: var(--text-color);
 }
+
+
+/* RIGHT BUTTONS */
 
 .confirm{
   border: 1px solid mediumseagreen;
@@ -65,6 +68,7 @@
   border: 1px solid crimson;
 }
 
+/* RESPONSIVE */
 @media(max-width: 600px){
   .card .email{
     font-size: 11px;

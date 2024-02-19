@@ -1,27 +1,25 @@
 <div class="card shadow mt-4 mb-10">
   <div class="card-body">
     <div class="d-flex align-items-center">
+
       <div>
         <div class="d-flex align-items-center">
-          <a href="#" class="avatar rounded-circle text-white">
+          <a class="avatar rounded-circle text-white">
             <img src="{{picture_url}}" alt="https://robohash.org/hehehe?bgset=bg1">
           </a>
           <div class="ms-4">
             <span class="full_name h5 d-block mb-0">{{full_name}}</span>
+            <span class="d-block mb-0 points"  >{{points}} <i class="fa-solid fa-seedling" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="below"  #tooltip="matTooltip" style="cursor: pointer"></i></span>
             <span class="view-profile">View Profile</span>
           </div>
         </div>
       </div>
-      <div class="points-container">
-        <span class="d-block mb-0 points"  >Points <i class="get-info fa-solid fa-circle-info" style="cursor: pointer" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="above"  #tooltip="matTooltip"></i><br>{{points}}</span>
-      </div>
+
       <div class="ms-auto">
         <button type="button" class="btn cancel" [disabled]="clicked" (click)="declineFriendRequest()"><i class="fa-solid fa-xmark"></i></button>
         <button type="button" class="btn confirm" [disabled]="clicked" (click)="acceptFriendRequest()"><i class="fa-solid fa-check"></i></button>
-
-
-
       </div>
+
     </div>
   </div>
 </div>

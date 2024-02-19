@@ -3,36 +3,39 @@
   background-color: var(--darker-background-color);
 
 }
-.card .full_name{
-  font-weight: 700;
-}
-.card .user{
-  font-size: 16px;
-}
 
-.card span{
-  color: var(--text-color);
-}
+/* USER */
 
+/* AVATAR */
 .avatar{
   background-color: var(--blue-color);
 }
-
 .avatar img{
   border-radius: 50%;
   height: 100px;
   width: 100px;
 }
 
-.points-container{
-  margin-left:auto;
-}
-.points-container .points{
-  color:var(--button-color);
-  justify-content: center;
-  text-align: center;
+/* USER INFO */
+.card .full_name{
   font-weight: 700;
 }
+.card .user{
+  font-size: 16px;
+}
+.card span{
+  color: var(--text-color);
+}
+
+/* POINTS */
+.points{
+  color:var(--button-color);
+  font-weight: 700;
+}
+.points i{
+  color: mediumseagreen;
+}
+
 
 .container-fluid hr{
   color:var(--button-color);

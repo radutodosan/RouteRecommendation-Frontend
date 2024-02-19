@@ -20,17 +20,10 @@
                   </a>
                   <div class="ms-4">
                     <span class="full_name h5 d-block mb-0">{{loggedUser.full_name}}</span>
+                    <span class="d-block mb-0 points">{{loggedUser.points}} <i class="fa-solid fa-seedling" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="below"  #tooltip="matTooltip" style="cursor: pointer"></i></span>
                     <span class="user">ID: {{loggedUser.username}}</span>
                   </div>
                 </div>
-              </div>
-              <div class="points-container">
-                <span class="d-block mb-0 points">
-                  Points
-                  <i class="get-info fa-solid fa-circle-info" style="cursor: pointer" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="above"  #tooltip="matTooltip"></i>
-                  <br>{{loggedUser.points}}
-                </span>
-                <!--        <span class="points">37</span>-->
               </div>
               <div class="ms-auto">
                 <button type="button" class="btn update-photo">Update Photo</button>

@@ -28,6 +28,11 @@ app-feature-box:hover{
   scale: 1.03;
 }
 
+app-feature-box:focus{
+  /*transform: scale(1.03);*/
+  scale: 1.03;
+}
+
 @media (max-width: 1353px) {
   .features-container{
     gap:50px;

@@ -33,7 +33,7 @@
 
     <!-- Points Column -->
     <ng-container matColumnDef="points">
-      <th mat-header-cell *matHeaderCellDef >Points <i class="get-info fa-solid fa-circle-info" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="above"  #tooltip="matTooltip" style="cursor: pointer"></i></th>
+      <th mat-header-cell *matHeaderCellDef ><i class="get-info fa-solid fa-seedling" (click)="tooltip.toggle()" matTooltip="CO2 Emissions Saved" matTooltipPosition="above"  #tooltip="matTooltip" style="cursor: pointer"></i></th>
       <td mat-cell *matCellDef="let element"> {{element.points}} </td>
     </ng-container>
 

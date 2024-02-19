@@ -27,3 +27,6 @@ table th{
   font-weight: 700;
 }
 
+table th i{
+  color: mediumseagreen;
+}

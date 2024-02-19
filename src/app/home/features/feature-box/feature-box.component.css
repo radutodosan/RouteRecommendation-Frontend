@@ -67,6 +67,9 @@ img {
   font-weight: 700;
   text-align: center;
 }
+table th i{
+  color: mediumseagreen;
+}
 
 /* NOTIFICATIONS */
 

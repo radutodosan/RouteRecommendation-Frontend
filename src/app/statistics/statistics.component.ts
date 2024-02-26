@@ -13,6 +13,8 @@ import {UsersService} from "../services/users.service";
 })
 export class StatisticsComponent implements OnInit{
 
+  data:any;
+
   constructor(
     private usersService: UsersService,
     private statsService: StatsService
@@ -25,7 +27,7 @@ export class StatisticsComponent implements OnInit{
       this.getEmissionsSavedPerMonth();
       this.getCalBurnedPerMonth();
       this.getMoneySavedPerMonth();
-      this.getTransportPercentage();
+      this.data = this.getTransportPercentage();
     }
 
   }
@@ -69,9 +71,10 @@ export class StatisticsComponent implements OnInit{
     });
   }
 
-  getTransportPercentage(){
+  getTransportPercentage():any{
     this.statsService.getTransportPercentage(this.usersService.loggedUser.id).subscribe(response =>{
       console.log("Transport percentage: ", response);
+      return response;
     }, error => {
       throw error;
     });

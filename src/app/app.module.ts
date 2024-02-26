@@ -38,6 +38,9 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {FeaturesComponent} from "./home/features/features.component";
 import {FeatureBoxComponent} from "./home/features/feature-box/feature-box.component";
+import {ChartComponent} from "./statistics/chart/chart.component";
+
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 @NgModule({
   declarations: [
@@ -59,7 +62,8 @@ import {FeatureBoxComponent} from "./home/features/feature-box/feature-box.compo
     FriendsComponent,
     EditAddressesComponent,
     FeaturesComponent,
-    FeatureBoxComponent
+    FeatureBoxComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,8 @@ import {FeatureBoxComponent} from "./home/features/feature-box/feature-box.compo
     MatTooltipModule,
     MatSelectModule,
     MatTabsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    CanvasJSAngularChartsModule,
   ],
   providers: [NotificationModule],
   bootstrap: [AppComponent]

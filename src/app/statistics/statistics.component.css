@@ -1,7 +1,27 @@
 .statistics-container{
-  width: 90%;
-  margin: 1vh auto;
+  width: 95%;
+  margin: 1vh auto 25px auto;
   color:var(--text-color);
-  height: 500px;
+  min-height: 300px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+app-chart{
+  width: 500px;
+  height: 350px;
+  background-color: var(--darker-background-color);
+  border-radius: 10px;
+  margin: 0 auto;
+  justify-content: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1353px) {
+  .features-container{
+    gap:50px;
+  }
 }
 

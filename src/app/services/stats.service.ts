@@ -9,6 +9,67 @@ const URL = ["http://localhost:8080"];
 })
 
 export class StatsService {
+  get nrOfRoutes(): any {
+    return this._nrOfRoutes;
+  }
+
+  set nrOfRoutes(value: any) {
+    this._nrOfRoutes = value;
+  }
+
+  get kmCompleted(): any {
+    return this._kmCompleted;
+  }
+
+  set kmCompleted(value: any) {
+    this._kmCompleted = value;
+  }
+
+  get emissionsSaved(): any {
+    return this._emissionsSaved;
+  }
+
+  set emissionsSaved(value: any) {
+    this._emissionsSaved = value;
+  }
+
+  get calBurned(): any {
+    return this._calBurned;
+  }
+
+  set calBurned(value: any) {
+    this._calBurned = value;
+  }
+
+  get moneySaved(): any {
+    return this._moneySaved;
+  }
+
+  set moneySaved(value: any) {
+    this._moneySaved = value;
+  }
+
+  get transportPercentage(): any {
+    return this._transportPercentage;
+  }
+
+  set transportPercentage(value: any) {
+    this._transportPercentage = value;
+  }
+
+
+  //@ts-ignore
+  private _nrOfRoutes: any = JSON.parse(localStorage.getItem("nrOfRoutes"));
+  //@ts-ignore
+  private _kmCompleted: any = JSON.parse(localStorage.getItem("kmCompleted"));
+  //@ts-ignore
+  private _emissionsSaved: any = JSON.parse(localStorage.getItem("emissionsSaved"));
+  //@ts-ignore
+  private _calBurned: any = JSON.parse(localStorage.getItem("calBurned"));
+  //@ts-ignore
+  private _moneySaved: any = JSON.parse(localStorage.getItem("moneySaved"));
+  //@ts-ignore
+  private _transportPercentage: any = JSON.parse(localStorage.getItem("transportPercentage"));
 
   constructor(
     private http:HttpClient,

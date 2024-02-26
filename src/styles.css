@@ -109,3 +109,8 @@ mdb-modal-container {
   width: 100%;
 
 }
+
+/* CHARTS */
+.canvasjs-chart-credit{
+  display: none;
+}

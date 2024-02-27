@@ -66,10 +66,12 @@ export class ChartComponent implements OnInit{
 
       this.chartOptions = {
         animationEnabled: true,
-        theme: 'dark2',
+        theme: 'light2',
         backgroundColor: "transparent",
+
         subtitles: [{
-          text: this.title
+          text: this.title,
+          fontColor: "#a1a1a1"
         }],
         data: [{
           type: type, //change type to column, line, area, doughnut, etc
@@ -86,13 +88,14 @@ export class ChartComponent implements OnInit{
 
       this.chartOptions = {
         animationEnabled: true,
-        theme: 'dark2',
+        theme: 'light2',
         backgroundColor: "transparent",
         subtitles: [{
           text: this.title
         }],
         data: [{
           type: type, //change type to column, line, area, doughnut, etc
+
           dataPoints:chartData
 
         }]

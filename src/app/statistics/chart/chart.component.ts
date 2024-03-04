@@ -68,10 +68,9 @@ export class ChartComponent implements OnInit{
         animationEnabled: true,
         theme: 'light2',
         backgroundColor: "transparent",
-
         subtitles: [{
           text: this.title,
-          fontColor: "#a1a1a1"
+          fontColor: "#b0b0b0"
         }],
         data: [{
           type: type, //change type to column, line, area, doughnut, etc
@@ -91,7 +90,8 @@ export class ChartComponent implements OnInit{
         theme: 'light2',
         backgroundColor: "transparent",
         subtitles: [{
-          text: this.title
+          text: this.title,
+          fontColor: "#b0b0b0"
         }],
         data: [{
           type: type, //change type to column, line, area, doughnut, etc

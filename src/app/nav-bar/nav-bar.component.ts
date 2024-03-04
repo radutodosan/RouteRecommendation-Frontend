@@ -53,12 +53,19 @@ export class NavBarComponent implements OnInit{
 
   // @ts-ignore
   switchTheme(e) {
+    var featureMap = document.getElementById("feature-map") as HTMLImageElement;
+
+
     if (e.target.checked) {
       document.documentElement.setAttribute('data-theme', 'light');
       localStorage.setItem('theme', 'light'); //add this
       const page = document.getElementById('page');
       if(page != null)
         page.classList.remove('alternative');
+
+      if(window.location.pathname === '/home'){
+        featureMap.src = "assets/Photos/map-light.png"
+      }
     }
     else {
       document.documentElement.setAttribute('data-theme', 'dark');
@@ -66,6 +73,10 @@ export class NavBarComponent implements OnInit{
       const page = document.getElementById('page');
       if(page != null)
         page.classList.add('alternative');
+
+      if(window.location.pathname === '/home'){
+        featureMap.src = "assets/Photos/map-dark.png"      }
+
     }
 
     this.reloadPage();

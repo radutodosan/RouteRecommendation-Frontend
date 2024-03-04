@@ -3,6 +3,7 @@ import {NotificationsService} from "../../services/notifications.service";
 import {RoutesService} from "../../services/routes.service";
 import {Router} from "@angular/router";
 import {UsersService} from "../../services/users.service";
+import {StatsService} from "../../services/stats.service";
 
 @Component({
   selector: 'app-r-pending-card',
@@ -25,6 +26,7 @@ export class RPendingCardComponent {
     private usersService: UsersService,
     private routesService:RoutesService,
     private router:Router,
+    private statsService: StatsService,
   ) {
   }
 
@@ -44,8 +46,17 @@ export class RPendingCardComponent {
       this.usersService.loggedUser = response.user;
       localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
       this.notificationsService.showSuccessNotification("Route Completed!");
-      this.reloadPage();
       this.notificationsService.notificationsNumber --;
+
+      this.getNrOfRoutesPerMonth();
+      this.getKmCompletedPerMonth();
+      this.getEmissionsSavedPerMonth();
+      this.getCalBurnedPerMonth();
+      this.getMoneySavedPerMonth();
+      this.getTransportPercentage();
+
+      this.reloadPage();
+
     }, error => {
       this.notificationsService.showErrorNotification("ERROR completing route!");
       throw error;
@@ -65,6 +76,73 @@ export class RPendingCardComponent {
       throw error;
     })
   }
+
+  getNrOfRoutesPerMonth(){
+    this.statsService.getNrOfRoutesPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log("Routes per month: ", response);
+
+      this.statsService.nrOfRoutes = response;
+      localStorage.setItem("nrOfRoutes", JSON.stringify(this.statsService.nrOfRoutes));
+    }, error => {
+      throw error;
+    });
+
+  }
+  getKmCompletedPerMonth(){
+    this.statsService.getKmCompletedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log("Km per month: ", response);
+
+      this.statsService.kmCompleted = response;
+      localStorage.setItem("kmCompleted", JSON.stringify(this.statsService.kmCompleted));
+    }, error => {
+      throw error;
+    });
+  }
+
+  getEmissionsSavedPerMonth(){
+    this.statsService.getEmissionsSavedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log("Emissions saved per month: ", response);
+
+      this.statsService.emissionsSaved = response;
+      localStorage.setItem("emissionsSaved", JSON.stringify(this.statsService.emissionsSaved));
+    }, error => {
+      throw error;
+    });
+  }
+
+  getCalBurnedPerMonth(){
+    this.statsService.getCalBurnedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log("Calories burned per month: ", response);
+
+      this.statsService.calBurned = response;
+      localStorage.setItem("calBurned", JSON.stringify(this.statsService.calBurned));
+    }, error => {
+      throw error;
+    });
+  }
+
+  getMoneySavedPerMonth(){
+    this.statsService.getMoneySavedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log("Money saved per month: ", response);
+
+      this.statsService.moneySaved = response;
+      localStorage.setItem("moneySaved", JSON.stringify(this.statsService.moneySaved));
+    }, error => {
+      throw error;
+    });
+  }
+
+  getTransportPercentage(): void{
+    this.statsService.getTransportPercentage(this.usersService.loggedUser.id).subscribe(response =>{
+      console.log("Transport percentage: ", response);
+
+      this.statsService.transportPercentage = response;
+      localStorage.setItem("transportPercentage", JSON.stringify(this.statsService.transportPercentage));
+    }, error => {
+      throw error;
+    });
+  }
+
 
   reloadPage(){
     const currentUrl = this.router.url;

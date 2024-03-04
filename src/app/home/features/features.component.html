@@ -1,21 +1,25 @@
 <div class="features-container">
   <app-feature-box
+    matTooltip="Map" matTooltipPosition="below"
     feature="MAP"
     *ngIf="isLoggedIn()" [routerLink]="['/map']"
 
   ></app-feature-box>
 
   <app-feature-box
+    matTooltip="Stats" matTooltipPosition="below"
     feature="STATS"
     *ngIf="isLoggedIn()" [routerLink]="['/statistics']"
   ></app-feature-box>
 
   <app-feature-box
+    matTooltip="Ranking" matTooltipPosition="below"
     feature="RANKING"
     *ngIf="isLoggedIn()" [routerLink]="['/ranking']"
   ></app-feature-box>
 
   <app-feature-box
+    matTooltip="Notifications" matTooltipPosition="below"
     feature="NOTIFICATIONS"
     *ngIf="isLoggedIn()" (click)="openNotificationsPage()"
   ></app-feature-box>

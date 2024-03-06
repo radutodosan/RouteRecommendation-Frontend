@@ -1,8 +1,7 @@
 <div class="feature-box">
   <div *ngIf="feature == 'MAP'">
     <div class="header-div"><i class="fa-solid fa-map-location-dot"></i></div>
-    <img id="feature-map" *ngIf="feature == 'MAP'" src="assets/Photos/map-dark.png" alt="favicon.ico">
-    <img *ngIf="feature == 'MAP' && currentTheme != 'dark'" src="assets/Photos/map-light.png" alt="favicon.ico">
+    <img id="feature-map" *ngIf="feature == 'MAP'" src="assets/Photos/map-{{currentTheme}}.png" alt="favicon.ico">
   </div>
 
   <div *ngIf="feature == 'STATS'" class="stats">

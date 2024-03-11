@@ -21,4 +21,8 @@ export class RankingService {
 
     return this.http.get(GET_FRIENDS_RANKING_URL);
   }
+
+  getUvtUsers():Observable<any>{
+    return this.http.get(URL + "/ranking/uvt")
+  }
 }

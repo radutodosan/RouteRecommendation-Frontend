@@ -48,4 +48,13 @@ export class LeaderboardComponent implements OnInit{
       throw error;
     })
   }
+
+  getUvtRanking(){
+    this.rankingService.getUvtUsers().subscribe(response =>{
+      this.dataSource = response;
+    }, error => {
+      this.notificationsService.showErrorNotification("Table failed to load!");
+      throw error;
+    })
+  }
 }

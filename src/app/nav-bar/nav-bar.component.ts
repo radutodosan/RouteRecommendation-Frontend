@@ -79,12 +79,10 @@ export class NavBarComponent implements OnInit{
 
     }
 
-    this.reloadPage();
 
-    if(window.location.pathname === '/map'){
-      setTimeout(() => {
-        window.location.reload();
-      }, 250);
+
+    if(window.location.pathname != '/map'){
+      this.reloadPage();
 
     }
   }

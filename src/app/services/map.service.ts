@@ -51,8 +51,8 @@ export class MapService {
       .setLatLng(event.latlng)
       .setContent(`
       <ul style="justify-content: center">
-        <li id="addStartMarker" style="cursor: pointer; padding:2px 0;"><img src="../../assets/Photos/Markers/start-marker.png" height="32px" width="24px" alt=""> Start</li>
-        <li id="addEndMarker" style="cursor: pointer; padding:2px 0"><img src="../../assets/Photos/Markers/end-marker.png" height="32px" width="32px" alt=""> End</li>
+        <li id="addStartMarker" style="cursor: pointer; padding:2px 0;"><img src="../../assets/Photos/Markers/start-marker.png" alt=""> Start</li>
+        <li id="addEndMarker" style="cursor: pointer; padding:2px 0"><img src="../../assets/Photos/Markers/end-marker.png" alt=""> End</li>
       </ul>
     `)
       .openOn(this.map);
@@ -138,8 +138,8 @@ export class MapService {
     if(type == 0)
       L.Marker.prototype.options.icon = L.icon({
         iconUrl: '../../assets/Photos/Markers/start-marker.png',
-        iconSize: [24, 32], // Adjust the size as needed
-        iconAnchor: [24, 32] // Adjust the anchor point if necessary
+        iconSize: [32, 32], // Adjust the size as needed
+        iconAnchor: [32, 32] // Adjust the anchor point if necessary
       });
     else
       L.Marker.prototype.options.icon = L.icon({

@@ -1,57 +1,71 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 // @ts-ignore
 import onResize from 'simple-element-resize-detector';
 import {MapService} from "../services/map.service";
+
+import * as L from 'leaflet';
+
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.css']
 })
-export class MapComponent implements AfterViewInit{
+export class MapComponent implements AfterViewInit, OnInit{
 
   @ViewChild('map') mapDiv?: ElementRef;
+
+  // @ts-ignore
+  map: L.Map;
   constructor(
     private mapService:MapService,
   ) {}
 
+  ngOnInit() {
+    this.map = this.mapService.getMap();
+
+    // Add contextmenu event listener to the map
+    this.map.on('contextmenu', (e) => this.mapService.onMapRightClick(e));
+
+
+  }
+
+
   ngAfterViewInit(): void {
-    if (this.mapDiv) {
-
-      const layers = this.mapService.getLayers();
-
-      const map = this.mapService.getMap(this.mapDiv);
-
-      onResize(this.mapDiv.nativeElement, () => {
-        map.getViewPort().resize();
-      });
-
-      // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
-      const behavior = this.mapService.addBehavior(map);
-
-
-      // Adding real-time traffic flow data
-      if(localStorage.getItem('theme') === 'light'){
-        map.addLayer((layers as any).vector.traffic.map);
-      }
-      else{
-        map.addLayer((layers as any).vector.traffic.litenight);
-      }
-
-
-      // Create the default UI components
-      const ui = this.mapService.addMapUI(map);
-
-      // Disable map-settings
-      const control = ui.getControl('mapsettings');
-      if(control)
-        control.setVisibility(false);
-
-      // Add the DistanceMeasurement control to the UI
-      ui.addControl("distancemeasurement",  this.mapService.addDistanceMeasurement());
-
-
-    }
+    // if (this.mapDiv) {
+    //
+    //   const layers = this.mapService.getLayers();
+    //
+    //   const map = this.mapService.getMap(this.mapDiv);
+    //
+    //   onResize(this.mapDiv.nativeElement, () => {
+    //     map.getViewPort().resize();
+    //   });
+    //
+    //   // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+    //   const behavior = this.mapService.addBehavior(map);
+    //
+    //
+    //   // Adding real-time traffic flow data
+    //   if(localStorage.getItem('theme') === 'light'){
+    //     map.addLayer((layers as any).vector.traffic.map);
+    //   }
+    //   else{
+    //     map.addLayer((layers as any).vector.traffic.litenight);
+    //   }
+    //
+    //
+    //   // Create the default UI components
+    //   const ui = this.mapService.addMapUI(map);
+    //
+    //   // Disable map-settings
+    //   const control = ui.getControl('mapsettings');
+    //   if(control)
+    //     control.setVisibility(false);
+    //
+    //   // Add the DistanceMeasurement control to the UI
+    //   ui.addControl("distancemeasurement",  this.mapService.addDistanceMeasurement());
+    // }
 
   }
 

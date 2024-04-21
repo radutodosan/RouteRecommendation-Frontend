@@ -27,12 +27,12 @@
             "styles": [
               "src/custom-theme.scss",
               "src/styles.css",
-              "node_modules/@here/maps-api-for-javascript/bin/mapsjs-ui.css"
+              "node_modules/@here/maps-api-for-javascript/bin/mapsjs-ui.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [
               "node_modules/chart.js/dist/chart.js",
-              "node_modules/chart.js/dist/chart.js",
-              "node_modules/chart.js/dist/chart.js"
+              "node_modules/leaflet/dist/leaflet.js"
             ]
           },
           "configurations": {
@@ -95,9 +95,12 @@
             "styles": [
               "src/styles.css",
               "node_modules/@here/maps-api-for-javascript/bin/mapsjs-ui.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/leaflet/dist/leaflet.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/leaflet/dist/leaflet.js"
+            ]
           }
         }
       }

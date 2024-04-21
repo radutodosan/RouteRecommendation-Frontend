@@ -1,3 +1,5 @@
 #map {
   height: 95vh;
+  z-index: 0;
 }
+

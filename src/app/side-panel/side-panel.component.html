@@ -6,6 +6,9 @@
     <mat-form-field>
       <input formControlName="startValue" type="text" placeholder="Start" aria-label="Number" matInput [matAutocomplete]="start">
       <mat-autocomplete #start="matAutocomplete" >
+        <mat-option (click)="searchCurrentLocation()">
+          <i class="fa-solid fa-location-dot"></i> &nbsp; Current Location
+        </mat-option>
         <mat-option *ngIf="savedAddresses?.home" (click)="searchStartLocation()" [value]="savedAddresses.home">
           <i class="fa-solid fa-house"></i> &nbsp; Home
         </mat-option>

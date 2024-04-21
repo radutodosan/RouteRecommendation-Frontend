@@ -38,8 +38,7 @@ export class SidePanelComponent implements OnInit{
     private notificationsService: NotificationsService,
     private router:Router
 
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.savedAddresses = this.savedAddressesService.savedAddresses;
@@ -55,8 +54,8 @@ export class SidePanelComponent implements OnInit{
 
   searchRoute(){
     console.log("Searching...");
-    this.mapService.getLocationBySearch(this.routeForm.value["startValue"]);
-    this.mapService.getLocationBySearch(this.routeForm.value["endValue"]);
+    this.mapService.getLocationBySearch(this.routeForm.value["startValue"], 0);
+    this.mapService.getLocationBySearch(this.routeForm.value["endValue"], 1);
     console.log(this.routeForm.value["startValue"], this.routeForm.value["endValue"])
 
     if(this.usersService.loggedUser != null){
@@ -84,11 +83,15 @@ export class SidePanelComponent implements OnInit{
   }
   searchStartLocation(){
     console.log("Searching start location...");
-    this.mapService.getLocationBySearch(this.routeForm.value["startValue"]);
+    this.mapService.getLocationBySearch(this.routeForm.value["startValue"], 0);
   }
   searchEndLocation(){
     console.log("Searching end location...");
-    this.mapService.getLocationBySearch(this.routeForm.value["endValue"]);
+    this.mapService.getLocationBySearch(this.routeForm.value["endValue"], 1);
+  }
+  searchCurrentLocation(){
+    console.log("Searching current location...");
+    this.mapService.getCurrentLocation();
   }
 
   reloadPage(){

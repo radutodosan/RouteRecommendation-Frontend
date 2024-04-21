@@ -39,7 +39,6 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {FeaturesComponent} from "./home/features/features.component";
 import {FeatureBoxComponent} from "./home/features/feature-box/feature-box.component";
 import {ChartComponent} from "./statistics/chart/chart.component";
-
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 @NgModule({

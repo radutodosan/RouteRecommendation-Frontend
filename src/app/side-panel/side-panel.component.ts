@@ -50,6 +50,15 @@ export class SidePanelComponent implements OnInit{
       transportType: ['', Validators.required]
     });
 
+    // Subscribe to marker addresses emitted by MapService
+    this.mapService.startAddress$.subscribe(startAddress => {
+      this.routeForm.patchValue({ startValue: startAddress });
+    });
+
+    this.mapService.endAddress$.subscribe(endAddress => {
+      this.routeForm.patchValue({ endValue: endAddress });
+    });
+
   }
 
   searchRoute(){

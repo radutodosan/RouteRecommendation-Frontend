@@ -4,6 +4,7 @@ import H from "@here/maps-api-for-javascript";
 
 import * as L from "leaflet";
 import axios from 'axios';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,14 @@ export class MapService {
   // @ts-ignore
   private endMarker: L.Marker;
 
-  // @ts-ignore
-  startAddress:Promise<any>;
-  // @ts-ignore
-  endAddress:Promise<any>;
+  _startAddress:string = '';
+  _endAddress:string = '';
+
+  private startAddressSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private endAddressSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  startAddress$ = this.startAddressSubject.asObservable();
+  endAddress$ = this.endAddressSubject.asObservable();
 
   getMap(){
 
@@ -52,26 +57,28 @@ export class MapService {
       .openOn(this.map);
 
     // @ts-ignore
-    document.getElementById('addStartMarker').addEventListener('click', () => {
+    document.getElementById('addStartMarker').addEventListener('click', async () => {
       this.markerType(0);
       // Remove the old marker if it exists
       if (this.startMarker) {
         this.map.removeLayer(this.startMarker);
       }
       this.startMarker = this.addMarker([event.latlng.lat, event.latlng.lng]);
-      this.startAddress = this.getAddress(event.latlng.lat, event.latlng.lng);
+      this.startAddress = await this.getAddress(event.latlng.lat, event.latlng.lng);
+      this.startAddressSubject.next(this.startAddress);
       contextMenu.remove(); // Close the context menu after adding the marker
     });
 
     // @ts-ignore
-    document.getElementById('addEndMarker').addEventListener('click', () => {
+    document.getElementById('addEndMarker').addEventListener('click', async () => {
       this.markerType(1);
       // Remove the old marker if it exists
       if (this.endMarker) {
         this.map.removeLayer(this.endMarker);
       }
       this.endMarker = this.addMarker([event.latlng.lat, event.latlng.lng]);
-      this.endAddress = this.getAddress(event.latlng.lat, event.latlng.lng);
+      this.endAddress = await this.getAddress(event.latlng.lat, event.latlng.lng);
+      this.endAddressSubject.next(this.endAddress);
       contextMenu.remove(); // Close the context menu after adding the marker
     });
   }
@@ -86,16 +93,16 @@ export class MapService {
           this.map.removeLayer(this.startMarker);
         }
         this.startMarker = this.addMarker([lat, lon]);
-        this.startAddress = this.getAddress(lat,lon);
+        this.startAddress = await this.getAddress(lat, lon);
       }
       else{
         if (this.endMarker) {
           this.map.removeLayer(this.endMarker);
         }
         this.endMarker = this.addMarker([lat, lon]);
-        this.endAddress = this.getAddress(lat,lon);
+        this.endAddress = await this.getAddress(lat, lon);
       }
-      this.map.setView([lat, lon], 13);
+      this.map.setView([lat, lon], 15);
 
     } catch (error) {
       console.error('Error geocoding address:', error);
@@ -112,7 +119,8 @@ export class MapService {
         }
         this.startMarker = this.addMarker([latitude,longitude]);
         this.map.setView([latitude, longitude], 15);
-        await this.getAddress(latitude, longitude);
+        this.startAddress = await this.getAddress(latitude, longitude);
+        this.startAddressSubject.next(this.startAddress);
       }, (error) => {
         console.error('Error getting current location:', error);
       });
@@ -150,21 +158,21 @@ export class MapService {
     return address;
   }
 
-  //
-  // get endAddress(): string {
-  //   return this._endAddress;
-  // }
-  //
-  // set endAddress(value: string) {
-  //   this._endAddress = value;
-  // }
-  // get startAddress(): string {
-  //   return this._startAddress;
-  // }
-  //
-  // set startAddress(value: string) {
-  //   this._startAddress = value;
-  // }
+
+  get endAddress(): string {
+    return this._endAddress;
+  }
+
+  set endAddress(value: string) {
+    this._endAddress = value;
+  }
+  get startAddress(): string {
+    return this._startAddress;
+  }
+
+  set startAddress(value: string) {
+    this._startAddress = value;
+  }
 
   // private map?:H.Map;
   //

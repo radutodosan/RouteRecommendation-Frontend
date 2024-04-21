@@ -34,7 +34,7 @@
   z-index: 1;
 }
 .collapse-div fa-icon{
-  color:var(--text-color);
+  color: #1C1C1CFF;
   transition: scale .3s;
 
 }

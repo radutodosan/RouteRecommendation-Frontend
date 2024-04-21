@@ -40,6 +40,7 @@ body{
   --button-color : #5579C6;
   --hover-button-color : #648de5;
   --scrollbar-color: #424242;
+  --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 }
 
 [data-theme="light"] {
@@ -121,4 +122,10 @@ mdb-modal-container {
 }
 .leaflet-popup-close-button{
   display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .map-tiles {
+    filter:var(--map-tiles-filter, none);
+  }
 }

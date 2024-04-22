@@ -119,6 +119,9 @@ mdb-modal-container {
 /* MARKERS POP-UP */
 .leaflet-popup-content ul{
   padding: 0;
+
+}
+.leaflet-popup-content li{
 }
 .leaflet-popup-close-button{
   display: none;

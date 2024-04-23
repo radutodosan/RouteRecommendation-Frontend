@@ -7,7 +7,6 @@ import {SavedAddressesService} from "../services/saved-addresses.service";
 import {RoutesService} from "../services/routes.service";
 import {UsersService} from "../services/users.service";
 import {NotificationsService} from "../services/notifications.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-side-panel',
@@ -36,8 +35,6 @@ export class SidePanelComponent implements OnInit{
     private routesService: RoutesService,
     private usersService: UsersService,
     private notificationsService: NotificationsService,
-    private router:Router
-
   ) {}
 
   ngOnInit(): void {
@@ -63,29 +60,13 @@ export class SidePanelComponent implements OnInit{
 
   searchRoute(){
     console.log("Searching...");
-    this.mapService.getLocationBySearch(this.routeForm.value["startValue"], 0);
-    this.mapService.getLocationBySearch(this.routeForm.value["endValue"], 1);
-    console.log(this.routeForm.value["startValue"], this.routeForm.value["endValue"])
 
-    if(this.usersService.loggedUser != null){
-      const route = {
-        user: this.usersService.loggedUser,
-        start: this.routeForm.value["startValue"],
-        end: this.routeForm.value["endValue"],
-        transport: this.routeForm.value["transportType"],
-      }
+    this.sendAddressesToCalculateRoute();
 
-      this.routesService.addRoute(route).subscribe(response =>
-      {
-        console.log(response);
-        this.notificationsService.showSuccessNotification("Route Created!");
-        this.notificationsService.notificationsNumber ++;
-      }, error => {
-        this.notificationsService.showErrorNotification("Error creating route!");
-        throw error;
-      })
+    if(this.usersService.loggedUser != null) {
+      this.sendRoute()
     }
-    else{
+    else {
       this.notificationsService.showWarningNotification("You must login to start a route!")
     }
 
@@ -103,10 +84,36 @@ export class SidePanelComponent implements OnInit{
     this.mapService.getCurrentLocation();
   }
 
-  reloadPage(){
-    const currentUrl = this.router.url;
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currentUrl]);
-    });
+  sendAddressesToCalculateRoute(){
+    this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"]).subscribe(
+      response => {
+        // @ts-ignore
+        this.mapService.drawRoute(response["routes"])
+      },
+      error => {
+        console.error('Error calculating routes:', error)
+        this.notificationsService.showErrorNotification("Error calculating routes!")
+      }
+
+    );
+  }
+
+  sendRoute(){
+    const route = {
+      user: this.usersService.loggedUser,
+      start: this.routeForm.value["startValue"],
+      end: this.routeForm.value["endValue"],
+      transport: this.routeForm.value["transportType"],
+    }
+
+    this.routesService.addRoute(route).subscribe(response =>
+    {
+      console.log(response);
+      this.notificationsService.showSuccessNotification("Route Created!");
+      this.notificationsService.notificationsNumber ++;
+    }, error => {
+      this.notificationsService.showErrorNotification("Error creating route!");
+      throw error;
+    })
   }
 }

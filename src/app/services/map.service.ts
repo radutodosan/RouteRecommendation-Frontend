@@ -75,6 +75,7 @@ export class MapService {
       this.markerType(0);
 
       this.clearOldStartMarker()
+      this.clearOldDrawnRoute()
 
       this.startMarker = this.addMarker([event.latlng.lat, event.latlng.lng]);
       this.startAddress = await this.getAddress(event.latlng.lat, event.latlng.lng);
@@ -87,6 +88,7 @@ export class MapService {
       this.markerType(1);
 
       this.clearOldEndMarker();
+      this.clearOldDrawnRoute()
 
       this.endMarker = this.addMarker([event.latlng.lat, event.latlng.lng]);
       this.endAddress = await this.getAddress(event.latlng.lat, event.latlng.lng);
@@ -102,6 +104,7 @@ export class MapService {
       this.markerType(type);
       if(type == 0){
         this.clearOldStartMarker();
+        this.clearOldDrawnRoute()
 
         this.startMarker = this.addMarker([lat, lon]);
         this.startAddress = await this.getAddress(lat, lon);
@@ -109,6 +112,7 @@ export class MapService {
       else{
 
         this.clearOldEndMarker();
+        this.clearOldDrawnRoute()
 
         this.endMarker = this.addMarker([lat, lon]);
         this.endAddress = await this.getAddress(lat, lon);
@@ -129,6 +133,7 @@ export class MapService {
         this.markerType(0);
 
         this.clearOldStartMarker()
+        this.clearOldDrawnRoute()
 
         this.startMarker = this.addMarker([latitude,longitude]);
         this.map.setView([latitude, longitude], 15);

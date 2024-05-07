@@ -89,6 +89,9 @@ export class SidePanelComponent implements OnInit{
       response => {
         // @ts-ignore
         this.mapService.drawRoute(response["routes"])
+        console.log(response)
+        this.notificationsService.showSuccessNotification("Route Created!");
+        this.notificationsService.notificationsNumber ++;
       },
       error => {
         console.error('Error calculating routes:', error)
@@ -109,8 +112,6 @@ export class SidePanelComponent implements OnInit{
     this.routesService.addRoute(route).subscribe(response =>
     {
       console.log(response);
-      this.notificationsService.showSuccessNotification("Route Created!");
-      this.notificationsService.notificationsNumber ++;
     }, error => {
       this.notificationsService.showErrorNotification("Error creating route!");
       throw error;

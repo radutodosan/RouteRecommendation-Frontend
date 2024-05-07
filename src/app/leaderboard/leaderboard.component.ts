@@ -8,7 +8,7 @@ import {NotificationsService} from "../services/notifications.service";
 @Component({
   selector: 'app-leaderboard',
   animations:[
-    slideInUpOnEnterAnimation({duration:650})
+    slideInUpOnEnterAnimation({duration:500})
   ],
   templateUrl: './leaderboard.component.html',
   styleUrls: ['./leaderboard.component.css'],

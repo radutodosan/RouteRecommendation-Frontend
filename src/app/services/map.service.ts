@@ -7,6 +7,7 @@ import axios from 'axios';
 import {BehaviorSubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Polyline} from "leaflet";
+import {NotificationsService} from "./notifications.service";
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,8 @@ export class MapService {
   endAddress$ = this.endAddressSubject.asObservable();
 
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    private notificationsService: NotificationsService,
   ) {}
 
 
@@ -122,6 +124,7 @@ export class MapService {
 
     } catch (error) {
       console.error('Error geocoding address:', error);
+      this.notificationsService.showErrorNotification("Address not found!");
     }
   }
 
@@ -175,13 +178,14 @@ export class MapService {
     return address;
   }
 
-  sendAddresses(start:string, end:string){
+  sendAddresses(start:string, end:string, network_type:string){
     const URL = ["http://localhost:5000"];
     const SEND_ADDRESSES_URL = `${URL}/addresses`;
 
     const body = {
       start: start,
-      end: end
+      end: end,
+      network_type: network_type
     };
 
     return this.http.post(SEND_ADDRESSES_URL, body);

@@ -61,16 +61,51 @@ export class SidePanelComponent implements OnInit{
   searchRoute(){
     console.log("Searching...");
 
-    this.sendAddressesToCalculateRoute();
+    let network_type: string;
+    switch(this.routeForm.value["transportType"]) {
+      case '0': {
+        network_type = 'drive';
+        break;
+      }
+      case '1': {
+        network_type = 'bus';
+        break;
+      }
+      case '2': {
+        network_type = 'all';
+        break;
+      }
+      case '3': {
+        network_type = 'walk';
+        break;
+      }
+      default: {
+        network_type = 'drive ';
+        break;
+      }
+    }
 
-    if(this.usersService.loggedUser != null) {
-      this.sendRoute()
-    }
-    else {
-      this.notificationsService.showWarningNotification("You must login to start a route!")
-    }
+    this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], network_type).subscribe(
+      response => {
+        console.log(response)
+        // @ts-ignore
+        this.mapService.drawRoute(response["route_nodes"])
+        this.notificationsService.showSuccessNotification("Route Created!");
+        this.notificationsService.notificationsNumber ++;
+
+        // @ts-ignore
+        this.sendRoute(response["route_distance"], response["emissions_saved"], response["cal_burned"]);
+
+      },
+      error => {
+        console.error('Error calculating routes:', error)
+        this.notificationsService.showErrorNotification("Error calculating routes!")
+      }
+
+    );
 
   }
+
   searchStartLocation(){
     console.log("Searching start location...");
     this.mapService.getLocationBySearch(this.routeForm.value["startValue"], 0);
@@ -84,37 +119,30 @@ export class SidePanelComponent implements OnInit{
     this.mapService.getCurrentLocation();
   }
 
-  sendAddressesToCalculateRoute(){
-    this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"]).subscribe(
-      response => {
-        // @ts-ignore
-        this.mapService.drawRoute(response["routes"])
-        console.log(response)
-        this.notificationsService.showSuccessNotification("Route Created!");
-        this.notificationsService.notificationsNumber ++;
-      },
-      error => {
-        console.error('Error calculating routes:', error)
-        this.notificationsService.showErrorNotification("Error calculating routes!")
+
+  sendRoute(route_distance:any, emissions_saved:any, cal_burned:any){
+    if(this.usersService.loggedUser != null) {
+      const route = {
+        user: this.usersService.loggedUser,
+        start: this.routeForm.value["startValue"],
+        end: this.routeForm.value["endValue"],
+        transport: this.routeForm.value["transportType"],
+        distance: route_distance.toFixed(2),
+        emissions_saved:emissions_saved,
+        cal_burned:cal_burned.toFixed(0)
       }
 
-    );
-  }
-
-  sendRoute(){
-    const route = {
-      user: this.usersService.loggedUser,
-      start: this.routeForm.value["startValue"],
-      end: this.routeForm.value["endValue"],
-      transport: this.routeForm.value["transportType"],
+      this.routesService.addRoute(route).subscribe(response =>
+      {
+        console.log(response);
+      }, error => {
+        this.notificationsService.showErrorNotification("Error creating route!");
+        throw error;
+      })
+    }
+    else{
+      this.notificationsService.showWarningNotification("You must login to start a route!")
     }
 
-    this.routesService.addRoute(route).subscribe(response =>
-    {
-      console.log(response);
-    }, error => {
-      this.notificationsService.showErrorNotification("Error creating route!");
-      throw error;
-    })
   }
 }

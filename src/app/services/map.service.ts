@@ -201,7 +201,7 @@ export class MapService {
     if (routeCoordinates.length > 0) {
 
       this._routePolyline = L.polyline(routeLatLngs, { color: "#1F75FE" }).addTo(this.map);
-      this.map.fitBounds(this._routePolyline.getBounds());
+      this.map.fitBounds(this._routePolyline.getBounds(), {paddingTopLeft: [400, 0]});
     }
   }
 

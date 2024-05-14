@@ -5,15 +5,15 @@
         <div class="d-flex align-items-center">
 
           <div class="transport-container">
-            <i *ngIf="transport == 'ELECTRIC_VEHICLE'" class="fa-solid fa-car"></i>
-            <i *ngIf="transport == 'PUBLIC_TRANSPORT'" class="fa-solid fa-bus"></i>
-            <i *ngIf="transport == 'BIKE'" class="fa-solid fa-bicycle"></i>
-            <i *ngIf="transport == 'ON_FOOT'" class="fa-solid fa-person-walking"></i>
+            <i *ngIf="transport == 'Electric_Vehicle'" class="fa-solid fa-car"></i>
+            <i *ngIf="transport == 'Public_Transport'" class="fa-solid fa-bus"></i>
+            <i *ngIf="transport == 'Bike'" class="fa-solid fa-bicycle"></i>
+            <i *ngIf="transport == 'Walk'" class="fa-solid fa-person-walking"></i>
           </div>
 
           <div class="ms-3">
-            <span class="destination h5 d-block"><i class="fa-solid fa-location-dot"></i> Start: {{start}}</span>
-            <span class="destination"><i class="fa-solid fa-flag-checkered"></i> End: {{end}}</span>
+            <span class="destination h5 d-block"><i class="fa-solid fa-location-dot"></i> Start: <i>{{start}}</i></span>
+            <span class="destination"><i class="fa-solid fa-flag-checkered"></i> End: <i>{{end}}</i></span>
           </div>
 
           <div class="info-container ms-3">

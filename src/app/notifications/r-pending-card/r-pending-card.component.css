@@ -21,6 +21,7 @@
 
 .info-container{
   margin-left: auto;
+  min-width: 60px;
 }
 .info-container .info{
   justify-content: center;

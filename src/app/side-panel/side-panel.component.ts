@@ -59,7 +59,7 @@ export class SidePanelComponent implements OnInit{
   }
 
   searchRoute(){
-    console.log("Searching...");
+    this.notificationsService.showDefaultNotification("Calculating route...");
 
     let network_type: string;
     switch(this.routeForm.value["transportType"]) {
@@ -94,7 +94,7 @@ export class SidePanelComponent implements OnInit{
         this.notificationsService.notificationsNumber ++;
 
         // @ts-ignore
-        this.sendRoute(response["route_distance"], response["emissions_saved"], response["cal_burned"]);
+        this.sendRoute(response["route_distance"], response["emissions_saved"], response["cal_burned"], response["travel_time"], response["avg_speed"]);
 
       },
       error => {
@@ -120,16 +120,17 @@ export class SidePanelComponent implements OnInit{
   }
 
 
-  sendRoute(route_distance:any, emissions_saved:any, cal_burned:any){
+  sendRoute(route_distance:any, emissions_saved:any, cal_burned:any, travel_time:any, avg_speed:any){
     if(this.usersService.loggedUser != null) {
       const route = {
         user: this.usersService.loggedUser,
         start: this.routeForm.value["startValue"],
         end: this.routeForm.value["endValue"],
         transport: this.routeForm.value["transportType"],
-        distance: route_distance.toFixed(2),
-        emissions_saved:emissions_saved,
-        cal_burned:cal_burned.toFixed(0)
+        distance: route_distance,
+        emissions_saved: emissions_saved,
+        cal_burned:cal_burned.toFixed(0),
+        time:travel_time
       }
 
       this.routesService.addRoute(route).subscribe(response =>

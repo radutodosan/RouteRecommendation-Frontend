@@ -4,11 +4,13 @@
   z-index: 1;
   left: 0;
   overflow-x: hidden;
+  overflow-y:scroll;
+  scrollbar-width: none;
   transition: 0.5s;
   /*border-radius: 8px;*/
   display: flex;
   flex-direction: column;
-  min-height: 95vh;
+  height: 95vh;
   background-color: var(--darker-background-color);
 
 }
@@ -16,12 +18,12 @@
 .collapse-div{
   height: 100%;
   line-height: 100%;
-  width: 30px;
+  width: 45px;
   cursor: pointer;
   left: 0;
   top: 0;
   transition: margin-left .5s;
-  margin-left: 335px;
+  margin-left: 325px;
   position: absolute;
   font-weight:bold;
   font-size:20px;
@@ -93,3 +95,9 @@
 .submit:active {
   background-color: var(--hover-button-color);
 }
+
+/* ROUTES PANELS */
+
+/*.route-panel{*/
+/*  display: none;*/
+/*}*/

@@ -28,6 +28,9 @@ export class SidePanelComponent implements OnInit{
   //@ts-ignore
   savedAddresses: SavedAddress;
 
+  route:any = null;
+  route_directions:any = null;
+
   constructor(
     private mapService:MapService,
     private formBuilder:FormBuilder,
@@ -95,6 +98,8 @@ export class SidePanelComponent implements OnInit{
 
         // @ts-ignore
         this.sendRoute(response["route_distance"], response["emissions_saved"], response["cal_burned"], response["travel_time"], response["avg_speed"]);
+        // @ts-ignore
+        this.route_directions = response["directions"];
 
       },
       error => {
@@ -122,7 +127,7 @@ export class SidePanelComponent implements OnInit{
 
   sendRoute(route_distance:any, emissions_saved:any, cal_burned:any, travel_time:any, avg_speed:any){
     if(this.usersService.loggedUser != null) {
-      const route = {
+      this.route = {
         user: this.usersService.loggedUser,
         start: this.routeForm.value["startValue"],
         end: this.routeForm.value["endValue"],
@@ -133,7 +138,7 @@ export class SidePanelComponent implements OnInit{
         time:travel_time
       }
 
-      this.routesService.addRoute(route).subscribe(response =>
+      this.routesService.addRoute(this.route).subscribe(response =>
       {
         console.log(response);
       }, error => {

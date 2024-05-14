@@ -1,7 +1,5 @@
 <div id="side-panel" class="side-panel" >
 
-
-
   <form class="addresses-form" [formGroup]="routeForm">
     <mat-form-field>
       <input formControlName="startValue" type="text" placeholder="Start" aria-label="Number" matInput [matAutocomplete]="start">
@@ -49,6 +47,32 @@
     <button [disabled]="!routeForm.valid" (click)="searchRoute()" class="btn submit"><i class="fa-solid fa-magnifying-glass"></i></button>
   </form>
 
+
+  <mat-accordion *ngIf="route != null" class="route-panel" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <i *ngIf="routeForm.value['transportType'] == '0'" class="fa-solid fa-car"></i>
+          <i *ngIf="routeForm.value['transportType'] == '1'" class="fa-solid fa-bus"></i>
+          <i *ngIf="routeForm.value['transportType'] == '2'" class="fa-solid fa-bicycle"></i>
+          <i *ngIf="routeForm.value['transportType'] == '3'" class="fa-solid fa-person-walking"></i>
+        </mat-panel-title>
+        <mat-panel-description>
+          <span>{{this.route['distance']}}km &nbsp; {{this.route['time']}}min</span>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngFor="let direction of route_directions" style="display: flex;">
+        <div style="margin-right: 10px">
+          <i *ngIf="direction.toString().includes('Start')" class="fa-solid fa-location-dot"></i>
+          <i *ngIf="direction.toString().includes('left')" class="fa-solid fa-arrow-left"></i>
+          <i *ngIf="direction.toString().includes('right')" class="fa-solid fa-arrow-right"></i>
+          <i *ngIf="direction.toString().includes('reached')" class="fa-solid fa-flag-checkered"></i>
+        </div>
+        <span style="font-size: 13px">{{direction}}<br><br></span>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
 
 <div id="collapse-bar" class="collapse-div" onClick="openCloseNav()">

@@ -132,3 +132,9 @@ mdb-modal-container {
     filter:var(--map-tiles-filter, none);
   }
 }
+
+/* ROUTE PANELS (side-panel) */
+mat-accordion{
+  padding: 10px;
+  margin: 10px;
+}

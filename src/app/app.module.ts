@@ -40,6 +40,8 @@ import {FeaturesComponent} from "./home/features/features.component";
 import {FeatureBoxComponent} from "./home/features/feature-box/feature-box.component";
 import {ChartComponent} from "./statistics/chart/chart.component";
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -87,6 +89,8 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     MatTabsModule,
     MatButtonToggleModule,
     CanvasJSAngularChartsModule,
+    MatExpansionModule,
+    MatIconModule,
   ],
   providers: [NotificationModule],
   bootstrap: [AppComponent]

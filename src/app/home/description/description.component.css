@@ -39,9 +39,9 @@
 
 .title{
   color: var(--button-color);
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 700;
-  height: 60px;
+  min-height: 120px;
 }
 
 @media (max-width: 1275px) {
@@ -59,12 +59,11 @@
 
 @media (max-width: 560px) {
   .title{
-    font-size: 28px;
-    text-align: center;
+    font-size: 29px;
   }
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1275px) {
   .title{
     text-align: center;
   }

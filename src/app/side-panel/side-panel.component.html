@@ -4,6 +4,9 @@
     <mat-form-field>
       <input formControlName="startValue" type="text" placeholder="Start" aria-label="Number" matInput [matAutocomplete]="start">
       <mat-autocomplete #start="matAutocomplete" >
+        <mat-option *ngIf="routeForm.value['startValue']" (click)="searchStartLocation()" [value]="routeForm.value['startValue']">
+          {{routeForm.value['startValue']}}
+        </mat-option>
         <mat-option (click)="searchCurrentLocation()">
           <i class="fa-solid fa-location-dot"></i> &nbsp; Current Location
         </mat-option>
@@ -24,6 +27,9 @@
     <mat-form-field>
       <input formControlName="endValue" type="text" placeholder="End" aria-label="Number" matInput [matAutocomplete]="end" >
       <mat-autocomplete #end="matAutocomplete" >
+        <mat-option *ngIf="routeForm.value['endValue']" (click)="searchEndLocation()" [value]="routeForm.value['endValue']">
+          {{routeForm.value['endValue']}}
+        </mat-option>
         <mat-option *ngIf="savedAddresses?.home" (click)="searchEndLocation()" [value]="savedAddresses.home">
           <i class="fa-solid fa-house"></i> &nbsp; Home
         </mat-option>

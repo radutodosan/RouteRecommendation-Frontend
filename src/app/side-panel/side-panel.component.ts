@@ -112,11 +112,9 @@ export class SidePanelComponent implements OnInit{
   }
 
   searchStartLocation(){
-    console.log("Searching start location...");
     this.mapService.getLocationBySearch(this.routeForm.value["startValue"], 0);
   }
   searchEndLocation(){
-    console.log("Searching end location...");
     this.mapService.getLocationBySearch(this.routeForm.value["endValue"], 1);
   }
   searchCurrentLocation(){

@@ -117,6 +117,10 @@ hr{
   color: var(--button-color);
 }
 
+.empty-list{
+  color:var(--text-color)
+}
+
 @media(max-width: 600px){
   .friends-container{
     width: 95%;

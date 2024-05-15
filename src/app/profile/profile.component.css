@@ -83,7 +83,6 @@
 .edit-pass, .change-addresses{
   border: 1px solid var(--button-color);
   color:var(--text-color);
-  float:right;
   margin:0 10px 25px 10px;
 }
 .edit-pass:hover, .change-addresses:hover{

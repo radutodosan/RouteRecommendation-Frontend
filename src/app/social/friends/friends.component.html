@@ -25,6 +25,7 @@
   <hr class="my-10" />
 
   <div *ngIf="friendsList$ | async as friendsList">
+    <span *ngIf="friendsList.length == 0" class="empty-list">List of friends is empty</span>
     <app-user-card *ngFor="let friend of friendsList"
                    username="{{friend.username}}"
                    full_name="{{friend.full_name}}"

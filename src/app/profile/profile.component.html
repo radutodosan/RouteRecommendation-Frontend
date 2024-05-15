@@ -77,6 +77,10 @@
                   </div>
                   <div class="text-end mt-4">
                     <button  [disabled]="!editForm.valid" type="submit" class="btn btn-lg" (click)="updateUser()">Save Changes</button>
+                    <div class="d-flex">
+                      <button class="btn " (click)="openChangePasswordModal()" >Change password</button>
+                      <button class="btn " (click)="openEditAddressesModal()" >Edit Addresses</button>
+                    </div>
                   </div>
                 </form>
 
@@ -86,8 +90,7 @@
             <hr class="my-10" />
             <div  class="profile-container">
               <button class="btn logout" (click)="openLogoutConfirmation()" >LOGOUT</button>
-              <button class="btn edit-pass" (click)="openChangePasswordModal()" >Change password</button>
-              <button class="btn change-addresses" (click)="openEditAddressesModal()" >Edit Addresses</button>
+
               <button class="btn delete" (click)="openDeleteConfirmation()" >Delete Account</button>
             </div>
           </div>

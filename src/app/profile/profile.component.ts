@@ -9,6 +9,8 @@ import {DelLogoutConfirmationComponent} from "./del-logout-confirmation/del-logo
 import {EditPassComponent} from "./edit-pass/edit-pass.component";
 import {NotificationsService} from "../services/notifications.service";
 import {EditAddressesComponent} from "./edit-addresses/edit-addresses.component";
+import {UvtRewardsService} from "../services/uvt-rewards.service";
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -28,12 +30,16 @@ export class ProfileComponent implements OnInit{
   modalRef: MdbModalRef<DelLogoutConfirmationComponent> | null = null;
   modalRefChangePassword: MdbModalRef<EditPassComponent> | null = null;
   modalRefEditAddresses: MdbModalRef<EditAddressesComponent> | null = null;
+
+  // @ts-ignore
+  uvtRewards$ : Observable<any>;
   constructor(
     private usersService: UsersService,
     private router: Router,
     private formBuilder: FormBuilder,
     private notificationsService: NotificationsService,
     private modalService: MdbModalService,
+    private uvtRewardsService: UvtRewardsService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +52,11 @@ export class ProfileComponent implements OnInit{
       email: [this.loggedUser.email, Validators.required],
       confirmPassword: ['', Validators.required],
     });
+
+    if(this.loggedUser.email.includes('@e-uvt.ro')){
+      this.uvtRewards$ = this.uvtRewardsService.getUVTRewards(this.loggedUser.username)
+    }
+
   }
 
   updateUser(){

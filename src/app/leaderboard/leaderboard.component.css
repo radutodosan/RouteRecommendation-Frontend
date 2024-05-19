@@ -4,6 +4,11 @@
   float: right;
 }
 
+.rewards-timer{
+  margin-top: 2vh;
+  float: left;
+}
+
 .table-container{
   width: 85%;
   margin: 1vh auto;

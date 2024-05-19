@@ -36,10 +36,10 @@
             <!-- Form -->
             <hr class="my-10" />
             <mat-accordion class="route-panel" multi>
-              <mat-expansion-panel>
+              <mat-expansion-panel style="margin-bottom: 20px">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    <h5 class="mb-0">{{loggedUser.username}}'s Info</h5>
+                    <h5 class="mb-0"><i class="fa-solid fa-user"></i> {{loggedUser.username}}'s Info</h5>
                   </mat-panel-title>
                   <mat-panel-description>
 
@@ -83,7 +83,19 @@
                     </div>
                   </div>
                 </form>
+              </mat-expansion-panel>
+              <mat-expansion-panel *ngIf="uvtRewards$ | async as uvtRewards">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <h5 class="mb-0"><i class="fa-solid fa-gift"></i> UVT Rewards</h5>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                  </mat-panel-description>
 
+                </mat-expansion-panel-header>
+                <div *ngFor="let reward of uvtRewards">
+                  <span>{{reward.reward}}</span>
+                </div>
               </mat-expansion-panel>
             </mat-accordion>
 

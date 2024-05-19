@@ -11,8 +11,8 @@ export class AppComponent implements OnInit{
 
   currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
 
-  constructor(){
-  }
+  constructor(
+  ){}
 
   ngOnInit(): void {
     if (this.currentTheme) {

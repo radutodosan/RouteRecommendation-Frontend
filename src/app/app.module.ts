@@ -42,6 +42,7 @@ import {ChartComponent} from "./statistics/chart/chart.component";
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
+import {FormatTimePipe} from "./services/format-time.pipe";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import {MatIconModule} from "@angular/material/icon";
     EditAddressesComponent,
     FeaturesComponent,
     FeatureBoxComponent,
-    ChartComponent
+    ChartComponent,
+    FormatTimePipe
   ],
   imports: [
     BrowserModule,

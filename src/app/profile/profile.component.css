@@ -154,3 +154,68 @@
     font-size: 12px;
   }
 }
+
+/* REWARD CARD */
+.card{
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--darker-background-color);
+  border: 1px solid var(--blue-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+/* PLACEMENT */
+.placement{
+  background-color: 1px solid var(--text-color);
+}
+.placement span{
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+.placement .first{
+  color:gold;
+}
+.placement .second{
+  color:silver;
+}
+.placement .third{
+  color:saddlebrown;
+}
+
+/* REWARD INFO */
+.card .reward{
+  font-weight: 700;
+}
+.date i{
+  color: mediumseagreen;
+}
+.card span{
+  color: var(--text-color);
+}
+
+
+/* CLAIM BUTTON */
+
+.confirm{
+  border: 1px solid mediumseagreen;
+  float: right;
+  color:var(--text-color);
+  margin: 0 5px;
+}
+
+.confirm:hover{
+  background-color: mediumseagreen;
+  border: 1px solid mediumseagreen;
+}
+/* RESPONSIVE */
+@media(max-width: 600px){
+  .card .reward{
+    font-size: 16px;
+  }
+  .date{
+    font-size: 12px;
+  }
+}
+

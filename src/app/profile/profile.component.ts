@@ -11,6 +11,8 @@ import {NotificationsService} from "../services/notifications.service";
 import {EditAddressesComponent} from "./edit-addresses/edit-addresses.component";
 import {UvtRewardsService} from "../services/uvt-rewards.service";
 import { Observable } from 'rxjs';
+import {Status} from "../enums/status";
+import {UvtReward} from "../entities/uvt-reward";
 
 
 @Component({
@@ -30,6 +32,8 @@ export class ProfileComponent implements OnInit{
   modalRef: MdbModalRef<DelLogoutConfirmationComponent> | null = null;
   modalRefChangePassword: MdbModalRef<EditPassComponent> | null = null;
   modalRefEditAddresses: MdbModalRef<EditAddressesComponent> | null = null;
+
+  clicked = false;
 
   // @ts-ignore
   uvtRewards$ : Observable<any>;
@@ -96,10 +100,23 @@ export class ProfileComponent implements OnInit{
     this.modalRef.component.action = "LOGOUT";
   }
 
+  claimReward(reward: UvtReward){
+    this.uvtRewardsService.claimReward(reward).subscribe(response => {
+        console.log(response);
+        this.reloadPage();
+        this.notificationsService.showSuccessNotification("Reward claimed!");
+    }, error => {
+      this.notificationsService.showErrorNotification("Error claiming reward!");
+      throw error;
+    })
+  }
+
   reloadPage(){
     const currentUrl = this.router.url;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([currentUrl]);
     });
   }
+
+  protected readonly Status = Status;
 }

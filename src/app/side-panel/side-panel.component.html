@@ -58,10 +58,10 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <i *ngIf="routeForm.value['transportType'] == '0'" class="fa-solid fa-car"></i>
-          <i *ngIf="routeForm.value['transportType'] == '1'" class="fa-solid fa-bus"></i>
-          <i *ngIf="routeForm.value['transportType'] == '2'" class="fa-solid fa-bicycle"></i>
-          <i *ngIf="routeForm.value['transportType'] == '3'" class="fa-solid fa-person-walking"></i>
+          <i *ngIf="this.route['transport'] == '0'" class="fa-solid fa-car"></i>
+          <i *ngIf="this.route['transport'] == '1'" class="fa-solid fa-bus"></i>
+          <i *ngIf="this.route['transport'] == '2'" class="fa-solid fa-bicycle"></i>
+          <i *ngIf="this.route['transport'] == '3'" class="fa-solid fa-person-walking"></i>
         </mat-panel-title>
         <mat-panel-description>
           <span>{{this.route['distance']}}km &nbsp; {{this.route['time']}}min</span>

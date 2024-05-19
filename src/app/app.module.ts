@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SidePanelComponent } from './side-panel/side-panel.component';
+import { SidePanelComponent } from './map/side-panel/side-panel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms"
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -66,7 +66,7 @@ import {FormatTimePipe} from "./services/format-time.pipe";
     FeaturesComponent,
     FeatureBoxComponent,
     ChartComponent,
-    FormatTimePipe
+    FormatTimePipe,
   ],
   imports: [
     BrowserModule,

@@ -9,10 +9,9 @@ import {DelLogoutConfirmationComponent} from "./del-logout-confirmation/del-logo
 import {EditPassComponent} from "./edit-pass/edit-pass.component";
 import {NotificationsService} from "../services/notifications.service";
 import {EditAddressesComponent} from "./edit-addresses/edit-addresses.component";
-import {UvtRewardsService} from "../services/uvt-rewards.service";
-import { Observable } from 'rxjs';
-import {Status} from "../enums/status";
 import {UvtReward} from "../entities/uvt-reward";
+import {UvtRewardsService} from "../services/uvt-rewards.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -28,15 +27,14 @@ export class ProfileComponent implements OnInit{
 
   //@ts-ignore
   loggedUser: User;
+  //@ts-ignore
+  uvtRewards$ : Observable<any>;
+
 
   modalRef: MdbModalRef<DelLogoutConfirmationComponent> | null = null;
   modalRefChangePassword: MdbModalRef<EditPassComponent> | null = null;
   modalRefEditAddresses: MdbModalRef<EditAddressesComponent> | null = null;
 
-  clicked = false;
-
-  // @ts-ignore
-  uvtRewards$ : Observable<any>;
   constructor(
     private usersService: UsersService,
     private router: Router,
@@ -48,7 +46,6 @@ export class ProfileComponent implements OnInit{
 
   ngOnInit(): void {
     this.loggedUser = this.usersService.loggedUser;
-    console.log(this.loggedUser);
 
     this.editForm = this.formBuilder.group({
       full_name: [this.loggedUser.full_name, Validators.required],
@@ -57,10 +54,7 @@ export class ProfileComponent implements OnInit{
       confirmPassword: ['', Validators.required],
     });
 
-    if(this.loggedUser.email.includes('@e-uvt.ro')){
-      this.uvtRewards$ = this.uvtRewardsService.getUVTRewards(this.loggedUser.username)
-    }
-
+    this.uvtRewards$ = this.uvtRewardsService.getUVTRewards(this.loggedUser.username);
   }
 
   updateUser(){
@@ -102,9 +96,9 @@ export class ProfileComponent implements OnInit{
 
   claimReward(reward: UvtReward){
     this.uvtRewardsService.claimReward(reward).subscribe(response => {
-        console.log(response);
-        this.reloadPage();
-        this.notificationsService.showSuccessNotification("Reward claimed!");
+      console.log(response);
+      this.reloadPage();
+      this.notificationsService.showSuccessNotification("Reward claimed!");
     }, error => {
       this.notificationsService.showErrorNotification("Error claiming reward!");
       throw error;
@@ -118,5 +112,6 @@ export class ProfileComponent implements OnInit{
     });
   }
 
-  protected readonly Status = Status;
+
+
 }

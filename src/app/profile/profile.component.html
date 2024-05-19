@@ -39,7 +39,7 @@
               <mat-expansion-panel style="margin-bottom: 20px">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    <h5 class="mb-0"><i class="fa-solid fa-user"></i> {{loggedUser.username}}'s Info</h5>
+                    <h5 class="mb-0"><i class="fa-solid fa-user"></i>&emsp;{{loggedUser.username}}'s Info</h5>
                   </mat-panel-title>
                   <mat-panel-description>
 
@@ -84,26 +84,27 @@
                   </div>
                 </form>
               </mat-expansion-panel>
+
               <mat-expansion-panel *ngIf="uvtRewards$ | async as uvtRewards">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                    <h5 class="mb-0"><i class="fa-solid fa-gift"></i> UVT Rewards</h5>
+                    <h5 class="mb-0"><i class="fa-solid fa-gift"></i>&emsp;UVT Rewards</h5>
                   </mat-panel-title>
                   <mat-panel-description>
                   </mat-panel-description>
 
                 </mat-expansion-panel-header>
                 <div *ngFor="let reward of uvtRewards">
-                  <div class="card shadow mt-4 mb-10">
+                  <div class="reward-card shadow mt-4 mb-10">
                     <div class="card-body">
                       <div class="d-flex align-items-center">
 
                         <div>
                           <div class="d-flex align-items-center">
-                            <div class="placement rounded-circle text-white" (click)="tooltip.toggle()" style="cursor: pointer">
-                              <span *ngIf="reward.placement == 1" class="first" matTooltip="1st" matTooltipPosition="left" #tooltip="matTooltip"> <i class="fa-solid fa-medal"></i> </span>
-                              <span *ngIf="reward.placement == 2" class="second" matTooltip="2nd" matTooltipPosition="left" #tooltip="matTooltip"> <i class="fa-solid fa-medal"></i> </span>
-                              <span *ngIf="reward.placement == 3" class="third" matTooltip="3rd" matTooltipPosition="left" #tooltip="matTooltip"> <i class="fa-solid fa-medal"></i> </span>
+                            <div class="placement rounded-circle text-white"  style="cursor: pointer">
+                              <span *ngIf="reward.placement == 1" class="first" (click)="tooltip.toggle()" matTooltip="1st" matTooltipPosition="left" #tooltip="matTooltip"> <i class="fa-solid fa-medal"></i> </span>
+                              <span *ngIf="reward.placement == 2" class="second" (click)="tooltip.toggle()" matTooltip="2nd" matTooltipPosition="left" #tooltip="matTooltip"> <i class="fa-solid fa-medal"></i> </span>
+                              <span *ngIf="reward.placement == 3" class="third" (click)="tooltip.toggle()" matTooltip="3rd" matTooltipPosition="left" #tooltip="matTooltip"> <i class="fa-solid fa-medal"></i> </span>
                             </div>
                             <div class="ms-4">
                               <span class="reward h5 d-block mb-0">Prize: {{reward.reward}}</span>
@@ -121,6 +122,7 @@
                   </div>
                 </div>
               </mat-expansion-panel>
+
             </mat-accordion>
 
             <hr class="my-10" />

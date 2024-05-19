@@ -62,7 +62,6 @@ export class ChartComponent implements OnInit{
 
       const chartData: { label: string, y: number }[] = Object.keys(statsData).map(key => ({ label: months[parseInt(key) - 1], y: statsData[parseInt(key)] }));
 
-      console.log(chartData);
 
       this.chartOptions = {
         animationEnabled: true,
@@ -83,7 +82,6 @@ export class ChartComponent implements OnInit{
 
       const chartData = Object.entries(statsData).map(([label, y]) => ({ label, y }));
 
-      console.log(chartData);
 
       this.chartOptions = {
         animationEnabled: true,

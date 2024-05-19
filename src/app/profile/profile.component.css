@@ -1,11 +1,11 @@
+
+
+/* USER */
 .card{
   margin: 0 auto;
   background-color: var(--darker-background-color);
 
 }
-
-/* USER */
-
 /* AVATAR */
 .avatar{
   background-color: var(--blue-color);
@@ -43,7 +43,6 @@
 
 .container-fluid h5{
   color:var(--text-color);
-  font-weight: 700;
 }
 .container-fluid label, input::placeholder{
   color:var(--text-color);
@@ -155,12 +154,15 @@
   }
 }
 
+
 /* REWARD CARD */
-.card{
-  width: 100%;
+.reward-card{
+
   margin: 0 auto;
+  padding: 10px;
   background-color: var(--darker-background-color);
   border: 1px solid var(--blue-color);
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
 }
@@ -185,13 +187,13 @@
 }
 
 /* REWARD INFO */
-.card .reward{
+.reward-card .reward{
   font-weight: 700;
 }
 .date i{
   color: mediumseagreen;
 }
-.card span{
+.reward-card span{
   color: var(--text-color);
 }
 
@@ -218,4 +220,6 @@
     font-size: 12px;
   }
 }
+
+
 

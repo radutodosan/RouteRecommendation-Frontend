@@ -41,7 +41,6 @@ export class LoginFormComponent implements OnInit {
 
     this.usersService.loginUser(this.loginForm.value).subscribe(response=>{
       if(response != null){
-        console.log(response);
 
         this.usersService.loggedUser = response;
         localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
@@ -77,7 +76,6 @@ export class LoginFormComponent implements OnInit {
 
   getPendingFriendRequests(){
     this.friendshipService.getPendingFriendRequests(this.usersService.loggedUser.username).subscribe(response =>{
-      console.log("Friend requests: " + response.length);
 
       this.notificationsService.notificationsNumber = response.length;
     }, error => {
@@ -87,7 +85,6 @@ export class LoginFormComponent implements OnInit {
 
   getPendingRoutes(){
     this.routesService.getPendingRoutes(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Pending routes: " + response.length);
 
       this.notificationsService.notificationsNumber += response.length;
     }, error => {
@@ -97,7 +94,6 @@ export class LoginFormComponent implements OnInit {
 
   getAddresses(){
     this.savedAddressesService.getAddresses(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log(response);
 
       this.savedAddressesService.savedAddresses = response;
       localStorage.setItem("savedAddresses", JSON.stringify(this.savedAddressesService.savedAddresses));
@@ -110,7 +106,6 @@ export class LoginFormComponent implements OnInit {
 
   getNrOfRoutesPerMonth(){
     this.statsService.getNrOfRoutesPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Routes per month: ", response);
 
       this.statsService.nrOfRoutes = response;
       localStorage.setItem("nrOfRoutes", JSON.stringify(this.statsService.nrOfRoutes));
@@ -121,7 +116,6 @@ export class LoginFormComponent implements OnInit {
   }
   getKmCompletedPerMonth(){
     this.statsService.getKmCompletedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Km per month: ", response);
 
       this.statsService.kmCompleted = response;
       localStorage.setItem("kmCompleted", JSON.stringify(this.statsService.kmCompleted));
@@ -132,7 +126,6 @@ export class LoginFormComponent implements OnInit {
 
   getEmissionsSavedPerMonth(){
     this.statsService.getEmissionsSavedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Emissions saved per month: ", response);
 
       this.statsService.emissionsSaved = response;
       localStorage.setItem("emissionsSaved", JSON.stringify(this.statsService.emissionsSaved));
@@ -143,7 +136,6 @@ export class LoginFormComponent implements OnInit {
 
   getCalBurnedPerMonth(){
     this.statsService.getCalBurnedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Calories burned per month: ", response);
 
       this.statsService.calBurned = response;
       localStorage.setItem("calBurned", JSON.stringify(this.statsService.calBurned));
@@ -154,7 +146,6 @@ export class LoginFormComponent implements OnInit {
 
   getMoneySavedPerMonth(){
     this.statsService.getMoneySavedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Money saved per month: ", response);
 
       this.statsService.moneySaved = response;
       localStorage.setItem("moneySaved", JSON.stringify(this.statsService.moneySaved));
@@ -165,7 +156,6 @@ export class LoginFormComponent implements OnInit {
 
   getTransportPercentage(): void{
     this.statsService.getTransportPercentage(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Transport percentage: ", response);
 
       this.statsService.transportPercentage = response;
       localStorage.setItem("transportPercentage", JSON.stringify(this.statsService.transportPercentage));

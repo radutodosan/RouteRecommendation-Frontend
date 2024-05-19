@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {faBars} from "@fortawesome/free-solid-svg-icons";
-import {MapService} from "../services/map.service";
+import {MapService} from "../../services/map.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {SavedAddress} from "../entities/saved-address";
-import {SavedAddressesService} from "../services/saved-addresses.service";
-import {RoutesService} from "../services/routes.service";
-import {UsersService} from "../services/users.service";
-import {NotificationsService} from "../services/notifications.service";
+import {SavedAddress} from "../../entities/saved-address";
+import {SavedAddressesService} from "../../services/saved-addresses.service";
+import {RoutesService} from "../../services/routes.service";
+import {UsersService} from "../../services/users.service";
+import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-side-panel',
@@ -25,7 +25,6 @@ export class SidePanelComponent implements OnInit{
     '<i class="fa-solid fa-location-dot"></i> &nbsp; Other'
   ];
 
-  //@ts-ignore
   savedAddresses: SavedAddress;
 
   route:any = null;
@@ -38,11 +37,11 @@ export class SidePanelComponent implements OnInit{
     private routesService: RoutesService,
     private usersService: UsersService,
     private notificationsService: NotificationsService,
-  ) {}
+  ) {
+    this.savedAddresses = this.savedAddressesService.savedAddresses;
+  }
 
   ngOnInit(): void {
-    this.savedAddresses = this.savedAddressesService.savedAddresses;
-    console.log(this.savedAddresses);
 
     this.routeForm = this.formBuilder.group({
       startValue: ['', Validators.required],

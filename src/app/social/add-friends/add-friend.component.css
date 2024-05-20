@@ -119,6 +119,10 @@ hr{
   color: var(--button-color);
 }
 
+.empty-list{
+  color:var(--text-color)
+}
+
 @media(max-width: 600px){
   .add-friend-container{
     width: 95%;

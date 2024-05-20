@@ -65,9 +65,7 @@ export class MonthlyTimerService {
   resetFunction() {
     console.log('Timer reset and function called');
 
-    this.uvtRewardsService.addRewards().subscribe(response =>{
-      console.log(response)
-    }, error => {
+    this.uvtRewardsService.addRewards().subscribe(error => {
       throw error;
     });
   }

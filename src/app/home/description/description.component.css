@@ -41,10 +41,10 @@
   color: var(--button-color);
   font-size: 36px;
   font-weight: 700;
-  min-height: 120px;
+  min-height: 165px;
 }
 
-@media (max-width: 1275px) {
+@media (max-width: 1320px) {
   .info-container {
     flex-direction: column;
     align-items: center;
@@ -55,6 +55,11 @@
     flex: none;
     width: 100%;
   }
+
+  .title{
+    text-align: center;
+    min-height: 120px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -63,9 +68,8 @@
   }
 }
 
-@media (max-width: 1275px) {
+@media (min-width: 1640px) {
   .title{
-    text-align: center;
+    min-height: 120px;
   }
 }
-

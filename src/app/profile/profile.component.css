@@ -156,6 +156,11 @@
 
 
 /* REWARD CARD */
+.empty-list{
+  color:var(--text-color)
+}
+
+
 .reward-card{
 
   margin: 0 auto;
@@ -208,6 +213,10 @@
 }
 
 .confirm:hover{
+  background-color: mediumseagreen;
+  border: 1px solid mediumseagreen;
+}
+.confirm:focus{
   background-color: mediumseagreen;
   border: 1px solid mediumseagreen;
 }

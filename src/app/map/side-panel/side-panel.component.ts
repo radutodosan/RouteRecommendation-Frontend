@@ -86,8 +86,11 @@ export class SidePanelComponent implements OnInit{
         break;
       }
     }
+    var date = new Date();
+    var day = date.getDay();
+    var hour = date.getHours();
 
-    this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], network_type).subscribe(
+    this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], network_type, day, hour).subscribe(
       response => {
         console.log(response)
         // @ts-ignore

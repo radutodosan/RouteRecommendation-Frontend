@@ -178,14 +178,16 @@ export class MapService {
     return address;
   }
 
-  sendAddresses(start:string, end:string, network_type:string){
+  sendAddresses(start:string, end:string, network_type:string, day:number, hour:number){
     const URL = ["http://localhost:5000"];
     const SEND_ADDRESSES_URL = `${URL}/addresses`;
 
     const body = {
       start: start,
       end: end,
-      network_type: network_type
+      network_type: network_type,
+      day_of_week: day,
+      hour_of_day: hour
     };
 
     return this.http.post(SEND_ADDRESSES_URL, body);

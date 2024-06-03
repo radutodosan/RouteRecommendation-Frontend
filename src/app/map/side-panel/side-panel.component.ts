@@ -140,7 +140,6 @@ export class SidePanelComponent implements OnInit{
 
       this.routesService.addRoute(this.route).subscribe(response =>
       {
-        console.log(response);
       }, error => {
         this.notificationsService.showErrorNotification("Error creating route!");
         throw error;

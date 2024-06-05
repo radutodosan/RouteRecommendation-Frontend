@@ -27,11 +27,11 @@ export class SidePanelComponent implements OnInit{
 
   savedAddresses: SavedAddress;
 
+  calculated_routes:any = null;
   route:any = null;
-  route_directions:any = null;
 
   constructor(
-    private mapService:MapService,
+    public mapService:MapService,
     private formBuilder:FormBuilder,
     private savedAddressesService: SavedAddressesService,
     private routesService: RoutesService,
@@ -92,17 +92,12 @@ export class SidePanelComponent implements OnInit{
 
     this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], network_type, day, hour).subscribe(
       response => {
-        console.log(response)
-        // @ts-ignore
-        this.mapService.drawRoute(response["route_nodes"])
-        this.notificationsService.showSuccessNotification("Route Created!");
-        this.notificationsService.notificationsNumber ++;
+        this.calculated_routes = response;
 
-        // @ts-ignore
-        this.sendRoute(response["route_distance"], response["emissions_saved"], response["cal_burned"], response["travel_time"], response["avg_speed"]);
-        // @ts-ignore
-        this.route_directions = response["directions"];
-
+        if(network_type == 'drive')
+          this.notificationsService.showSuccessNotification("Routes Created!");
+        else
+          this.notificationsService.showSuccessNotification("Route Created!");
       },
       error => {
         console.error('Error calculating routes:', error)
@@ -125,7 +120,7 @@ export class SidePanelComponent implements OnInit{
   }
 
 
-  sendRoute(route_distance:any, emissions_saved:any, cal_burned:any, travel_time:any, avg_speed:any){
+  sendRoute(route_distance:any, emissions_saved:any, cal_burned:any, travel_time:any){
     if(this.usersService.loggedUser != null) {
       this.route = {
         user: this.usersService.loggedUser,
@@ -140,6 +135,8 @@ export class SidePanelComponent implements OnInit{
 
       this.routesService.addRoute(this.route).subscribe(response =>
       {
+        this.notificationsService.showSuccessNotification("Route Started!");
+        this.notificationsService.notificationsNumber ++;
       }, error => {
         this.notificationsService.showErrorNotification("Error creating route!");
         throw error;

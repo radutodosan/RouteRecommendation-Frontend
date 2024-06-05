@@ -3,16 +3,13 @@ import {Observable} from "rxjs";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../../services/users.service";
 import {HttpClient} from "@angular/common/http";
-import {slideInUpOnEnterAnimation} from "angular-animations";
 import {FriendshipService} from "../../services/friendship.service";
 
 @Component({
   selector: 'app-add-friend',
   templateUrl: './add-friend.component.html',
   styleUrls: ['./add-friend.component.css'],
-  animations:[
-    slideInUpOnEnterAnimation({duration:500}),
-  ],
+
 })
 export class AddFriendComponent {
 

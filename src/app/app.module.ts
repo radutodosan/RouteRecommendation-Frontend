@@ -43,6 +43,7 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {FormatTimePipe} from "./services/format-time.pipe";
+import {CountdownTimerComponent} from "./leaderboard/countdown-timer/countdown-timer.component";
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import {FormatTimePipe} from "./services/format-time.pipe";
     FeatureBoxComponent,
     ChartComponent,
     FormatTimePipe,
+    CountdownTimerComponent
   ],
   imports: [
     BrowserModule,

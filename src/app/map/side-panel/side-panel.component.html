@@ -54,30 +54,37 @@
   </form>
 
 
-  <mat-accordion *ngIf="route != null" class="route-panel" multi>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <i *ngIf="this.route['transport'] == '0'" class="fa-solid fa-car"></i>
-          <i *ngIf="this.route['transport'] == '1'" class="fa-solid fa-bus"></i>
-          <i *ngIf="this.route['transport'] == '2'" class="fa-solid fa-bicycle"></i>
-          <i *ngIf="this.route['transport'] == '3'" class="fa-solid fa-person-walking"></i>
-        </mat-panel-title>
-        <mat-panel-description>
-          <span>{{this.route['distance']}}km &nbsp; {{this.route['time']}}min</span>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-
-      <div *ngFor="let direction of route_directions" style="display: flex;">
-        <div style="margin-right: 10px">
-          <i *ngIf="direction.toString().includes('Start')" class="fa-solid fa-location-dot"></i>
-          <i *ngIf="direction.toString().includes('left')" class="fa-solid fa-arrow-left"></i>
-          <i *ngIf="direction.toString().includes('right')" class="fa-solid fa-arrow-right"></i>
-          <i *ngIf="direction.toString().includes('reached')" class="fa-solid fa-flag-checkered"></i>
-        </div>
-        <span style="font-size: 13px">{{direction}}<br><br></span>
+  <mat-accordion *ngIf="calculated_routes != null" class="route-panel">
+    <div *ngFor="let route of calculated_routes" style="margin-bottom: 10px">
+      <div *ngIf="route['network_type'] == 'drive'" class="route-type">
+        <span *ngIf="route['route_type'] == 'distance_efficient'"> Shortest distance</span>
+        <span *ngIf="route['route_type'] == 'traffic_efficient'"> Avoid traffic</span>
       </div>
-    </mat-expansion-panel>
+      <mat-expansion-panel (opened)="this.mapService.drawRoute(route['route_nodes'])">
+        <button (click)="this.sendRoute(route['route_distance'], route['emissions_saved'], route['cal_burned'], route['total_travel_time'])" class="btn begin">Begin</button>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <i *ngIf="route['network_type'] == 'drive'" class="fa-solid fa-car"></i>
+            <i *ngIf="route['network_type'] == 'bus'" class="fa-solid fa-bus"></i>
+            <i *ngIf="route['network_type'] == 'bike'" class="fa-solid fa-bicycle"></i>
+            <i *ngIf="route['network_type'] == 'walk'" class="fa-solid fa-person-walking"></i>
+          </mat-panel-title>
+          <mat-panel-description>
+            <span>{{route['route_distance']}}km &nbsp; {{route['total_travel_time']}}min</span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div *ngFor="let direction of route['directions']" style="display: flex;">
+          <div style="margin-right: 10px">
+            <i *ngIf="direction.toString().includes('Start')" class="fa-solid fa-location-dot"></i>
+            <i *ngIf="direction.toString().includes('left')" class="fa-solid fa-arrow-left"></i>
+            <i *ngIf="direction.toString().includes('right')" class="fa-solid fa-arrow-right"></i>
+            <i *ngIf="direction.toString().includes('reached')" class="fa-solid fa-flag-checkered"></i>
+          </div>
+          <span style="font-size: 13px">{{direction}}<br><br></span>
+        </div>
+      </mat-expansion-panel>
+    </div>
   </mat-accordion>
 </div>
 

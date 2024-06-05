@@ -2,7 +2,7 @@
 <div [@slideInUpOnEnter]="1" class="table-container">
 
   <div *ngIf="selected === 'UVT'" class="rewards-timer">
-    <h3>Time until next rewards: {{ countdown$ | async | formatTime }}</h3>
+    <app-countdown-timer></app-countdown-timer>
   </div>
 
   <div class="ranking-filter">

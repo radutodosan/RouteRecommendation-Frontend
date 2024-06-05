@@ -1,9 +1,12 @@
 import {Component, OnInit} from '@angular/core';
+import {RouterOutlet} from "@angular/router";
+import {slideRightLeftAnimation} from "./services/animations";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  animations:[slideRightLeftAnimation]
 
 })
 export class AppComponent implements OnInit{
@@ -24,6 +27,10 @@ export class AppComponent implements OnInit{
       }
 
     }
+  }
+
+  prepareRoute(outlet:RouterOutlet){
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation']
   }
 
   protected readonly onchange = onchange;

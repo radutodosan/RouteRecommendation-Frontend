@@ -4,7 +4,6 @@ import {Observable} from "rxjs";
 import {UsersService} from "../../services/users.service";
 import {FriendshipService} from "../../services/friendship.service";
 import {HttpClient} from "@angular/common/http";
-import {NotificationsService} from "../../services/notifications.service";
 
 @Component({
   selector: 'app-friends',
@@ -22,7 +21,6 @@ export class FriendsComponent implements OnInit{
     private friendshipService: FriendshipService,
     private http:HttpClient,
     private formBuilder: FormBuilder,
-    private notificationsService: NotificationsService,
   ) {}
 
   ngOnInit(){
@@ -38,4 +36,5 @@ export class FriendsComponent implements OnInit{
     else
       this.friendsList$ = this.friendshipService.getFriendsList(this.usersService.loggedUser.username);
   }
+
 }

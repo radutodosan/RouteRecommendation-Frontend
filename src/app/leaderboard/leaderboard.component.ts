@@ -4,8 +4,6 @@ import {RankingService} from "../services/ranking.service";
 import {UsersService} from "../services/users.service";
 import {User} from "../entities/user";
 import {NotificationsService} from "../services/notifications.service";
-import {Observable} from "rxjs";
-import {MonthlyTimerService} from "../services/monthly-timer.service";
 
 @Component({
   selector: 'app-leaderboard',
@@ -23,14 +21,11 @@ export class LeaderboardComponent implements OnInit{
 
   selected = 'Overall';
 
-  countdown$: Observable<number>;
   constructor(
     private notificationsService: NotificationsService,
     private usersService: UsersService,
     private rankingService: RankingService,
-    private monthlyTimerService: MonthlyTimerService
   ) {
-    this.countdown$ = this.monthlyTimerService.getCountdown();
   }
 
   ngOnInit(): void {

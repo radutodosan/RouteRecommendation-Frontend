@@ -75,7 +75,6 @@ export class MapService {
     chargingStations.forEach(station => {
       L.marker(station.coords).addTo(this.map)
         .bindPopup(station.name, { offset: [-20, -15] })
-        .openPopup();
     });
 
     return this.map;

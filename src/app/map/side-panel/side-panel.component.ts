@@ -90,21 +90,29 @@ export class SidePanelComponent implements OnInit{
     var day = date.getDay();
     var hour = date.getHours();
 
-    this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], network_type, day, hour).subscribe(
-      response => {
-        this.calculated_routes = response;
+    console.log(this.mapService.calculateDistance());
+    if(this.mapService.calculateDistance() > 500){
+      this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], network_type, day, hour).subscribe(
+        response => {
+          this.calculated_routes = response;
 
-        if(network_type == 'drive')
-          this.notificationsService.showSuccessNotification("Routes Created!");
-        else
-          this.notificationsService.showSuccessNotification("Route Created!");
-      },
-      error => {
-        console.error('Error calculating routes:', error)
-        this.notificationsService.showErrorNotification("Error calculating routes!")
-      }
+          if(network_type == 'drive')
+            this.notificationsService.showSuccessNotification("Routes Created!");
+          else
+            this.notificationsService.showSuccessNotification("Route Created!");
+        },
+        error => {
+          console.error('Error calculating routes:', error)
+          this.notificationsService.showErrorNotification("Error calculating routes!")
+        }
 
-    );
+      );
+    }
+    else{
+      this.notificationsService.showErrorNotification("You are too close to destination!")
+    }
+
+
 
   }
 

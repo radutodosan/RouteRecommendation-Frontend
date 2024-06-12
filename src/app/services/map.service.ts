@@ -233,6 +233,27 @@ export class MapService {
 
   }
 
+  calculateDistance(): number {
+    const startLatLng = this.startMarker.getLatLng();
+    const endLatLng = this.endMarker.getLatLng();
+
+
+    const R = 6371e3; // Radius of the Earth in meters
+    const phi1 = startLatLng.lat * Math.PI / 180; // φ, λ in radians
+    const phi2 =  endLatLng.lat * Math.PI / 180;
+    const deltaPhi = ( endLatLng.lat - startLatLng.lat) * Math.PI / 180;
+    const deltaLambda = ( endLatLng.lng - startLatLng.lng) * Math.PI / 180;
+
+    const a = Math.sin(deltaPhi / 2) * Math.sin(deltaPhi / 2) +
+      Math.cos(phi1) * Math.cos(phi2) *
+      Math.sin(deltaLambda / 2) * Math.sin(deltaLambda / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distance = R * c; // in meters
+
+    return distance;
+  }
+
   clearOldStartMarker(){
     if (this.startMarker) {
       this.map.removeLayer(this.startMarker);

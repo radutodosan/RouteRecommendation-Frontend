@@ -4,6 +4,7 @@ import {RoutesService} from "../../services/routes.service";
 import {Router} from "@angular/router";
 import {UsersService} from "../../services/users.service";
 import {StatsService} from "../../services/stats.service";
+import {MapService} from "../../services/map.service";
 
 @Component({
   selector: 'app-r-pending-card',
@@ -27,6 +28,7 @@ export class RPendingCardComponent {
     private routesService:RoutesService,
     private router:Router,
     private statsService: StatsService,
+    private mapService: MapService
   ) {
   }
 
@@ -40,27 +42,48 @@ export class RPendingCardComponent {
       end:this.end
     }
 
-    this.routesService.completeRoute(route).subscribe(response =>{
-      this.clicked = true;
-      console.log(response)
-      this.usersService.loggedUser = response.user;
-      localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
-      this.notificationsService.showSuccessNotification("Route Completed!");
-      this.notificationsService.notificationsNumber --;
 
-      this.getNrOfRoutesPerMonth();
-      this.getKmCompletedPerMonth();
-      this.getEmissionsSavedPerMonth();
-      this.getCalBurnedPerMonth();
-      this.getMoneySavedPerMonth();
-      this.getTransportPercentage();
+    // @ts-ignore
+    this.mapService.getAddressCoordinates(route.end).then(addressCoordinates => {
 
-      this.reloadPage();
+      this.mapService.getCurrentLocationCoordinates().then(currentLocationCoordinates =>{
+        const distance = this.mapService.calculateDistance(addressCoordinates, currentLocationCoordinates)
 
-    }, error => {
-      this.notificationsService.showErrorNotification("ERROR completing route!");
-      throw error;
-    })
+        console.log(distance);
+
+        if(distance < 500){
+          this.routesService.completeRoute(route).subscribe(response =>{
+            this.clicked = true;
+            console.log(response)
+            this.usersService.loggedUser = response.user;
+            localStorage.setItem("loggedUser", JSON.stringify(this.usersService.loggedUser));
+            this.notificationsService.showSuccessNotification("Route Completed!");
+            this.notificationsService.notificationsNumber --;
+
+            this.getNrOfRoutesPerMonth();
+            this.getKmCompletedPerMonth();
+            this.getEmissionsSavedPerMonth();
+            this.getCalBurnedPerMonth();
+            this.getMoneySavedPerMonth();
+            this.getTransportPercentage();
+
+            this.reloadPage();
+
+          }, error => {
+            this.notificationsService.showErrorNotification("ERROR completing route!");
+            throw error;
+          })
+        }
+        else{
+          this.notificationsService.showErrorNotification("You are too far away from destination!");
+        }
+      });
+
+
+
+    });
+
+
 
   }
 
@@ -79,7 +102,6 @@ export class RPendingCardComponent {
 
   getNrOfRoutesPerMonth(){
     this.statsService.getNrOfRoutesPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Routes per month: ", response);
 
       this.statsService.nrOfRoutes = response;
       localStorage.setItem("nrOfRoutes", JSON.stringify(this.statsService.nrOfRoutes));
@@ -90,7 +112,6 @@ export class RPendingCardComponent {
   }
   getKmCompletedPerMonth(){
     this.statsService.getKmCompletedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Km per month: ", response);
 
       this.statsService.kmCompleted = response;
       localStorage.setItem("kmCompleted", JSON.stringify(this.statsService.kmCompleted));
@@ -101,7 +122,6 @@ export class RPendingCardComponent {
 
   getEmissionsSavedPerMonth(){
     this.statsService.getEmissionsSavedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Emissions saved per month: ", response);
 
       this.statsService.emissionsSaved = response;
       localStorage.setItem("emissionsSaved", JSON.stringify(this.statsService.emissionsSaved));
@@ -112,7 +132,6 @@ export class RPendingCardComponent {
 
   getCalBurnedPerMonth(){
     this.statsService.getCalBurnedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Calories burned per month: ", response);
 
       this.statsService.calBurned = response;
       localStorage.setItem("calBurned", JSON.stringify(this.statsService.calBurned));
@@ -123,7 +142,6 @@ export class RPendingCardComponent {
 
   getMoneySavedPerMonth(){
     this.statsService.getMoneySavedPerMonth(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Money saved per month: ", response);
 
       this.statsService.moneySaved = response;
       localStorage.setItem("moneySaved", JSON.stringify(this.statsService.moneySaved));
@@ -134,7 +152,6 @@ export class RPendingCardComponent {
 
   getTransportPercentage(): void{
     this.statsService.getTransportPercentage(this.usersService.loggedUser.id).subscribe(response =>{
-      console.log("Transport percentage: ", response);
 
       this.statsService.transportPercentage = response;
       localStorage.setItem("transportPercentage", JSON.stringify(this.statsService.transportPercentage));

@@ -3,10 +3,10 @@ import {Injectable} from '@angular/core';
 import H from "@here/maps-api-for-javascript";
 
 import * as L from "leaflet";
+import {LatLng, Polyline} from "leaflet";
 import axios from 'axios';
 import {BehaviorSubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {Polyline} from "leaflet";
 import {NotificationsService} from "./notifications.service";
 
 @Injectable({
@@ -153,21 +153,31 @@ export class MapService {
     }
   }
 
+  getCurrentLocationCoordinates(): Promise<LatLng> {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            resolve(new LatLng(latitude, longitude));
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+      } else {
+        reject(new Error('Geolocation is not supported by this browser.'));
+      }
+    });
+  }
+
   getCurrentLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
         const {latitude, longitude} = position.coords;
 
-        this.markerType(0);
+        await this.addStarterMarker(latitude, longitude);
 
-        this.clearOldStartMarker()
-        this.clearOldDrawnRoute()
-
-        this.startMarker = this.addMarker([latitude,longitude]);
-        this.map.setView([latitude, longitude], 15);
-
-        this.startAddress = await this.getAddress(latitude, longitude);
-        this.startAddressSubject.next(this.startAddress);
 
       }, (error) => {
         console.error('Error getting current location:', error);
@@ -175,6 +185,19 @@ export class MapService {
     } else {
       console.error('Geolocation is not supported by this browser.');
     }
+  }
+
+  async addStarterMarker(latitude: number, longitude: number) {
+    this.markerType(0);
+
+    this.clearOldStartMarker()
+    this.clearOldDrawnRoute()
+
+    this.startMarker = this.addMarker([latitude, longitude]);
+    this.map.setView([latitude, longitude], 15);
+
+    this.startAddress = await this.getAddress(latitude, longitude);
+    this.startAddressSubject.next(this.startAddress);
   }
 
   addMarker(coords: [number, number]) {
@@ -233,10 +256,16 @@ export class MapService {
 
   }
 
-  calculateDistance(): number {
-    const startLatLng = this.startMarker.getLatLng();
-    const endLatLng = this.endMarker.getLatLng();
+  async getAddressCoordinates(address: string) {
+      const response = await axios.get(`https://nominatim.openstreetmap.org/search?q=${address}&format=json`);
+      const addressCoordinates : L.LatLng = new LatLng(response.data[0].lat, response.data[0].lon);
 
+      return addressCoordinates;
+  }
+
+  calculateDistance(start: L.LatLng = this.startMarker.getLatLng(), end: L.LatLng = this.endMarker.getLatLng()): number {
+    const startLatLng = start;
+    const endLatLng = end;
 
     const R = 6371e3; // Radius of the Earth in meters
     const phi1 = startLatLng.lat * Math.PI / 180; // φ, λ in radians

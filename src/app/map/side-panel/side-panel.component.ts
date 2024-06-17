@@ -28,6 +28,7 @@ export class SidePanelComponent implements OnInit{
   savedAddresses: SavedAddress;
 
   calculated_routes:any = null;
+  public_transport_route:any = null;
   route:any = null;
 
   constructor(
@@ -92,21 +93,43 @@ export class SidePanelComponent implements OnInit{
 
     console.log(this.mapService.calculateDistance());
     if(this.mapService.calculateDistance() > 500){
-      this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], network_type, day, hour).subscribe(
-        response => {
-          this.calculated_routes = response;
+      // @ts-ignore
+      this.mapService.getAddressCoordinates(this.routeForm.value['startValue']).then(start_coordinates => {
 
-          if(network_type == 'drive')
-            this.notificationsService.showSuccessNotification("Routes Created!");
-          else
-            this.notificationsService.showSuccessNotification("Route Created!");
-        },
-        error => {
-          console.error('Error calculating routes:', error)
-          this.notificationsService.showErrorNotification("Error calculating routes!")
-        }
+        // @ts-ignore
+        this.mapService.getAddressCoordinates(this.routeForm.value['endValue']).then(end_coordinates => {
+          console.log(start_coordinates, end_coordinates)
+          this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], start_coordinates, end_coordinates, network_type, day, hour).subscribe(
+            response => {
+              if(network_type != 'bus'){
+                this.calculated_routes = response;
+                this.public_transport_route = null
+                console.log(this.calculated_routes);
 
-      );
+                if(network_type == 'drive')
+                  this.notificationsService.showSuccessNotification("Routes Created!");
+                else
+                  this.notificationsService.showSuccessNotification("Route Created!");
+              }
+              else{
+                this.public_transport_route = response;
+                this.calculated_routes = null;
+                console.log(this.public_transport_route)
+                this.notificationsService.showSuccessNotification("Route Created!");
+              }
+
+            },
+            error => {
+              console.error('Error calculating routes:', error)
+              this.notificationsService.showErrorNotification("Error calculating routes!")
+            }
+
+          );
+        })
+      })
+
+
+
     }
     else{
       this.notificationsService.showErrorNotification("You are too close to destination!")

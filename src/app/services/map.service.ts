@@ -226,7 +226,7 @@ export class MapService {
     return address;
   }
 
-  sendAddresses(start:string, end:string, network_type:string, day:number, hour:number){
+  sendAddresses(start:string, end:string, start_coordinates: LatLng, end_coordinates: LatLng, network_type:string, day:number, hour:number){
     const URL = ["http://localhost:5000"];
     const SEND_ADDRESSES_URL = `${URL}/addresses`;
 
@@ -235,7 +235,9 @@ export class MapService {
       end: end,
       network_type: network_type,
       day_of_week: day,
-      hour_of_day: hour
+      hour_of_day: hour,
+      start_coordinates: start_coordinates,
+      end_coordinates: end_coordinates,
     };
 
     return this.http.post(SEND_ADDRESSES_URL, body);
@@ -282,6 +284,27 @@ export class MapService {
 
     return distance;
   }
+
+  addPublicTransportMarker(checkPoints : {name:string, type:string, coordinates: [number, number]}[]){
+    L.Marker.prototype.options.icon = L.icon({
+      iconUrl: '../../assets/Photos/Markers/station.png',
+      iconSize: [32, 32], // Adjust the size as needed
+      iconAnchor: [32, 32] // Adjust the anchor point if necessary
+    });
+
+    checkPoints.forEach(check_point => {
+      const popupContent = `
+      <div style="text-align: center">
+        <span style="font-size: 15px; font-weight: 700">${check_point.name}</span><br>
+        <span>${check_point.type}</span>
+      </div>
+    `;
+
+      L.marker(check_point.coordinates).addTo(this.map)
+        .bindPopup(popupContent, { offset: [-20, -15] })
+    });
+  }
+
 
   clearOldStartMarker(){
     if (this.startMarker) {

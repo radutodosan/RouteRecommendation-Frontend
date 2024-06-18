@@ -23,6 +23,8 @@ export class MapService {
   // @ts-ignore
   private endMarker: L.Marker;
 
+  private check_points = L.layerGroup();
+
   // @ts-ignore
   private _routePolyline: L.Polyline;
 
@@ -285,24 +287,36 @@ export class MapService {
     return distance;
   }
 
-  addPublicTransportMarker(checkPoints : {name:string, type:string, coordinates: [number, number]}[]){
+  addPublicTransportMarker(checkPoints : {name:string, mode:string, type:string, station:string, coordinates: [number, number]}[]){
     L.Marker.prototype.options.icon = L.icon({
       iconUrl: '../../assets/Photos/Markers/station.png',
       iconSize: [32, 32], // Adjust the size as needed
       iconAnchor: [32, 32] // Adjust the anchor point if necessary
     });
 
+    if(this.check_points){
+      this.check_points.clearLayers();
+    }
+
+
+
+
     checkPoints.forEach(check_point => {
       const popupContent = `
       <div style="text-align: center">
-        <span style="font-size: 15px; font-weight: 700">${check_point.name}</span><br>
-        <span>${check_point.type}</span>
+        <span style="font-size: 15px; font-weight: 700">${check_point.name} ${check_point.mode}</span><br>
+        <span>${check_point.type}: ${check_point.station}</span>
       </div>
     `;
 
-      L.marker(check_point.coordinates).addTo(this.map)
+
+      const marker = L.marker(check_point.coordinates)
         .bindPopup(popupContent, { offset: [-20, -15] })
+
+      this.check_points.addLayer(marker);
     });
+
+    this.map.addLayer(this.check_points)
   }
 
 

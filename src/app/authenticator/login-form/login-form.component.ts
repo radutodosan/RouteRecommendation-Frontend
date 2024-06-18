@@ -95,8 +95,11 @@ export class LoginFormComponent implements OnInit {
   getAddresses(){
     this.savedAddressesService.getAddresses(this.usersService.loggedUser.id).subscribe(response =>{
 
-      this.savedAddressesService.savedAddresses = response;
-      localStorage.setItem("savedAddresses", JSON.stringify(this.savedAddressesService.savedAddresses));
+      if(response != null){
+        this.savedAddressesService.savedAddresses = response;
+        localStorage.setItem("savedAddresses", JSON.stringify(this.savedAddressesService.savedAddresses));
+      }
+
 
     }, error => {
       this.notificationsService.showErrorNotification("Error Fetching Addresses!");

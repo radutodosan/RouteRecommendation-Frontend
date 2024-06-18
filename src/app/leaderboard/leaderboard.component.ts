@@ -36,6 +36,7 @@ export class LeaderboardComponent implements OnInit{
   getFriendsRanking(){
     this.rankingService.getFriendsRanking(this.usersService.loggedUser.username).subscribe(response=>{
       this.dataSource = response;
+      this.dataSource.push(this.usersService.loggedUser)
       this.dataSource.sort((a, b) => b.points - a.points)
     }, error => {
       this.notificationsService.showErrorNotification("Table failed to load!");

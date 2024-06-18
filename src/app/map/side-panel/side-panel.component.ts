@@ -98,7 +98,6 @@ export class SidePanelComponent implements OnInit{
 
         // @ts-ignore
         this.mapService.getAddressCoordinates(this.routeForm.value['endValue']).then(end_coordinates => {
-          console.log(start_coordinates, end_coordinates)
           this.mapService.sendAddresses(this.routeForm.value["startValue"], this.routeForm.value["endValue"], start_coordinates, end_coordinates, network_type, day, hour).subscribe(
             response => {
               if(network_type != 'bus'){

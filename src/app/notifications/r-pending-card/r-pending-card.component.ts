@@ -51,7 +51,7 @@ export class RPendingCardComponent {
 
         console.log(distance);
 
-        if(distance < 500){
+        if(distance < 2000){
           this.routesService.completeRoute(route).subscribe(response =>{
             this.clicked = true;
             console.log(response)

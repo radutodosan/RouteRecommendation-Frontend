@@ -9,6 +9,7 @@ import {NotificationsService} from "../../services/notifications.service";
 import {SavedAddressesService} from "../../services/saved-addresses.service";
 import {RoutesService} from "../../services/routes.service";
 import {StatsService} from "../../services/stats.service";
+import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 
 @Component({
   selector: 'app-login-form',
@@ -165,6 +166,44 @@ export class LoginFormComponent implements OnInit {
     }, error => {
       throw error;
     });
+  }
+
+  async forgotPassword(){
+    if(this.loginForm.value["username"] != ''){
+      emailjs.init('ICqMl3Oz_vOKfqMzW');
+      let username = this.loginForm.value["username"];
+      let tmp_pass = this.make_tmp_pass()
+      let response =  await emailjs.send("service_pbl98go","template_of4r0on",{
+        to_name: username,
+        tmp_pass: tmp_pass,
+      });
+
+      this.usersService.forgotPassword(username, tmp_pass).subscribe(response=>{
+        console.log(response);
+        this.notificationsService.showSuccessNotification("Reset password sent to " + this.loginForm.value["username"] + "'s email!")
+      },error => {
+        this.notificationsService.showErrorNotification("Error sending reset password email!");
+        throw error;
+      })
+
+
+    }
+    else{
+      this.notificationsService.showErrorNotification("Enter your username!")
+    }
+
+  }
+
+  make_tmp_pass() {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < 10) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    return result;
   }
 
   reloadPage(){

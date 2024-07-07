@@ -6,6 +6,9 @@
     <br>
     <input type="password" id="password-login" class="form-control validate" formControlName="password" placeholder="Password" required>
     <br>
+    <a class="forgot-password" (click)="forgotPassword()">Forgot password</a>
+    <br>
+    <br>
   </form>
 
   <button [disabled]="!loginForm.valid" type="button" class="btn login" (click)="loginUser();modalRef.close()">Login</button>

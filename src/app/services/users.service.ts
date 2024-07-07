@@ -61,4 +61,12 @@ export class UsersService {
     return this.http.put(URL + "/profile/change-pass/" + id, body);
   }
 
+  forgotPassword(username:string, tmp_password:string){
+    interface tmp_pass{
+      username:string
+      tmp_password:string;
+    }
+    const body:tmp_pass={username:username, tmp_password:tmp_password}
+    return this.http.put(URL + "/profile/forgot-pass", body);
+  }
 }

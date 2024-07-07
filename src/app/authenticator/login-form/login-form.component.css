@@ -21,3 +21,13 @@
   background-color: var(--hover-button-color);
   border: 1px solid var(--hover-button-color);
 }
+.forgot-password{
+  margin-left: 10px;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  text-decoration: none;
+}
+.forgot-password:hover{
+  border-bottom: 1px solid var(--hover-button-color);
+  cursor:pointer;
+}
